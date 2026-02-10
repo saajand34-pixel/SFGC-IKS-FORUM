@@ -11,13 +11,19 @@
             padding: 0;
             background: url('45383.png') no-repeat center center fixed;
             background-size: cover;
-            background-attachment: fixed; /* Fixed for PC */
+            background-attachment: fixed;
             color: #fdf5e6;
         }
         header {
             background-color: rgba(0, 0, 0, 0.3);
             padding: 15px 10px;
             text-align: center;
+            position: relative;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         nav ul {
             list-style: none;
@@ -34,16 +40,34 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1em;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
         }
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
         }
         .hamburger div {
             width: 25px;
             height: 3px;
-            background-color: #ffcc66;
+            background-color: #ffffff; /* Dark white for visibility */
             margin: 3px 0;
         }
         main {
@@ -68,7 +92,6 @@
             color: #ffd700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
-        /* Mobile Styles */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -91,13 +114,13 @@
 </head>
 <body>
     <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <h1>Welcome to SFGC IKS Forum</h1>
         <nav>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
             <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
