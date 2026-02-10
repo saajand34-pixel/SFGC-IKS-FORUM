@@ -3,41 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFGC IKS Forum - About</title>
+    <title>About - SFGC IKS Forum</title>
     <style>
-        /* Shared Style */
-        body { font-family: 'Georgia Pro', Georgia, serif; margin: 0; background: url('45383.png') no-repeat center center fixed; background-size: cover; color: #fdf5e6; }
-        header { background-color: rgba(0, 0, 0, 0.3); padding: 30px 10px; text-align: center; }
-        nav ul { list-style: none; padding: 0; }
-        nav ul li { display: inline; margin: 0 15px; }
-        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; }
-        main { padding: 40px 20px; max-width: 850px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; margin-bottom: 100px; }
-        footer { position: fixed; bottom: 0; width: 100%; text-align: center; padding: 15px; background-color: rgba(0, 0, 0, 0.5); color: #fdf5e6; }
-        h2 { color: #ffd700; border-bottom: 1px solid #ffcc66; padding-bottom: 10px; }
-        img { display: block; margin: 20px auto; border: 2px solid #ffcc66; border-radius: 10px; background: rgba(255,255,255,0.1); padding: 5px; }
+        body {
+            font-family: 'Georgia Pro', Georgia, serif;
+            margin: 0;
+            padding: 0;
+            background: url('45383.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fdf5e6;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 30px 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+        main {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: rgba(0, 0, 0, 0.6); /* Same as Home Tab */
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            margin-bottom: 100px;
+        }
+        .about-section {
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 10px;
+        }
+        h2 {
+            color: #ffd700; /* Golden Headings */
+            border-bottom: 1px solid #ffcc66;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px #000;
+        }
+        img {
+            display: block;
+            margin: 15px auto;
+            max-width: 220px;
+            /* Removes white background and blends with page */
+            mix-blend-mode: screen; 
+            filter: drop-shadow(0px 0px 8px rgba(255, 215, 0, 0.5));
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fdf5e6;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>SFGC IKS Forum</h1>
+        <h1 style="color: #ffd700; text-shadow: 2px 2px 4px #000;">About the Forum</h1>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="committee.html">Committee</a></li>
-                <li><a href="events.html">Events</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="committee.html">Committee</a>
+            <a href="events.html">Events</a>
         </nav>
     </header>
+
     <main>
-        <h2>About Indian Knowledge System (IKS)</h2>
-        <p>The Indian Knowledge System (IKS) encompasses traditional wisdom in fields like Ayurveda, yoga, Sanskrit, mathematics, and more.</p>
-        <img src="images/iks-logo.png" alt="IKS Logo" width="250">
-        
-        <h2>About SET</h2>
-        <p>SET (Society for Education and Training) is dedicated to advancing educational programs in Indian Knowledge Systems.</p>
-        <img src="images/set-logo.png" alt="SET Logo" width="250">
+        <div class="about-section">
+            <h2>About AICTE</h2>
+            <img src="45368.png" alt="AICTE Logo">
+            <p>The All India Council for Technical Education (AICTE) provides technical leadership and ensures quality in Indian professional education.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Indian Knowledge Systems (IKS)</h2>
+            <img src="45352.png" alt="IKS Logo">
+            <p>Promoting interdisciplinary research on all aspects of traditional Indian wisdom under the Ministry of Education.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Seshadripuram First Grade College (SFGC)</h2>
+            <img src="44967.png" alt="SFGC Logo">
+            <p>A premier institution dedicated to academic excellence, fostering traditional values alongside modern knowledge.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>NAAC Accreditation</h2>
+            <img src="45376.jpg" alt="NAAC Logo">
+            <p>Proudly accredited with an 'A+' grade by NAAC, recognizing our commitment to high educational standards.</p>
+        </div>
     </main>
+
     <footer>
         <p>&copy; 2026 SFGC IKS Forum. All rights reserved.</p>
     </footer>
