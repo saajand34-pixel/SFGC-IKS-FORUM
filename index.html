@@ -11,32 +11,46 @@
             padding: 0;
             background: url('45383.png') no-repeat center center fixed;
             background-size: cover;
-            color: #fdf5e6; /* Old Lace / Cream color for better readability */
+            background-attachment: fixed; /* Fixed for PC */
+            color: #fdf5e6;
         }
         header {
-            background-color: rgba(0, 0, 0, 0.3); /* Subtle transparent overlay */
-            padding: 15px 10px; /* Reduced padding for smaller box */
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px 10px;
             text-align: center;
         }
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
         }
         nav ul li {
-            display: inline;
             margin: 0 15px;
         }
         nav a {
-            color: #ffcc66; /* Golden yellow for links */
+            color: #ffcc66;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1em;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #ffcc66;
+            margin: 3px 0;
         }
         main {
             padding: 40px 20px;
             max-width: 850px;
             margin: 50px auto;
-            background-color: rgba(0, 0, 0, 0.4); /* Glass effect instead of solid box */
+            background-color: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
             text-align: center;
             margin-bottom: 100px;
@@ -47,12 +61,31 @@
             width: 100%;
             text-align: center;
             padding: 15px;
-            background-color: transparent; /* Removed footer box */
+            background-color: transparent;
             color: #fdf5e6;
         }
         h1, h2 {
-            color: #ffd700; /* Gold for headings */
+            color: #ffd700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 20px 0;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .hamburger {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -60,7 +93,12 @@
     <header>
         <h1>Welcome to SFGC IKS Forum</h1>
         <nav>
-            <ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="committee.html">Committee</a></li>
@@ -79,5 +117,12 @@
     <footer>
         <p>&copy; 2026 SFGC IKS Forum. All rights reserved.</p>
     </footer>
+    
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
 </body>
 </html>

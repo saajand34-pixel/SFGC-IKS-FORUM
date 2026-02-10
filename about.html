@@ -11,11 +11,12 @@
             padding: 0;
             background: url('45383.png') no-repeat center center fixed;
             background-size: cover;
+            background-attachment: fixed; /* Fixed for PC */
             color: #fdf5e6;
         }
         header {
             background-color: rgba(0, 0, 0, 0.2);
-            padding: 15px 10px; /* Reduced padding for smaller box */
+            padding: 15px 10px;
             text-align: center;
         }
         nav a {
@@ -25,11 +26,28 @@
             margin: 0 15px;
             font-size: 1.1em;
         }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #ffcc66;
+            margin: 3px 0;
+        }
         main {
             padding: 40px 20px;
             max-width: 900px;
             margin: 40px auto;
-            background-color: rgba(0, 0, 0, 0.6); /* Same as Home Tab */
+            background-color: rgba(0, 0, 0, 0.6);
             border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
             margin-bottom: 100px;
@@ -40,7 +58,7 @@
             padding: 10px;
         }
         h2 {
-            color: #ffd700; /* Golden Headings */
+            color: #ffd700;
             border-bottom: 1px solid #ffcc66;
             display: inline-block;
             margin-bottom: 20px;
@@ -50,8 +68,7 @@
             display: block;
             margin: 15px auto;
             max-width: 220px;
-            /* Removes white background and blends with page */
-            mix-blend-mode: screen; 
+            mix-blend-mode: screen;
             filter: drop-shadow(0px 0px 8px rgba(255, 215, 0, 0.5));
         }
         footer {
@@ -60,9 +77,34 @@
             width: 100%;
             text-align: center;
             padding: 15px;
-            background-color: transparent; /* Removed footer box */
+            background-color: transparent;
             color: #fdf5e6;
             font-size: 0.9em;
+        }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav a {
+                display: none;
+            }
+            nav {
+                flex-direction: column;
+            }
+            .hamburger {
+                display: flex;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 20px 0;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
@@ -70,10 +112,17 @@
     <header>
         <h1 style="color: #ffd700; text-shadow: 2px 2px 4px #000;">About the Forum</h1>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="committee.html">Committee</a>
-            <a href="events.html">Events</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="committee.html">Committee</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -106,5 +155,12 @@
     <footer>
         <p>&copy; 2026 SFGC IKS Forum. All rights reserved.</p>
     </footer>
+    
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
 </body>
 </html>
