@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFGC IKS Forum - Events</title>
+    <style>
+        body { font-family: 'Georgia Pro', Georgia, serif; margin: 0; background: url('45383.png') no-repeat top center fixed; background-size: cover; background-attachment: fixed; filter: brightness(1.2); color: #fdf5e6; } /* Brightened background image */
+        header { background-color: rgba(0, 0, 0, 0.3); padding: 15px 10px; text-align: center; position: relative; }
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; }
+        nav ul li { margin: 0 15px; }
+        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; left: 10px; top: 70%; transform: translateY(-50%); }
+        .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
+        main { padding: 40px 20px; max-width: 850px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; margin-bottom: 100px; }
+        footer { position: fixed; bottom: 0; width: 100%; text-align: center; padding: 15px; background-color: transparent; color: #fdf5e6; }
+        h2 { color: #ffd700; }
+        .event-card { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255, 204, 102, 0.3); }
+        .reg-btn { color: #ffd700; font-weight: bold; text-decoration: underline; }
+        @media (max-width: 768px) {
+            nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 20px 0; }
+            nav ul li { margin: 10px 0; }
+            .hamburger { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>SFGC IKS Forum</h1>
+       <nav>
+    <ul id="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+    </ul>
+</nav>
+    </header>
+    <main>
+        <h2>Upcoming Events</h2>
+        <div class="event-card">
+            <p><strong>Sanskrit Workshop:</strong> October 15, 2026 <br> 
+            <a href="#" class="reg-btn">Register Here</a></p>
+        </div>
+        <div class="event-card">
+            <p><strong>Ayurveda Seminar:</strong> November 5, 2026 <br> 
+            <a href="#" class="reg-btn">Register Here</a></p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 SFGC IKS Forum. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
+</body>
+</html>
