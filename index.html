@@ -72,13 +72,32 @@
         }
         main {
             padding: 40px 20px;
-            max-width: 850px;
+            max-width: 900px; /* Increased for about sections */
             margin: 50px auto;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.2); /* More transparent for about sections */
             border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
             text-align: center;
             margin-bottom: 100px;
+        }
+        .about-section {
+            margin-bottom: 50px;
+            text-align: center;
+            padding: 10px;
+        }
+        h2 {
+            color: #ffd700;
+            border-bottom: 1px solid #ffcc66;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px #000;
+        }
+        img {
+            display: block;
+            margin: 15px auto;
+            max-width: 220px;
+            mix-blend-mode: screen;
+            filter: drop-shadow(0px 0px 8px rgba(255, 215, 0, 0.5));
         }
         footer {
             position: fixed;
@@ -124,7 +143,6 @@
         <nav>
             <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="committee.html">Committee</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
@@ -136,7 +154,31 @@
         <p style="font-size: 1.2em;">Join the SFGC IKS Forum to explore India's rich knowledge systems, connect with experts, and participate in student-focused events and discussions.</p>
         <hr style="border: 0; border-top: 1px solid #ffcc66; width: 50%; margin: 30px auto;">
         <h2>Latest Updates</h2>
-        <p>Explore our About section, meet the Committee, or check upcoming Events and Proceedings & Journal.</p>
+        <p>Explore our Committee, check upcoming Events, or view Proceedings & Journal.</p>
+        
+        <div class="about-section">
+            <h2>About AICTE</h2>
+            <img src="45368.png" alt="AICTE Logo">
+            <p>The All India Council for Technical Education (AICTE) provides technical leadership and ensures quality in Indian professional education.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Indian Knowledge Systems (IKS)</h2>
+            <img src="45352.png" alt="IKS Logo">
+            <p>Promoting interdisciplinary research on all aspects of traditional Indian wisdom under the Ministry of Education.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Seshadripuram Educational Trust (SET)</h2>
+            <img src="44967.png" alt="SET Logo">
+            <p>A premier institution dedicated to academic excellence, fostering traditional values alongside modern knowledge.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Seshadripuram First Grade college (SFGC)</h2>
+            <img src="45376.jpg" alt="SFGC Logo">
+            <p>Proudly accredited with an 'A+' grade by NAAC, recognizing our commitment to high educational standards.</p>
+        </div>
     </main>
     
     <footer>
