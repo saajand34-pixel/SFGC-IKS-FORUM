@@ -72,6 +72,7 @@
             background-color: rgba(0, 0, 0, 0.4);
             padding: 20px;
             text-align: center;
+            position: relative;
         }
 
         h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
@@ -85,13 +86,44 @@
             gap: 20px;
         }
 
+        nav ul li { margin: 0 15px; }
+
         nav a {
             color: #ffcc66;
             text-decoration: none;
             font-weight: bold;
-            transition: 0.3s;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
         }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            left: 10px;
+            top: 70%;
+            transform: translateY(-50%);
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #cccccc;
+            margin: 3px 0;
+        }
 
         /* 3. MAIN CONTENT */
         main {
@@ -150,6 +182,22 @@
         }
 
         .hidden { opacity: 0 !important; visibility: hidden; }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 20px 0;
+            }
+            nav ul li { margin: 10px 0; }
+            .hamburger { display: flex; }
+            body { overflow-x: hidden; } /* Reinforce no horizontal scroll on mobile */
+        }
     </style>
 </head>
 <body>
@@ -159,9 +207,14 @@
     </div>
 
     <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <h1>Welcome to SFGC IKS Forum</h1>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="committee.html">Committee</a></li>
                 <li><a href="occasion.html">Occasion</a></li>
@@ -218,6 +271,10 @@
     </footer>
     
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
         window.addEventListener('load', () => {
             const loader = document.getElementById('loading-screen');
             setTimeout(() => {
