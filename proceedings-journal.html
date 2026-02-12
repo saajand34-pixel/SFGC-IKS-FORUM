@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFGC IKS Forum - Proceedings & Journal</title>
     <style>
-        body { font-family: 'Georgia Pro', Georgia, serif; margin: 0; background: url('45383.png') no-repeat top center fixed; background-size: cover; background-attachment: fixed; filter: brightness(1.2); color: #fdf5e6; } /* Brightened background image */
+        body { font-family: 'Georgia Pro', Georgia, serif; margin: 0; background: url('45383.png') no-repeat top center fixed; background-size: cover; background-attachment: fixed; filter: brightness(1.2); color: #fdf5e6; overflow-x: hidden; } /* Prevents horizontal scrolling */
         header { background-color: rgba(0, 0, 0, 0.3); padding: 15px 10px; text-align: center; position: relative; }
         nav ul { list-style: none; padding: 0; display: flex; justify-content: center; }
         nav ul li { margin: 0 15px; }
@@ -25,7 +25,7 @@
         }
         .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; left: 10px; top: 70%; transform: translateY(-50%); }
         .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
-        main { padding: 40px 20px; max-width: 850px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; margin-bottom: 100px; }
+        main { padding: 40px 20px; max-width: 850px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; margin-bottom: 100px; } /* Centered with max-width and auto margins */
         footer { position: fixed; bottom: 0; width: 100%; text-align: center; padding: 15px; background-color: transparent; color: #fdf5e6; }
         h2 { color: #ffd700; }
         .section { margin-bottom: 40px; text-align: center; }
@@ -34,6 +34,7 @@
             nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 20px 0; }
             nav ul li { margin: 10px 0; }
             .hamburger { display: flex; }
+            body { overflow-x: hidden; } /* Reinforce no horizontal scroll on mobile */
         }
     </style>
 </head>
