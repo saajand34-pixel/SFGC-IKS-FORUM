@@ -93,19 +93,23 @@
             margin-bottom: 20px;
             text-shadow: 1px 1px 2px #000;
         }
-        
-        /* UPDATED LOGO STYLE */
+
+        /* LOGO FIX APPLIED HERE */
         img {
             display: block;
             margin: 15px auto;
-            max-width: 180px; /* Adjusted size to look more like a logo */
-            height: 180px;    /* Keeps it square for the circle crop */
-            object-fit: cover;
-            border-radius: 50%; /* This removes the black corners/background */
-            border: 2px solid rgba(255, 215, 0, 0.3); /* Subtle gold border */
-            box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.4); /* Glow effect from reference */
+            max-width: 220px;
+            height: auto;
+            /* Ensures the full logo is visible */
+            object-fit: contain; 
+            /* Removes the black background corners */
+            border-radius: 50%; 
+            /* Added glow for a professional look */
+            box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.6);
+            /* Optional: subtle border to define the shape */
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
-        
+
         footer {
             position: fixed;
             bottom: 0;
