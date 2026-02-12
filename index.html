@@ -95,14 +95,14 @@
             text-shadow: 1px 1px 2px #000;
         }
 
-        /* UPDATED LOGO STYLE FOR TRANSPARENT BACKGROUND AND PERFECT SIZE */
+        /* UPDATED LOGO STYLE FOR EXACT SAME SIZE AS IKS LOGO */
         img {
             display: block;
             margin: 15px auto;
-            max-width: 200px; /* Same size as IKS logo for all */
-            height: auto;
+            width: 200px; /* Fixed width for exact size */
+            height: 200px; /* Fixed height for exact size */
             
-            /* Ensures the image does not get clipped or cropped */
+            /* Ensures the image fits without distortion */
             object-fit: contain; 
             
             /* Makes the background transparent */
