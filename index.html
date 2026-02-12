@@ -99,7 +99,7 @@
         img {
             display: block;
             margin: 15px auto;
-            max-width: 200px; /* Perfect size for logos */
+            max-width: 200px; /* Same size as IKS logo for all */
             height: auto;
             
             /* Ensures the image does not get clipped or cropped */
@@ -148,6 +148,9 @@
             }
             .hamburger {
                 display: flex;
+            }
+            body {
+                overflow-x: hidden; /* Ensures no left/right scrolling on mobile */
             }
         }
     </style>
