@@ -48,7 +48,7 @@
             -webkit-text-stroke: 0.5px transparent; /* Sharper edges on mobile */
             opacity: 0;
             transform: scale(0.9) translateZ(0); /* Hardware acceleration for sharpness */
-            animation: cinematicReveal 2.5s ease-out forwards;
+            animation: cinematicReveal 2s ease-out forwards; /* Faster: 2s instead of 2.5s */
             filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5)); /* Sharpened shadow for mobile */
         }
 
@@ -61,7 +61,7 @@
             -webkit-text-fill-color: transparent;
             background-size: 200% 100%;
             animation: shimmer 2s infinite;
-            animation-delay: 1s;
+            animation-delay: 0.5s; /* Faster: 0.5s instead of 1s */
         }
 
         @keyframes cinematicReveal { to { opacity: 1; transform: scale(1) translateZ(0); } }
@@ -137,7 +137,7 @@
             text-align: center;
             opacity: 0;
             animation: pageFadeIn 1.5s ease-out forwards;
-            animation-delay: 3s; 
+            animation-delay: 2s; /* Adjusted to match faster loading: 2s instead of 3s */
         }
 
         @keyframes pageFadeIn { to { opacity: 1; } }
@@ -282,7 +282,7 @@
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 1000);
-            }, 3000);
+            }, 2000); /* Faster: 2000ms instead of 3000ms */
         });
     </script>
 </body>
