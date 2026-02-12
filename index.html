@@ -139,6 +139,9 @@
             z-index: 9999;
             animation: loadingFadeOut 3s ease-in-out forwards;
         }
+        #loading-screen ~ body {
+            overflow: hidden; /* Completely prevents scrolling during animation */
+        }
         #iks-text {
             font-family: 'Georgia Pro', Georgia, serif; /* Royal font */
             font-size: 120px;
@@ -273,7 +276,6 @@
 
         <div class="about-section">
             <h2>SESHADRIPURAM RESEARCH FOUNDATION</h2>
-            <img src="45376.jpg" alt="Research Foundation Logo" style="width: 160px; height: 160px;"> <!-- Increased size -->
             <p>The Seshadripuram Research Foundation advances research in traditional and modern sciences, fostering innovation and knowledge dissemination.</p>
         </div>
     </main>
