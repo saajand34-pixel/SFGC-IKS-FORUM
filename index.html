@@ -97,23 +97,22 @@
         
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
-        /* HAMBURGER BUTTON - Consistent position */
+        /* HAMBURGER BUTTON - Uniform size and position */
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            left: 10px; /* Consistent with other pages */
-            top: 70%; /* Consistent with other pages */
+            left: 10px;
+            top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
         }
         .hamburger div {
-            width: 30px;
+            width: 25px;
             height: 3px;
-            background-color: #BF953F;
-            margin: 4px 0;
-            transition: 0.4s;
+            background-color: #cccccc;
+            margin: 3px 0;
         }
 
         /* 3. MAIN CONTENT */
@@ -172,29 +171,24 @@
 
         .hidden { opacity: 0 !important; visibility: hidden; }
 
-        /* MOBILE OVERLAP FIXES */
+        /* MOBILE OVERLAP FIXES - Uniform nav box */
         @media (max-width: 768px) {
-            header { padding: 40px 10px 20px 10px; }
-            
             nav ul {
-                display: none; /* Hidden by default */
+                display: none;
                 flex-direction: column;
-                background-color: rgba(255, 255, 255, 0.8); /* Consistent white background */
                 position: absolute;
-                top: 100%;
+                top: 60px;
                 left: 0;
                 width: 100%;
+                background-color: rgba(255, 255, 255, 0.8);
                 padding: 20px 0;
-                border-bottom: 2px solid #BF953F;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             }
-            
             nav ul.active {
-                display: flex; /* Shown when hamburger clicked */
+                display: flex;
             }
-
-            nav ul li { margin: 15px 0; }
+            nav ul li { margin: 10px 0; }
             .hamburger { display: flex; }
+            body { overflow-x: hidden; }
         }
     </style>
 </head>
