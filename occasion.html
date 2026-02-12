@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFGC IKS Forum - Events</title>
     <style>
-        body { font-family: 'Georgia Pro', Georgia, serif; margin: 0; background: url('45383.png') no-repeat top center fixed; background-size: cover; background-attachment: fixed; filter: brightness(1.2); color: #fdf5e6; overflow-x: hidden; } /* Prevents horizontal scrolling */
+        body { font-family: 'Georgia Pro', Georgia, serif; margin: 0; background: url('45383.png') no-repeat top center fixed; background-size: cover; background-attachment: fixed; filter: brightness(1.2); color: #fdf5e6; overflow-x: hidden; }
         header { background-color: rgba(0, 0, 0, 0.3); padding: 15px 10px; text-align: center; position: relative; }
         nav ul { list-style: none; padding: 0; display: flex; justify-content: center; }
         nav ul li { margin: 0 15px; }
@@ -26,16 +26,34 @@
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
         .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; left: 10px; top: 70%; transform: translateY(-50%); }
         .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
-        main { padding: 40px 20px; max-width: 850px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; margin-bottom: 100px; } /* Centered with max-width and auto margins */
-        footer { position: fixed; bottom: 0; width: 100%; text-align: center; padding: 15px; background-color: transparent; color: #fdf5e6; }
+        main { padding: 40px 20px; max-width: 850px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; margin-bottom: 100px; }
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
+            border-top: 2px solid #BF953F;
+            margin-top: auto;
+        }
+        footer p {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.1em;
+            line-height: 1.6; 
+            color: #BF953F;
+            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
         h2 { color: #ffd700; }
         .event-card { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255, 204, 102, 0.3); }
         .reg-btn { color: #ffd700; font-weight: bold; text-decoration: underline; }
         @media (max-width: 768px) {
             nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 20px 0; }
-            nav ul li { margin: 10px 0; }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; } /* Updated to match home page */
             .hamburger { display: flex; }
-            body { overflow-x: hidden; } /* Reinforce no horizontal scroll on mobile */
+            body { overflow-x: hidden; }
         }
     </style>
 </head>
@@ -74,7 +92,7 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
-            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+            menu.classList.toggle('active');
         }
     </script>
 </body>
