@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFGC IKS Forum</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet"> <!-- For better font -->
     <style>
         body {
             font-family: 'Georgia Pro', Georgia, serif;
@@ -141,19 +140,14 @@
             animation: loadingFadeOut 3s ease-in-out forwards;
         }
         #iks-text {
-            font-family: 'Cinzel', 'Times New Roman', serif; /* Improved royal font with fallback */
+            font-family: 'Georgia Pro', Georgia, serif; /* Royal font */
             font-size: 120px;
             font-weight: bold;
-            color: transparent; /* Ensures gradient shows */
-            background: linear-gradient(to bottom, #FFD700, #B8860B, #DAA520);
-            -webkit-background-clip: text;
-            background-clip: text;
-            background-size: 200% 100%; /* For shimmer */
-            background-position: -200% center; /* Start shimmer off-screen */
+            color: #FFD700; /* Royal gold color */
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
             opacity: 0;
             transform: scale(0.8);
-            animation: iksFadeInScale 1.5s ease-out 0.5s forwards, shimmer 2s ease-in-out 1s infinite;
+            animation: iksFadeInScale 1.5s ease-out 0.5s forwards;
             filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
         }
         @keyframes iksFadeInScale {
@@ -164,14 +158,6 @@
             100% {
                 opacity: 1;
                 transform: scale(1);
-            }
-        }
-        @keyframes shimmer {
-            0% {
-                background-position: -200% center;
-            }
-            100% {
-                background-position: 200% center;
             }
         }
         @keyframes loadingFadeOut {
