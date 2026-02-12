@@ -94,20 +94,21 @@
             text-shadow: 1px 1px 2px #000;
         }
 
-        /* LOGO FIX APPLIED HERE */
+        /* FINAL LOGO FIX - SHOWS FULL IMAGE WITHOUT BLACK BACKGROUND */
         img {
             display: block;
-            margin: 15px auto;
-            max-width: 220px;
+            margin: 20px auto;
+            max-width: 280px; /* Increased width to show full detail */
             height: auto;
-            /* Ensures the full logo is visible */
-            object-fit: contain; 
-            /* Removes the black background corners */
-            border-radius: 50%; 
-            /* Added glow for a professional look */
-            box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.6);
-            /* Optional: subtle border to define the shape */
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            
+            /* Removes the black background color by blending with the site BG */
+            mix-blend-mode: screen; 
+            
+            /* Adds a soft glow directly to the logo shape (like your reference) */
+            filter: drop-shadow(0px 0px 10px rgba(255, 215, 0, 0.7));
+            
+            /* Remove border-radius to ensure no part of the logo is clipped */
+            border-radius: 0; 
         }
 
         footer {
