@@ -95,34 +95,16 @@
             text-shadow: 1px 1px 2px #000;
         }
 
-        /* GENERAL LOGO STYLE FOR REMAINING LOGOS (LARGER) */
+        /* BASE LOGO STYLE */
         img {
             display: block;
             margin: 15px auto;
-            width: 160px; /* Larger size for remaining logos */
-            height: 160px; /* Larger size for remaining logos */
-            
-            /* Ensures the image fits without distortion */
             object-fit: contain; 
-            
-            /* Makes the background transparent */
             background: transparent;
-            background-color: transparent; /* Explicitly transparent */
-            
-            /* Blends with the site background for no unwanted bg */
+            background-color: transparent; 
             mix-blend-mode: screen; 
-            
-            /* Adds the professional glow */
             filter: drop-shadow(0px 0px 8px rgba(255, 215, 0, 0.6));
-            
-            /* No rounding to preserve logo edges */
             border-radius: 0; 
-        }
-
-        /* SPECIFIC STYLE FOR SFGC LOGO (SMALLER) */
-        .sfgc-logo {
-            width: 140px; /* Smaller size for SFGC logo */
-            height: 140px; /* Smaller size for SFGC logo */
         }
 
         footer {
@@ -187,13 +169,12 @@
         
         <div class="about-section">
             <h2>Seshadripuram Educational Trust (SET)</h2>
-            <img src="44967.png" alt="SET Logo">
+            <img src="44967.png" alt="SET Logo" style="width: 140px; height: 140px;"> <!-- Reduced size -->
             <p>A premier institution dedicated to academic excellence, fostering traditional values alongside modern knowledge.</p>
         </div>
 
         <div class="about-section">
             <h2>Seshadripuram First Grade college (SFGC)</h2>
-            <img src="45376.jpg" alt="SFGC Logo" class="sfgc-logo"> <!-- Added class for smaller size -->
             <p>Proudly accredited with an 'A+' grade by NAAC, recognizing our commitment to high educational standards.</p>
         </div>
 
@@ -204,13 +185,13 @@
 
         <div class="about-section">
             <h2>About AICTE</h2>
-            <img src="45368.png" alt="AICTE Logo">
+            <img src="45368.png" alt="AICTE Logo" style="width: 160px; height: 160px;"> <!-- Increased size -->
             <p>The All India Council for Technical Education (AICTE) provides technical leadership and ensures quality in Indian professional education.</p>
         </div>
 
         <div class="about-section">
             <h2>Indian Knowledge Systems (IKS)</h2>
-            <img src="45352.png" alt="IKS Logo">
+            <img src="45352.png" alt="IKS Logo" style="width: 160px; height: 160px;"> <!-- Increased size -->
             <p>Promoting interdisciplinary research on all aspects of traditional Indian wisdom under the Ministry of Education.</p>
         </div>
 
@@ -221,7 +202,7 @@
 
         <div class="about-section">
             <h2>SESHADRIPURAM RESEARCH FOUNDATION</h2>
-            <img src="45376.jpg" alt="Research Foundation Logo">
+            <img src="45376.jpg" alt="Research Foundation Logo" style="width: 160px; height: 160px;"> <!-- Increased size -->
             <p>The Seshadripuram Research Foundation advances research in traditional and modern sciences, fostering innovation and knowledge dissemination.</p>
         </div>
     </main>
