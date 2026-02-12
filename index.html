@@ -34,9 +34,9 @@
         }
 
         #iks-text {
-            font-size: clamp(60px, 12vw, 100px); /* Balanced size */
+            font-size: clamp(50px, 10vw, 80px); /* Adjusted for longer text */
             font-weight: bold;
-            letter-spacing: 12px;
+            letter-spacing: 8px; /* Adjusted for spacing */
             position: relative;
             background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
             -webkit-background-clip: text;
@@ -48,7 +48,7 @@
         }
 
         #iks-text::after {
-            content: 'IKS';
+            content: 'SFGC IKS'; /* Updated shimmer text */
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%);
@@ -117,8 +117,8 @@
         img { 
             display: block; 
             margin: 15px auto; 
-            mix-blend-mode: screen;
-            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+            mix-blend-mode: normal; /* Changed to remove yellow flash */
+            filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); /* Reduced glow to remove flash */
         }
 
         /* 4. METALLIC ROYAL FOOTER */
@@ -145,7 +145,7 @@
 <body>
 
     <div id="loading-screen">
-        <div id="iks-text">IKS</div>
+        <div id="iks-text">SFGC IKS</div> <!-- Updated text -->
     </div>
 
     <header>
