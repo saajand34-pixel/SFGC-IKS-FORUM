@@ -94,23 +94,26 @@
             text-shadow: 1px 1px 2px #000;
         }
 
-        /* UPDATED LOGO STYLE FOR COMPLETE IMAGE WITHOUT BLACK BG */
+        /* UPDATED LOGO STYLE FOR TRANSPARENT BACKGROUND AND PERFECT SIZE */
         img {
             display: block;
             margin: 15px auto;
-            max-width: 250px; /* Adjust width as needed */
+            max-width: 200px; /* Perfect size for logos */
             height: auto;
             
-            /* 1. Ensures the image does not get clipped or cropped */
+            /* Ensures the image does not get clipped or cropped */
             object-fit: contain; 
             
-            /* 2. Removes the black background by blending it with the site background */
+            /* Makes the background transparent */
+            background: transparent;
+            
+            /* Blends with the site background for no unwanted bg */
             mix-blend-mode: screen; 
             
-            /* 3. Adds the professional glow seen in your references */
+            /* Adds the professional glow */
             filter: drop-shadow(0px 0px 8px rgba(255, 215, 0, 0.6));
             
-            /* 4. Ensures no rounding cuts off the edges of your logo text */
+            /* No rounding to preserve logo edges */
             border-radius: 0; 
         }
 
