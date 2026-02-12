@@ -5,294 +5,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFGC IKS Forum</title>
     <style>
+        /* GLOBAL SETTINGS */
+        html, body {
+            margin: 0;
+            padding: 0;
+            /* REMOVES THE SIDE ARROW/OVERSCROLL GESTURE */
+            overscroll-behavior-x: none; 
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
         body {
             font-family: 'Georgia Pro', Georgia, serif;
-            margin: 0;
-            padding: 0;
             background: url('45383.png') no-repeat top center fixed;
             background-size: cover;
-            background-attachment: fixed;
-            filter: brightness(1.2); /* Brightened background image */
             color: #fdf5e6;
-            overflow-x: hidden; /* Prevents horizontal scrolling, makes information block static */
-        }
-        header {
-            background-color: rgba(0, 0, 0, 0.3);
-            padding: 15px 10px;
-            text-align: center;
-            position: relative;
-        }
-        nav {
             display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            position: relative;
-        }
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #ffd700;
-            transition: width 0.3s ease;
-        }
-        nav a:hover::after {
-            width: 100%;
-        }
-        .hamburger {
-            display: none;
             flex-direction: column;
-            cursor: pointer;
-            position: absolute;
-            left: 10px;
-            top: 70%;
-            transform: translateY(-50%);
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #cccccc;
-            margin: 3px 0;
-        }
-        main {
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 50px auto;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-            text-align: center;
-            margin-bottom: 100px;
-            /* PAGE LOAD ANIMATION: Fade in with golden glow */
-            opacity: 0;
-            transform: scale(0.95);
-            animation: templeFadeIn 2s ease-out forwards;
-        }
-        @keyframes templeFadeIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.95);
-                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5); /* Golden glow */
-            }
-        }
-        .about-section {
-            margin-bottom: 50px;
-            text-align: center;
-            padding: 10px;
-        }
-        h2 {
-            color: #ffd700;
-            border-bottom: 1px solid #ffcc66;
-            display: inline-block;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 2px #000;
         }
 
-        /* BASE LOGO STYLE */
-        img {
-            display: block;
-            margin: 15px auto;
-            object-fit: contain; 
-            background: transparent;
-            background-color: transparent; 
-            mix-blend-mode: screen; 
-            filter: drop-shadow(0px 0px 8px rgba(255, 215, 0, 0.6));
-            border-radius: 0; 
-        }
-
-        /* LOADING SCREEN ANIMATION */
+        /* 1. CINEMATIC LOADING SCREEN */
         #loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(31, 5, 5, 0.9), rgba(59, 13, 13, 0.9), rgba(43, 10, 10, 0.9)), url('45383.png') no-repeat center center fixed;
-            background-size: cover;
-            background-attachment: fixed;
+            /* Deep dark maroon gradient as requested */
+            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-            animation: loadingFadeOut 3s ease-in-out forwards;
+            z-index: 10000;
+            transition: opacity 1s ease-in-out;
         }
-        #loading-screen ~ body {
-            overflow: hidden; /* Completely prevents scrolling during animation */
-        }
+
         #iks-text {
-            font-family: 'Georgia Pro', Georgia, serif; /* Royal font */
-            font-size: 120px;
+            font-size: clamp(80px, 20vw, 160px);
             font-weight: bold;
-            color: #FFD700; /* Royal gold color */
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            letter-spacing: 15px;
+            position: relative;
+            
+            /* Realistic Metallic Gold Gradient */
+            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* Cinematic Reveal Animation */
             opacity: 0;
             transform: scale(0.8);
-            animation: iksFadeInScale 1.5s ease-out 0.5s forwards;
-            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+            animation: cinematicReveal 2.5s ease-out forwards;
+            
+            /* Soft elegant glow */
+            filter: drop-shadow(0 0 20px rgba(191, 149, 63, 0.4));
         }
-        @keyframes iksFadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+
+        /* METALLIC SHIMMER/LIGHT SWEEP */
+        #iks-text::after {
+            content: 'IKS';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            animation-delay: 1s;
         }
-        @keyframes loadingFadeOut {
-            0% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                visibility: hidden;
-            }
+
+        @keyframes cinematicReveal {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* 2. HEADER & CONTENT */
+        header {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            text-align: center;
+            /* Main page load animation */
+            opacity: 0;
+            animation: pageFadeIn 1.5s ease-out forwards;
+            animation-delay: 3s; /* Starts after loading screen */
+        }
+
+        @keyframes pageFadeIn {
+            to { opacity: 1; }
+        }
+
+        .about-section { margin-bottom: 40px; }
+        h2 { color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; }
+        
+        img { 
+            display: block; 
+            margin: 15px auto; 
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 5px gold);
         }
 
         footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
             text-align: center;
-            padding: 15px;
-            background-color: transparent;
-            color: #fdf5e6;
+            background: rgba(0,0,0,0.7);
+            border-top: 1px solid #ffd700;
         }
-        h1, h2 {
-            color: #ffd700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background-color: rgba(255, 255, 255, 0.8);
-                padding: 20px 0;
-            }
-            nav ul li {
-                margin: 10px 0;
-            }
-            .hamburger {
-                display: flex;
-            }
-            body {
-                overflow-x: hidden; /* Ensures no left/right scrolling on mobile */
-            }
-        }
+
+        /* HIDING CLASSES */
+        .hidden { opacity: 0 !important; visibility: hidden; }
     </style>
 </head>
 <body>
-    <!-- LOADING SCREEN -->
+
     <div id="loading-screen">
         <div id="iks-text">IKS</div>
     </div>
 
     <header>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
         <h1>Welcome to SFGC IKS Forum</h1>
         <nav>
-            <ul id="nav-menu">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="committee.html">Committee</a></li>
                 <li><a href="occasion.html">Occasion</a></li>
-                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+                <li><a href="proceedings-journal.html">Proceedings</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <p style="font-size: 1.2em;">Join the SFGC IKS Forum to explore India's rich knowledge systems, connect with experts, and participate in student-focused events and discussions.</p>
-        <hr style="border: 0; border-top: 1px solid #ffcc66; width: 50%; margin: 30px auto;">
-        <h2>Latest Updates</h2>
-        <p>Explore our Committee, check upcoming Events, or view Proceedings & Journal.</p>
-        
-        <div class="about-section">
-            <h2>Seshadripuram Educational Trust (SET)</h2>
-            <img src="44967.png" alt="SET Logo" style="width: 140px; height: 140px;"> <!-- Reduced size -->
-            <p>A premier institution dedicated to academic excellence, fostering traditional values alongside modern knowledge.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>Seshadripuram First Grade college (SFGC)</h2>
-            <p>Proudly accredited with an 'A+' grade by NAAC, recognizing our commitment to high educational standards.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>IQAC (Internal quality Assurance Cell)</h2>
-            <p>The Internal Quality Assurance Cell (IQAC) ensures quality enhancement and sustenance in academic and administrative activities.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>About AICTE</h2>
-            <img src="45368.png" alt="AICTE Logo" style="width: 160px; height: 160px;"> <!-- Increased size -->
-            <p>The All India Council for Technical Education (AICTE) provides technical leadership and ensures quality in Indian professional education.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>Indian Knowledge Systems (IKS)</h2>
-            <img src="45352.png" alt="IKS Logo" style="width: 160px; height: 160px;"> <!-- Increased size -->
-            <p>Promoting interdisciplinary research on all aspects of traditional Indian wisdom under the Ministry of Education.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>IKS Horizons 2025 (Conference)</h2>
-            <p>Join us for the IKS Horizons 2025 Conference, exploring the frontiers of Indian Knowledge Systems through innovative research and discussions.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>SESHADRIPURAM RESEARCH FOUNDATION</h2>
-            <p>The Seshadripuram Research Foundation advances research in traditional and modern sciences, fostering innovation and knowledge dissemination.</p>
-        </div>
-    </main>
+        <section class="about-section">
+            <h2>About IKS</h2>
+            <img src="45352.png" alt="IKS Logo" width="160">
+            <p>Promoting interdisciplinary research on all aspects of traditional Indian wisdom.</p>
+        </section>
+        </main>
     
     <footer>
         <p>&copy; 2026 SFGC IKS Forum. All rights reserved.</p>
     </footer>
     
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-        }
-        // Remove loading screen after animation
-        setTimeout(() => {
-            document.getElementById('loading-screen').style.display = 'none';
-        }, 3000);
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loading-screen');
+            // Wait 3 seconds to let the cinematic animation finish
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000); // Wait for fade-out transition
+            }, 3000);
+        });
     </script>
 </body>
 </html>
