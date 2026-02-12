@@ -14,6 +14,7 @@
             background-attachment: fixed;
             filter: brightness(1.2); /* Brightened background image */
             color: #fdf5e6;
+            overflow-x: hidden; /* Prevents horizontal scrolling, makes information block static */
         }
         header {
             background-color: rgba(0, 0, 0, 0.3);
@@ -106,6 +107,7 @@
             
             /* Makes the background transparent */
             background: transparent;
+            background-color: transparent; /* Explicitly transparent */
             
             /* Blends with the site background for no unwanted bg */
             mix-blend-mode: screen; 
