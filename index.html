@@ -14,7 +14,7 @@
             background-attachment: fixed;
             filter: brightness(1.2); /* Brightened background image */
             color: #fdf5e6;
-            overflow-x: hidden; /* Prevents horizontal scrolling, makes information block static */
+            overflow: hidden; /* Prevents all scrolling, makes information block fully static */
         }
         header {
             background-color: rgba(0, 0, 0, 0.3);
@@ -95,7 +95,7 @@
             text-shadow: 1px 1px 2px #000;
         }
 
-        /* UPDATED LOGO STYLE FOR TRANSPARENT BACKGROUND AND PERFECT SIZE */
+        /* STRONGER LOGO STYLE FOR TRANSPARENT BACKGROUND */
         img {
             display: block;
             margin: 15px auto;
@@ -105,9 +105,9 @@
             /* Ensures the image does not get clipped or cropped */
             object-fit: contain; 
             
-            /* Makes the background transparent */
-            background: transparent;
-            background-color: transparent; /* Explicitly transparent */
+            /* Forces transparent background */
+            background: none;
+            background-color: transparent !important;
             
             /* Blends with the site background for no unwanted bg */
             mix-blend-mode: screen; 
