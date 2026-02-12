@@ -9,7 +9,7 @@
         html, body {
             margin: 0;
             padding: 0;
-            overscroll-behavior-x: none; 
+            overscroll-behavior-x: none; /* Kills the side arrow circle */
             overflow-x: hidden;
             min-height: 100vh;
         }
@@ -23,23 +23,21 @@
             flex-direction: column;
         }
 
-        /* 1. CINEMATIC LOADING SCREEN - MATCHED MAROON */
+        /* 1. CINEMATIC LOADING SCREEN */
         #loading-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* Adjusted to a warmer, wood-toned Maroon to match your BG image */
-            background: linear-gradient(135deg, #2D0B0B 0%, #4A0E0E 50%, #1A0505 100%);
+            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
             display: flex; justify-content: center; align-items: center;
             z-index: 10000;
             transition: opacity 1s ease-in-out;
         }
 
         #iks-text {
-            font-size: clamp(60px, 12vw, 100px);
+            font-size: clamp(60px, 12vw, 100px); /* Balanced size */
             font-weight: bold;
             letter-spacing: 12px;
             position: relative;
-            /* Polished Metal Gold */
             background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -66,13 +64,12 @@
 
         /* 2. HEADER & NAVIGATION */
         header {
-            background-color: rgba(0, 0, 0, 0.5); /* Darkened for better contrast */
+            background-color: rgba(0, 0, 0, 0.4);
             padding: 20px;
             text-align: center;
-            border-bottom: 1px solid rgba(191, 149, 63, 0.3);
         }
 
-        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
 
         nav ul {
             list-style: none;
@@ -91,15 +88,15 @@
         }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
-        /* 3. MAIN CONTENT */
+        /* 3. MAIN CONTENT (FULLY RESTORED) */
         main {
             flex: 1;
             max-width: 900px;
             margin: 40px auto;
             padding: 40px 20px;
-            background-color: rgba(0, 0, 0, 0.45); /* Slightly darker for depth */
+            background-color: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(191, 149, 63, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
             text-align: center;
             opacity: 0;
             animation: pageFadeIn 1.5s ease-out forwards;
@@ -124,12 +121,11 @@
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
         }
 
-        /* 4. METALLIC MATCHED FOOTER */
+        /* 4. METALLIC ROYAL FOOTER */
         footer {
             padding: 30px 20px;
             text-align: center;
-            /* Matches the deep tones of the background image */
-            background: linear-gradient(to right, #1A0505, #3D0A0A, #1A0505);
+            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
             border-top: 2px solid #BF953F;
             margin-top: auto;
         }
@@ -165,29 +161,45 @@
     </header>
     
     <main>
-        <p style="font-size: 1.2em;">Explore India's rich knowledge systems and heritage.</p>
+        <p style="font-size: 1.2em;">Explore India's rich knowledge systems, connect with experts, and participate in student-focused events.</p>
         <hr style="border: 0; border-top: 1px solid #ffcc66; width: 40%; margin: 30px auto;">
 
         <div class="about-section">
             <h2>Seshadripuram Educational Trust (SET)</h2>
             <img src="44967.png" alt="SET Logo" width="130">
-            <p>A premier institution dedicated to academic excellence and traditional values.</p>
+            <p>A premier institution dedicated to academic excellence, fostering traditional values alongside modern knowledge.</p>
         </div>
 
         <div class="about-section">
             <h2>Seshadripuram First Grade College (SFGC)</h2>
-            <p>Accredited with an <strong>'A+' grade by NAAC</strong>.</p>
+            <p>Proudly accredited with an <strong>'A+' grade by NAAC</strong>, recognizing our commitment to high educational standards.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>IQAC (Internal Quality Assurance Cell)</h2>
+            <p>The IQAC ensures quality enhancement and sustenance in academic and administrative activities.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>About AICTE</h2>
+            <img src="45368.png" alt="AICTE Logo" width="150">
+            <p>The All India Council for Technical Education provides technical leadership and ensures quality in professional education.</p>
         </div>
 
         <div class="about-section">
             <h2>Indian Knowledge Systems (IKS)</h2>
             <img src="45352.png" alt="IKS Logo" width="150">
-            <p>Promoting interdisciplinary research on traditional Indian wisdom.</p>
+            <p>Promoting interdisciplinary research on all aspects of traditional Indian wisdom under the Ministry of Education.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>IKS Horizons 2025 (Conference)</h2>
+            <p>Join us for the IKS Horizons 2025 Conference, exploring the frontiers of Indian Knowledge Systems through innovative research.</p>
         </div>
 
         <div class="about-section">
             <h2>Seshadripuram Research Foundation</h2>
-            <p>Advancing research in traditional and modern sciences.</p>
+            <p>Advancing research in traditional and modern sciences, fostering innovation and global knowledge dissemination.</p>
         </div>
     </main>
     
