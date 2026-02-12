@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFGC IKS Forum</title>
     <style>
-        /* GLOBAL SETTINGS */
+        /* GLOBAL SETTINGS & ARROW REMOVAL */
         html, body {
             margin: 0;
             padding: 0;
@@ -23,26 +23,23 @@
             flex-direction: column;
         }
 
-        /* 1. CINEMATIC LOADING SCREEN */
+        /* 1. CINEMATIC LOADING SCREEN - MATCHED MAROON */
         #loading-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Adjusted to a warmer, wood-toned Maroon to match your BG image */
+            background: linear-gradient(135deg, #2D0B0B 0%, #4A0E0E 50%, #1A0505 100%);
+            display: flex; justify-content: center; align-items: center;
             z-index: 10000;
             transition: opacity 1s ease-in-out;
         }
 
         #iks-text {
-            font-size: clamp(60px, 12vw, 100px); 
+            font-size: clamp(60px, 12vw, 100px);
             font-weight: bold;
-            letter-spacing: 10px;
+            letter-spacing: 12px;
             position: relative;
+            /* Polished Metal Gold */
             background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -69,12 +66,13 @@
 
         /* 2. HEADER & NAVIGATION */
         header {
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.5); /* Darkened for better contrast */
             padding: 20px;
             text-align: center;
+            border-bottom: 1px solid rgba(191, 149, 63, 0.3);
         }
 
-        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
 
         nav ul {
             list-style: none;
@@ -91,17 +89,17 @@
             font-weight: bold;
             transition: 0.3s;
         }
-        nav a:hover { color: #fff; }
+        nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
         /* 3. MAIN CONTENT */
         main {
             flex: 1;
             max-width: 900px;
             margin: 40px auto;
-            padding: 30px;
-            background-color: rgba(0, 0, 0, 0.4);
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.45); /* Slightly darker for depth */
             border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(191, 149, 63, 0.15);
             text-align: center;
             opacity: 0;
             animation: pageFadeIn 1.5s ease-out forwards;
@@ -110,8 +108,14 @@
 
         @keyframes pageFadeIn { to { opacity: 1; } }
 
-        .about-section { margin-bottom: 50px; }
-        h2 { color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 20px; }
+        .about-section { margin-bottom: 60px; padding: 10px; }
+        h2 { 
+            color: #ffd700; 
+            border-bottom: 1px solid #ffcc66; 
+            display: inline-block; 
+            margin-bottom: 25px; 
+            text-shadow: 1px 1px 2px #000;
+        }
         
         img { 
             display: block; 
@@ -120,22 +124,19 @@
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
         }
 
-        /* 4. METALLIC ROYAL FOOTER */
+        /* 4. METALLIC MATCHED FOOTER */
         footer {
             padding: 30px 20px;
             text-align: center;
-            /* Deep Maroon Heritage Gradient */
-            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
-            border-top: 2px solid #BF953F; /* Gold top border */
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            /* Matches the deep tones of the background image */
+            background: linear-gradient(to right, #1A0505, #3D0A0A, #1A0505);
+            border-top: 2px solid #BF953F;
             margin-top: auto;
         }
 
         footer p {
             margin: 0;
             font-weight: bold;
-            letter-spacing: 1px;
-            /* Applying Metallic Gold to Footer Text */
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -158,30 +159,35 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="committee.html">Committee</a></li>
                 <li><a href="occasion.html">Occasion</a></li>
-                <li><a href="proceedings-journal.html">Proceedings</a></li>
+                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <p style="font-size: 1.2em;">Join the SFGC IKS Forum to explore India's rich knowledge systems.</p>
-        <hr style="border: 0; border-top: 1px solid #ffcc66; width: 50%; margin: 30px auto;">
+        <p style="font-size: 1.2em;">Explore India's rich knowledge systems and heritage.</p>
+        <hr style="border: 0; border-top: 1px solid #ffcc66; width: 40%; margin: 30px auto;">
 
         <div class="about-section">
             <h2>Seshadripuram Educational Trust (SET)</h2>
-            <img src="44967.png" alt="SET Logo" width="120">
-            <p>A premier institution dedicated to academic excellence, fostering traditional values alongside modern knowledge.</p>
+            <img src="44967.png" alt="SET Logo" width="130">
+            <p>A premier institution dedicated to academic excellence and traditional values.</p>
         </div>
 
         <div class="about-section">
             <h2>Seshadripuram First Grade College (SFGC)</h2>
-            <p>Accredited with an 'A+' grade by NAAC, recognizing our commitment to high educational standards.</p>
+            <p>Accredited with an <strong>'A+' grade by NAAC</strong>.</p>
         </div>
 
         <div class="about-section">
             <h2>Indian Knowledge Systems (IKS)</h2>
-            <img src="45352.png" alt="IKS Logo" width="140">
-            <p>Promoting interdisciplinary research on traditional Indian wisdom under the Ministry of Education.</p>
+            <img src="45352.png" alt="IKS Logo" width="150">
+            <p>Promoting interdisciplinary research on traditional Indian wisdom.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Seshadripuram Research Foundation</h2>
+            <p>Advancing research in traditional and modern sciences.</p>
         </div>
     </main>
     
