@@ -94,6 +94,19 @@
             position: relative;
             font-size: 1.1em;
         }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
         
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
@@ -180,14 +193,14 @@
                 top: 60px;
                 left: 0;
                 width: 100%;
-                background-color: rgba(0, 0, 0, 0.8); /* Changed to dark semi-transparent to match website background */
+                background-color: rgba(0, 0, 0, 0.8);
                 padding: 20px 0;
             }
             nav ul.active {
                 display: flex;
             }
             nav ul li { margin: 10px 0; }
-            nav a { color: #fdf5e6; } /* Changed to website's text color for visibility */
+            nav a { color: #fdf5e6; }
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
             
