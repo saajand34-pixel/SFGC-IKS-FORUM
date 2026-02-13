@@ -49,16 +49,13 @@
         .member-info { border-left: 3px solid #ffcc66; padding-left: 15px; margin: 20px 0; }
         img { border-radius: 50%; border: 2px solid #ffd700; margin-top: 10px; }
         @media (max-width: 768px) {
-            nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 20px 0; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.8); padding: 20px 0; }
             nav ul.active { display: flex; }
-            nav ul li { margin: 15px 0; } /* Updated to match home page */
+            nav ul li { margin: 15px 0; }
+            nav a { color: #fdf5e6; }
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
-            
-            /* Sharper footer font on mobile */
-            footer p {
-                font-size: 1.2em; /* Larger for readability */
-            }
+            footer p { font-size: 1.2em; }
         }
     </style>
 </head>

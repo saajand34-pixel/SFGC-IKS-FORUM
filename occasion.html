@@ -49,16 +49,13 @@
         .event-card { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255, 204, 102, 0.3); }
         .reg-btn { color: #ffd700; font-weight: bold; text-decoration: underline; }
         @media (max-width: 768px) {
-            nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 20px 0; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.8); padding: 20px 0; }
             nav ul.active { display: flex; }
-            nav ul li { margin: 15px 0; } /* Updated to match home page */
+            nav ul li { margin: 15px 0; }
+            nav a { color: #fdf5e6; }
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
-            
-            /* Sharper footer font on mobile */
-            footer p {
-                font-size: 1.2em; /* Larger for readability */
-            }
+            footer p { font-size: 1.2em; }
         }
     </style>
 </head>

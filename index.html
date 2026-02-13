@@ -171,7 +171,7 @@
 
         .hidden { opacity: 0 !important; visibility: hidden; }
 
-        /* MOBILE OVERLAP FIXES - Uniform nav box and sharper fonts */
+        /* MOBILE OVERLAP FIXES - Uniform nav box with dark background */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -180,25 +180,26 @@
                 top: 60px;
                 left: 0;
                 width: 100%;
-                background-color: rgba(255, 255, 255, 0.8);
+                background-color: rgba(0, 0, 0, 0.8); /* Changed to dark semi-transparent to match website background */
                 padding: 20px 0;
             }
             nav ul.active {
                 display: flex;
             }
             nav ul li { margin: 10px 0; }
+            nav a { color: #fdf5e6; } /* Changed to website's text color for visibility */
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
             
             /* Sharper loading font on mobile */
             #iks-text {
-                font-weight: 1000; /* Increased for sharpness */
-                -webkit-text-stroke: 1px transparent; /* Thicker stroke for mobile */
+                font-weight: 1000;
+                -webkit-text-stroke: 1px transparent;
             }
             
             /* Sharper footer font on mobile */
             footer p {
-                font-size: 1.2em; /* Larger for readability */
+                font-size: 1.2em;
             }
         }
     </style>
