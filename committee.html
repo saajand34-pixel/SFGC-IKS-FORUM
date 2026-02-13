@@ -9,7 +9,7 @@
         header { background-color: rgba(0, 0, 0, 0.3); padding: 15px 10px; text-align: center; position: relative; }
         nav ul { list-style: none; padding: 0; display: flex; justify-content: center; }
         nav ul li { margin: 0 15px; }
-        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-family: 'Georgia Pro', Georgia, serif; /* Added for Georgia Pro font */ }
+        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-family: 'Georgia Pro', Georgia, serif; }
         nav a::after {
             content: '';
             position: absolute;
@@ -48,6 +48,11 @@
         h2, h3 { color: #ffd700; }
         .member-info { border-left: 3px solid #ffcc66; padding-left: 15px; margin: 20px 0; }
         img { border-radius: 50%; border: 2px solid #ffd700; margin-top: 10px; }
+        
+        /* Specific styling for the Name/Post vertical layout */
+        .member-info p { margin-bottom: 15px; line-height: 1.4; }
+        .member-info strong { color: #ffcc66; font-size: 1.1em; }
+
         @media (max-width: 768px) {
             nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.8); padding: 20px 0; }
             nav ul.active { display: flex; }
@@ -67,76 +72,76 @@
             <div></div>
         </div>
         <h1>SFGC IKS Forum</h1>
-       <nav>
-    <ul id="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="committee.html">Committee</a></li>
-        <li><a href="occasion.html">Occasion</a></li>
-        <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
-    </ul>
-</nav>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="committee.html">Committee</a></li>
+                <li><a href="occasion.html">Occasion</a></li>
+                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <h2>board of executives</h2>
+        <h2>Board of executives</h2>
         
         <div class="member-info">
             <h3>Chief Patrons</h3>
-            <p>Dr. Anil D.Sahasrabudhe - Chairman NETF/ EC-NAAC & NBA/ Former Chairman, AICTE</p>
-            <p>Shri. N R Pandith Aradhya - President, Seshadripuram Educational Trust</p>
-            <p>Shri. T S Henjarappa - Vice President, Seshadripuram Educational Trust</p>
-            <p>Shri. W H Anil Kumar - Vice President, Seshadripuram Educational Trust</p>
-            <p>Nadoja Dr. Wooday P. Krishna - Honorary General Secretary, SET</p>
-            <p>Shri. S. Seshanarayana - Honorary Joint Secretary, SET</p>
-            <p>Shri M S Nataraj - Honorary Joint Secretary, SET</p>
-            <p>Shri W D Ashok - Trustee, SET</p>
+            <p><strong>Dr. Anil D. Sahasrabudhe</strong><br>Chairman NETF/ EC-NAAC & NBA/ Former Chairman, AICTE</p>
+            <p><strong>Shri. N R Pandith Aradhya</strong><br>President, Seshadripuram Educational Trust</p>
+            <p><strong>Shri. T S Henjarappa</strong><br>Vice President, Seshadripuram Educational Trust</p>
+            <p><strong>Shri. W H Anil Kumar</strong><br>Vice President, Seshadripuram Educational Trust</p>
+            <p><strong>Nadoja Dr. Wooday P. Krishna</strong><br>Honorary General Secretary, SET</p>
+            <p><strong>Shri. S. Seshanarayana</strong><br>Honorary Joint Secretary, SET</p>
+            <p><strong>Shri M S Nataraj</strong><br>Honorary Joint Secretary, SET</p>
+            <p><strong>Shri W D Ashok</strong><br>Trustee, SET</p>
         </div>
         
         <div class="member-info">
             <h3>Conference Chairman</h3>
-            <p>Dr. S N Venkatesh - Conference Chairman</p>
+            <p><strong>Dr. S N Venkatesh</strong><br>Principal, Seshadripuram First Grade College</p>
         </div>
         
         <div class="member-info">
             <h3>Advisory Board</h3>
-            <p>Dr. Vinay Sahasrabuddhe - Chairman, Indian Council of Cultural Relations</p>
-            <p>Prof. B Mahadevan - IIM Bangalore</p>
-            <p>Prof. T.G. Sitharam - Chairman of AICTE</p>
-            <p>Padma Bhushan Sudha Murthy - MP. Rajya sabha & Chairman, Infosys Foundation</p>
-            <p>Dr. Venugopal - Former Vice Chancellor, Bangalore University. Fellow IEEE</p>
-            <p>Dr. Omkar - Chief Research Scientist, IISC</p>
-            <p>Er. Devarajan - Senior Vice President, TVS Motors</p>
+            <p><strong>Dr. Vinay Sahasrabuddhe</strong><br>Chairman, Indian Council of Cultural Relations</p>
+            <p><strong>Prof. B Mahadevan</strong><br>IIM Bangalore</p>
+            <p><strong>Prof. T.G. Sitharam</strong><br>Chairman of AICTE</p>
+            <p><strong>Padma Bhushan Sudha Murthy</strong><br>MP. Rajya sabha & Chairman, Infosys Foundation</p>
+            <p><strong>Dr. Venugopal</strong><br>Former Vice Chancellor, Bangalore University. Fellow IEEE</p>
+            <p><strong>Dr. Omkar</strong><br>Chief Research Scientist, IISC</p>
+            <p><strong>Er. Devarajan</strong><br>Senior Vice President, TVS Motors</p>
         </div>
         
         <div class="member-info">
             <h3>Organizing Committee</h3>
-            <p>Dr. M L Ashok - IQAC, Co-ordinator</p>
-            <p>Prof. Vidya A.S - HOD, Bio-Chemistry</p>
-            <p>Prof. Rajashri Padaki - HOD, Electronics</p>
-            <p>Dr. Vatsala G - Director, SAGE</p>
-            <p>Dr. Santanu Das - HOD, Bio-Technology</p>
-            <p>Dr. Vinay S - Director, MBA</p>
-            <p>Prof.Thimmappa N T - Staff Secretary</p>
-            <p>Dr. Raji Pillai - Director, M.Com</p>
-            <p>Prof. Rekha Raichal - Director, MCA</p>
-            <p>Dr. Saritha B - HOD, Commerce and management</p>
-            <p>Prof. Vivekananda - Emeritus Faculty, IIT Bomaby/IIST, Tiruvanantapuram</p>
-            <p>Dr. Anjana Radhakrishnan - Co-ordinator, B.Com</p>
-            <p>Mr. Sudhakaran - Asst. Professor, Commerce and management</p>
-            <p>Prof. V A Nagaraj - Commerce and management</p>
-            <p>Dr. Ramesh T C - HOD, Mathematics</p>
-            <p>Dr. Geetha D C - HOD, Kannada</p>
-            <p>Dr. Rama Rao S - HOD, Sanskrit</p>
-            <p>Dr. Sharmila Biswas - HOD, Hindi</p>
-            <p>Prof. Sandeep Tilak - HOD, English</p>
-            <p>Mr. Sachin Gowda K S - Asst Professor, SRF Research Team Member</p>
+            <p><strong>Dr. M L Ashok</strong><br>IQAC, Co-ordinator</p>
+            <p><strong>Prof. Vidya A.S</strong><br>HOD, Bio-Chemistry</p>
+            <p><strong>Prof. Rajashri Padaki</strong><br>HOD, Electronics</p>
+            <p><strong>Dr. Vatsala G</strong><br>Director, SAGE</p>
+            <p><strong>Dr. Santanu Das</strong><br>HOD, Bio-Technology</p>
+            <p><strong>Dr. Vinay S</strong><br>Director, MBA</p>
+            <p><strong>Prof. Thimmappa N T</strong><br>Staff Secretary</p>
+            <p><strong>Dr. Raji Pillai</strong><br>Director, M.Com</p>
+            <p><strong>Prof. Rekha Raichal</strong><br>Director, MCA</p>
+            <p><strong>Dr. Saritha B</strong><br>HOD, Commerce and management</p>
+            <p><strong>Prof. Vivekananda</strong><br>Emeritus Faculty, IIT Bomaby/IIST, Tiruvanantapuram</p>
+            <p><strong>Dr. Anjana Radhakrishnan</strong><br>Co-ordinator, B.Com</p>
+            <p><strong>Mr. Sudhakaran</strong><br>Asst. Professor, Commerce and management</p>
+            <p><strong>Prof. V A Nagaraj</strong><br>Commerce and management</p>
+            <p><strong>Dr. Ramesh T C</strong><br>HOD, Mathematics</p>
+            <p><strong>Dr. Geetha D C</strong><br>HOD, Kannada</p>
+            <p><strong>Dr. Rama Rao S</strong><br>HOD, Sanskrit</p>
+            <p><strong>Dr. Sharmila Biswas</strong><br>HOD, Hindi</p>
+            <p><strong>Prof. Sandeep Tilak</strong><br>HOD, English</p>
+            <p><strong>Mr. Sachin Gowda K S</strong><br>Asst Professor, SRF Research Team Member</p>
         </div>
         
         <div class="member-info">
             <h3>Student Co-ordinators</h3>
-            <p>SHAM ROBINSON V - Executive Student & Former Vice President of Student council, SFGC Organiser, Technical Co-ordinator, Representative, IKS Horizons 2025</p>
-            <p>Sandeep S - President, Student Council 2025-26</p>
-            <p>Saajan.D - Technical Head and Member of Organising team</p>
-            <p>Arvind N U - Media Team Head</p>
+            <p><strong>SHAM ROBINSON V</strong><br>Executive Student, SFGC Organiser & Technical Co-ordinator - SFGC IKS</p>
+            <p><strong>Sandeep S</strong><br>President, Student Council 2025-26</p>
+            <p><strong>Saajan.D</strong><br>Technical Head and Member of Organising team</p>
+            <p><strong>Arvind N U</strong><br>Media Team Head</p>
         </div>
     </main>
     <footer>
