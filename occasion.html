@@ -25,7 +25,7 @@
             flex-direction: column;
         }
 
-        /* HEADER & NAVIGATION - Matched to Home */
+        /* HEADER & NAVIGATION */
         header {
             background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
@@ -79,7 +79,7 @@
         }
         .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
 
-        /* MAIN CONTENT - Matched to Home Box Style */
+        /* MAIN CONTENT - Premium Box Style */
         main {
             flex: 1;
             max-width: 900px;
@@ -99,7 +99,7 @@
             width: 80%;
         }
 
-        /* EVENT CARD - Matched to Committee Section Style */
+        /* EVENT CARD */
         .event-section {
             margin-bottom: 30px;
             padding: 25px;
@@ -147,7 +147,7 @@
             color: #000;
         }
 
-        /* FOOTER - Matched to Home */
+        /* FOOTER */
         footer {
             padding: 30px 20px;
             text-align: center;
@@ -166,9 +166,31 @@
             display: inline-block;
         }
 
+        /* MOBILE OVERLAP FIXES - BOX FORMAT ON LEFT */
         @media (max-width: 768px) {
-            nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.8); padding: 20px 0; }
-            nav ul.active { display: flex; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 75px;
+                left: 10px;
+                width: 260px;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 25px 0;
+                border: 1px solid #BF953F;
+                border-radius: 12px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+                z-index: 2000;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li { 
+                margin: 15px 0; 
+                width: 100%;
+                text-align: center;
+            }
+            nav a { color: #ffcc66; font-size: 1.2em; display: block; }
             .hamburger { display: flex; }
             .event-section { padding: 20px; }
         }

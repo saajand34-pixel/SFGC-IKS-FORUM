@@ -93,7 +93,7 @@
             font-weight: bold;
             position: relative;
             font-size: 1.1em;
-            font-family: 'Georgia Pro', Georgia, serif; /* Added for Georgia Pro font */
+            font-family: 'Georgia Pro', Georgia, serif; 
         }
         nav a::after {
             content: '';
@@ -111,7 +111,6 @@
         
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
-        /* HAMBURGER BUTTON - Uniform size and position */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -185,33 +184,43 @@
 
         .hidden { opacity: 0 !important; visibility: hidden; }
 
-        /* MOBILE OVERLAP FIXES - Uniform nav box with dark background */
+        /* MOBILE OVERLAP FIXES - BOX FORMAT ON LEFT */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.8);
-                padding: 20px 0;
+                top: 75px;
+                left: 10px; /* Positions box in the left corner */
+                width: 260px; /* Fixed width for box look */
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 25px 0;
+                border: 1px solid #BF953F; /* Gold border to match theme */
+                border-radius: 12px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+                z-index: 2000;
             }
             nav ul.active {
                 display: flex;
             }
-            nav ul li { margin: 10px 0; }
-            nav a { color: #fdf5e6; }
+            nav ul li { 
+                margin: 15px 0; 
+                width: 100%;
+                text-align: center;
+            }
+            nav a { 
+                color: #ffcc66; 
+                font-size: 1.2em;
+                display: block;
+            }
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
             
-            /* Sharper loading font on mobile */
             #iks-text {
                 font-weight: 1000;
                 -webkit-text-stroke: 1px transparent;
             }
             
-            /* Sharper footer font on mobile */
             footer p {
                 font-size: 1.2em;
             }
