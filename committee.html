@@ -51,6 +51,7 @@
             font-weight: bold;
             position: relative;
             font-size: 1.1em;
+            display: inline-block; /* Fix: Underline matches word width */
         }
         
         nav a::after {
@@ -173,7 +174,11 @@
                 width: 100%;
                 text-align: center;
             }
-            nav a { color: #ffcc66; font-size: 1.2em; display: block; }
+            nav a { 
+                color: #ffcc66; 
+                font-size: 1.2em; 
+                display: inline-block; /* Mobile underline fix */
+            }
             .hamburger { display: flex; }
             .committee-section { padding: 15px; }
         }

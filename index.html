@@ -94,7 +94,9 @@
             position: relative;
             font-size: 1.1em;
             font-family: 'Georgia Pro', Georgia, serif; 
+            display: inline-block; /* Fix: Ensures underline matches word width */
         }
+        
         nav a::after {
             content: '';
             position: absolute;
@@ -105,8 +107,9 @@
             background-color: #ffd700;
             transition: width 0.3s ease;
         }
+        
         nav a:hover::after {
-            width: 100%;
+            width: 100%; /* Fix: Spans only the text width due to inline-block */
         }
         
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
@@ -191,11 +194,11 @@
                 flex-direction: column;
                 position: absolute;
                 top: 75px;
-                left: 10px; /* Positions box in the left corner */
-                width: 260px; /* Fixed width for box look */
+                left: 10px;
+                width: 260px;
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 25px 0;
-                border: 1px solid #BF953F; /* Gold border to match theme */
+                border: 1px solid #BF953F;
                 border-radius: 12px;
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 z-index: 2000;
@@ -211,7 +214,7 @@
             nav a { 
                 color: #ffcc66; 
                 font-size: 1.2em;
-                display: block;
+                display: inline-block; /* Keeps underline word-to-word on mobile too */
             }
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
