@@ -25,7 +25,7 @@
             flex-direction: column;
         }
 
-        /* HEADER & NAVIGATION - Matched to Home */
+        /* HEADER & NAVIGATION */
         header {
             background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
@@ -51,7 +51,7 @@
             font-weight: bold;
             position: relative;
             font-size: 1.1em;
-            display: inline-block; /* Fix: Ensures underline matches word width */
+            display: inline-block;
         }
         
         nav a::after {
@@ -65,10 +65,7 @@
             transition: width 0.3s ease;
         }
         
-        nav a:hover::after { 
-            width: 100%; /* Fix: Width is now 100% of the inline-block text */
-        }
-        
+        nav a:hover::after { width: 100%; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
         .hamburger {
@@ -76,14 +73,14 @@
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            right: 10px; /* Shifted to the right */
+            right: 10px;
             top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
         }
         .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
 
-        /* MAIN CONTENT - Matched to Home Box Style */
+        /* MAIN CONTENT - Premium Box Style */
         main {
             flex: 1;
             max-width: 900px;
@@ -170,14 +167,14 @@
             display: inline-block;
         }
 
-        /* MOBILE OVERLAP FIXES - BOX FORMAT ON RIGHT */
+        /* MOBILE FIXES */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 75px;
-                right: 10px; /* Shifted to the right to match hamburger */
+                right: 10px; 
                 width: 260px;
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 25px 0;
@@ -194,13 +191,15 @@
                 width: 100%;
                 text-align: center;
             }
-            nav a { 
-                color: #ffcc66; 
-                font-size: 1.2em; 
-                display: inline-block; /* Mobile fix for word-to-word underline */
-            }
+            nav a { color: #ffcc66; font-size: 1.2em; display: inline-block; }
             .hamburger { display: flex; }
             .event-section { padding: 20px; }
+            
+            /* Footer mobile fix: break line at the span */
+            .footer-break {
+                display: block;
+                margin-top: 5px;
+            }
         }
     </style>
 </head>
@@ -213,7 +212,7 @@
         <h1>SFGC IKS Forum</h1>
         <nav>
             <ul id="nav-menu">
-                 <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="occasion.html">Occasions</a></li>
                 <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
                 <li><a href="committee.html">Committee</a></li>
@@ -239,7 +238,7 @@
     </main>
     
     <footer>
-        <p>© All Copyrights Reserved 2026-27  SFGC IKS FORUM - SRF INDIA</p>
+        <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
     </footer>
     
     <script>
