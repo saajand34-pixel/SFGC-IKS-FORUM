@@ -26,46 +26,6 @@
             flex-direction: column;
         }
 
-        /* 1. CINEMATIC LOADING SCREEN */
-        #loading-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 10000;
-            transition: opacity 1s ease-in-out;
-        }
-
-        #iks-text {
-            font-size: clamp(50px, 10vw, 80px); 
-            font-weight: 900;
-            letter-spacing: 8px; 
-            position: relative;
-            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 0.5px transparent;
-            opacity: 0;
-            transform: scale(0.9) translateZ(0);
-            animation: cinematicReveal 2.5s ease-out forwards;
-            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
-        }
-
-        #iks-text::after {
-            content: 'SFGC IKS'; 
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-            animation-delay: 1s;
-        }
-
-        @keyframes cinematicReveal { to { opacity: 1; transform: scale(1) translateZ(0); } }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
         /* 2. HEADER & NAVIGATION */
         header {
             background-color: rgba(0, 0, 0, 0.6);
@@ -119,7 +79,7 @@
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            left: 10px;
+            right: 10px; /* Shifted to the right */
             top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
@@ -131,7 +91,7 @@
             margin: 3px 0;
         }
 
-        /* 3. MAIN CONTENT - Removed to make home page empty */
+        /* 3. MAIN CONTENT */
         main {
             flex: 1;
             max-width: 900px;
@@ -143,7 +103,7 @@
             text-align: center;
             opacity: 0;
             animation: pageFadeIn 1.5s ease-out forwards;
-            animation-delay: 3s;
+            animation-delay: 0s; /* Adjusted since no loading screen */
         }
 
         @keyframes pageFadeIn { to { opacity: 1; } }
@@ -187,14 +147,14 @@
 
         .hidden { opacity: 0 !important; visibility: hidden; }
 
-        /* MOBILE OVERLAP FIXES - BOX FORMAT ON LEFT */
+        /* MOBILE OVERLAP FIXES - BOX FORMAT ON RIGHT */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 75px;
-                left: 10px;
+                right: 10px; /* Shifted to the right to match hamburger */
                 width: 260px;
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 25px 0;
@@ -219,11 +179,6 @@
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
             
-            #iks-text {
-                font-weight: 1000;
-                -webkit-text-stroke: 1px transparent;
-            }
-            
             footer p {
                 font-size: 1.2em;
             }
@@ -232,30 +187,27 @@
 </head>
 <body>
 
-    <div id="loading-screen">
-        <div id="iks-text">SFGC IKS</div>
-    </div>
-
     <header>
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
             <div></div>
             <div></div>
         </div>
-        <h1>SFGC IKS Welcomes You</h1>
+        <h1>SFGC IKS Forum</h1>
         <nav>
             <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about us.html">About Us</a></li>
-                <li><a href="committee.html">Committee</a></li>
-                <li><a href="occasion.html">Occasion</a></li>
+                <li><a href="occasion.html">Occasions</a></li>
                 <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+                <li><a href="committee.html">Committee</a></li>
+                <li><a href="about us.html">About Us</a></li>
             </ul>
         </nav>
     </header>
     
-    <!-- Main content removed to make home page empty -->
-    <!-- <main>
+   <main>
+        <h2 class="main-title">About Us</h2>
+      <div class="info-section">
         <p style="font-size: 1.2em;">Explore India's rich knowledge systems, connect with experts, and participate in student-focused events.</p>
         <hr style="border: 0; border-top: 1px solid #ffcc66; width: 40%; margin: 30px auto;">
 
@@ -296,7 +248,8 @@
             <h2>Seshadripuram Research Foundation</h2>
             <p>Advancing research in traditional and modern sciences, fostering innovation and global knowledge dissemination.</p>
         </div>
-    </main> -->
+      </div>
+   </main>
     
     <footer>
         <p>© All Copyrights Reserved 2026-27 SFGC IKS FORUM - SRF INDIA</p>
@@ -307,16 +260,6 @@
             const menu = document.getElementById('nav-menu');
             menu.classList.toggle('active');
         }
-        
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loading-screen');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 1000);
-            }, 3000);
-        });
     </script>
 </body>
 </html>

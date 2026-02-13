@@ -119,7 +119,7 @@
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            left: 10px;
+            right: 10px; /* Shifted to the right */
             top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
@@ -154,14 +154,14 @@
 
         .hidden { opacity: 0 !important; visibility: hidden; }
 
-        /* MOBILE OVERLAP FIXES - BOX FORMAT ON LEFT */
+        /* MOBILE OVERLAP FIXES - BOX FORMAT ON RIGHT */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 75px;
-                left: 10px;
+                right: 10px; /* Shifted to the right to match hamburger */
                 width: 260px;
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 25px 0;
@@ -209,14 +209,14 @@
             <div></div>
             <div></div>
         </div>
-        <h1>SFGC IKS Welcomes You</h1>
+        <h1>SFGC IKS Forum Welcomes You</h1>
         <nav>
             <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about us.html">About Us</a></li>
-                <li><a href="committee.html">Committee</a></li>
-                <li><a href="occasion.html">Occasion</a></li>
+                <li><a href="occasion.html">Occasions</a></li>
                 <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+                <li><a href="committee.html">Committee</a></li>
+                <li><a href="about us.html">About Us</a></li>
             </ul>
         </nav>
     </header>
