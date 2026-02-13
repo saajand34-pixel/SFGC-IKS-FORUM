@@ -131,6 +131,39 @@
             margin: 3px 0;
         }
 
+        /* 3. MAIN CONTENT - Removed to make home page empty */
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
+            text-align: center;
+            opacity: 0;
+            animation: pageFadeIn 1.5s ease-out forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes pageFadeIn { to { opacity: 1; } }
+
+        .about-section { margin-bottom: 60px; padding: 10px; }
+        h2 { 
+            color: #ffd700; 
+            border-bottom: 1px solid #ffcc66; 
+            display: inline-block; 
+            margin-bottom: 25px; 
+            text-shadow: 1px 1px 2px #000;
+        }
+        
+        img { 
+            display: block; 
+            margin: 15px auto; 
+            image-rendering: -webkit-optimize-contrast; 
+            filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); 
+        }
+
         /* 4. FOOTER */
         footer {
             padding: 30px 20px;
@@ -212,13 +245,57 @@
         <h1>SFGC IKS Welcomes You</h1>
         <nav>
             <ul id="nav-menu">
-                <li><a href="about us.html">About Us</a></li>
+                <li><a href="index.html">About Us</a></li> <!-- Changed from "Home" to "About Us" -->
                 <li><a href="committee.html">Committee</a></li>
                 <li><a href="occasion.html">Occasion</a></li>
                 <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
             </ul>
         </nav>
     </header>
+    
+    <!-- Main content removed to make home page empty -->
+    <!-- <main>
+        <p style="font-size: 1.2em;">Explore India's rich knowledge systems, connect with experts, and participate in student-focused events.</p>
+        <hr style="border: 0; border-top: 1px solid #ffcc66; width: 40%; margin: 30px auto;">
+
+        <div class="about-section">
+            <h2>Seshadripuram Educational Trust (SET)</h2>
+            <img src="44967.png" alt="SET Logo" width="130">
+            <p>A premier institution dedicated to academic excellence, fostering traditional values alongside modern knowledge.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Seshadripuram First Grade College (SFGC)</h2>
+            <p>Proudly accredited with an <strong>'A+' grade by NAAC</strong>, recognizing our commitment to high educational standards.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>IQAC (Internal Quality Assurance Cell)</h2>
+            <p>The IQAC ensures quality enhancement and sustenance in academic and administrative activities.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>About AICTE</h2>
+            <img src="45368.png" alt="AICTE Logo" width="150">
+            <p>The All India Council for Technical Education provides technical leadership and ensures quality in professional education.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Indian Knowledge Systems (IKS)</h2>
+            <img src="45352.png" alt="IKS Logo" width="180">
+            <p>Promoting interdisciplinary research on all aspects of traditional Indian wisdom under the Ministry of Education.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>IKS Horizons 2025 (Conference)</h2>
+            <p>Join us for the IKS Horizons 2025 Conference, exploring the frontiers of Indian Knowledge Systems through innovative research.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Seshadripuram Research Foundation</h2>
+            <p>Advancing research in traditional and modern sciences, fostering innovation and global knowledge dissemination.</p>
+        </div>
+    </main> -->
     
     <footer>
         <p>© All Copyrights Reserved 2026-27 SFGC IKS FORUM - SRF INDIA</p>
