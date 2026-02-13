@@ -73,7 +73,7 @@
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            right: 10px; /* Shifted to the right */
+            right: 10px; 
             top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
@@ -144,22 +144,20 @@
             margin: 0;
             font-weight: bold;
             font-size: 1em;
-            line-height: 1.6; 
-            color: #BF953F;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
 
-        /* MOBILE OVERLAP FIXES - BOX FORMAT ON RIGHT */
+        /* MOBILE OVERLAP FIXES */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 75px;
-                right: 10px; /* Shifted to the right to match hamburger */
+                right: 10px; 
                 width: 260px;
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 25px 0;
@@ -179,10 +177,16 @@
             nav a { 
                 color: #ffcc66; 
                 font-size: 1.2em; 
-                display: inline-block; /* Mobile underline fix */
+                display: inline-block;
             }
             .hamburger { display: flex; }
             .committee-section { padding: 15px; }
+
+            /* Footer line break fix */
+            .footer-break {
+                display: block;
+                margin-top: 5px;
+            }
         }
     </style>
 </head>

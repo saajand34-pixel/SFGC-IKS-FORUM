@@ -107,7 +107,6 @@
             background-color: #ffd700;
             transition: width 0.3s ease;
         }
-        
         nav a:hover::after {
             width: 100%;
         }
@@ -119,7 +118,7 @@
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            right: 10px; /* Shifted to the right */
+            right: 10px; 
             top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
@@ -161,7 +160,7 @@
                 flex-direction: column;
                 position: absolute;
                 top: 75px;
-                right: 10px; /* Shifted to the right to match hamburger */
+                right: 10px; 
                 width: 260px;
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 25px 0;
@@ -194,6 +193,12 @@
             footer p {
                 font-size: 1.2em;
             }
+
+            /* Footer Line Break Fix */
+            .footer-break {
+                display: block;
+                margin-top: 5px;
+            }
         }
     </style>
 </head>
@@ -222,7 +227,7 @@
     </header>
     
     <footer>
-        <p><p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p></p>
+        <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
     </footer>
     
     <script>

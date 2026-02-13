@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>SFGC IKS Forum</title>
+    <title>SFGC IKS Forum - About Us</title>
     <style>
         /* GLOBAL SETTINGS & ARROW REMOVAL */
         html, body {
@@ -25,6 +25,46 @@
             display: flex;
             flex-direction: column;
         }
+
+        /* 1. CINEMATIC LOADING SCREEN */
+        #loading-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 10000;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #iks-text {
+            font-size: clamp(50px, 10vw, 80px); 
+            font-weight: 900;
+            letter-spacing: 8px; 
+            position: relative;
+            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0.5px transparent;
+            opacity: 0;
+            transform: scale(0.9) translateZ(0);
+            animation: cinematicReveal 2.5s ease-out forwards;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+        }
+
+        #iks-text::after {
+            content: 'SFGC IKS'; 
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            animation-delay: 1s;
+        }
+
+        @keyframes cinematicReveal { to { opacity: 1; transform: scale(1) translateZ(0); } }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
         /* 2. HEADER & NAVIGATION */
         header {
@@ -54,9 +94,8 @@
             position: relative;
             font-size: 1.1em;
             font-family: 'Georgia Pro', Georgia, serif; 
-            display: inline-block;
+            display: inline-block; /* Underline matches word width */
         }
-        
         nav a::after {
             content: '';
             position: absolute;
@@ -67,7 +106,6 @@
             background-color: #ffd700;
             transition: width 0.3s ease;
         }
-        
         nav a:hover::after {
             width: 100%;
         }
@@ -79,7 +117,7 @@
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            right: 10px; /* Shifted to the right */
+            right: 10px; 
             top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
@@ -103,20 +141,23 @@
             text-align: center;
             opacity: 0;
             animation: pageFadeIn 1.5s ease-out forwards;
-            animation-delay: 0s; /* Adjusted since no loading screen */
+            animation-delay: 3s;
         }
 
         @keyframes pageFadeIn { to { opacity: 1; } }
 
         .about-section { margin-bottom: 60px; padding: 10px; }
-        h2 { 
+        h2.main-title { 
             color: #ffd700; 
             border-bottom: 1px solid #ffcc66; 
             display: inline-block; 
-            margin-bottom: 25px; 
+            margin-bottom: 35px; 
             text-shadow: 1px 1px 2px #000;
+            width: auto;
         }
         
+        h2 { color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 25px; }
+
         img { 
             display: block; 
             margin: 15px auto; 
@@ -124,7 +165,7 @@
             filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); 
         }
 
-        /* 4. FOOTER */
+        /* 4. FOOTER - Uniform size */
         footer {
             padding: 30px 20px;
             text-align: center;
@@ -147,14 +188,14 @@
 
         .hidden { opacity: 0 !important; visibility: hidden; }
 
-        /* MOBILE OVERLAP FIXES - BOX FORMAT ON RIGHT */
+        /* MOBILE OVERLAP FIXES */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 75px;
-                right: 10px; /* Shifted to the right to match hamburger */
+                right: 10px; 
                 width: 260px;
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 25px 0;
@@ -179,13 +220,28 @@
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
             
+            #iks-text {
+                font-weight: 1000;
+                -webkit-text-stroke: 1px transparent;
+            }
+            
             footer p {
                 font-size: 1.2em;
+            }
+
+            /* Footer Line Break Fix */
+            .footer-break {
+                display: block;
+                margin-top: 5px;
             }
         }
     </style>
 </head>
 <body>
+
+    <div id="loading-screen">
+        <div id="iks-text">SFGC IKS</div>
+    </div>
 
     <header>
         <div class="hamburger" onclick="toggleMenu()">
@@ -246,10 +302,9 @@
 
         <div class="about-section">
             <h2>Seshadripuram Research Foundation</h2>
-            <p>Advancing research in traditional and modern sciences, fostering innovation and global knowledge dissemination.
-
-           Phone: +91 85500 01683, +91 8904712928
-           Email: iks.sfgc@gmail.com</p>
+            <p>Advancing research in traditional and modern sciences, fostering innovation and global knowledge dissemination.<br><br>
+            <strong>Phone:</strong> +91 85500 01683, +91 89047 12928<br>
+            <strong>Email:</strong> iks.sfgc@gmail.com</p>
         </div>
       </div>
    </main>
@@ -263,6 +318,16 @@
             const menu = document.getElementById('nav-menu');
             menu.classList.toggle('active');
         }
+        
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loading-screen');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }, 3000);
+        });
     </script>
 </body>
 </html>

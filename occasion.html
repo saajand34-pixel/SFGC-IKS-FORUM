@@ -51,7 +51,7 @@
             font-weight: bold;
             position: relative;
             font-size: 1.1em;
-            display: inline-block;
+            display: inline-block; /* Fix: Underline matches word width */
         }
         
         nav a::after {
@@ -73,7 +73,7 @@
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            right: 10px;
+            right: 10px; 
             top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
@@ -148,7 +148,7 @@
             color: #000;
         }
 
-        /* FOOTER */
+        /* FOOTER - Uniform size for all pages */
         footer {
             padding: 30px 20px;
             text-align: center;
