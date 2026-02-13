@@ -51,7 +51,7 @@
             font-weight: bold;
             position: relative;
             font-size: 1.1em;
-            display: inline-block; /* Fix: Underline matches word width */
+            display: inline-block; /* Ensures underline matches word width */
         }
         
         nav a::after {
@@ -148,7 +148,7 @@
             color: #000;
         }
 
-        /* FOOTER - Uniform size for all pages */
+        /* FOOTER */
         footer {
             padding: 30px 20px;
             text-align: center;
@@ -197,7 +197,13 @@
             .hamburger { display: flex; }
             .event-section { padding: 20px; }
             
-            /* Footer mobile fix: break line at the span */
+            /* COMMON MOBILE FOOTER SIZE */
+            footer p {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+
+            /* Footer line break fix */
             .footer-break {
                 display: block;
                 margin-top: 5px;
