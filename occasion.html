@@ -2,14 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SFGC IKS Forum - Events</title>
     <style>
-        body { font-family: 'Georgia Pro', Georgia, serif; margin: 0; background: url('45383.png') no-repeat top center fixed; background-size: cover; background-attachment: fixed; filter: brightness(1.2); color: #fdf5e6; overflow-x: hidden; }
-        header { background-color: rgba(0, 0, 0, 0.3); padding: 15px 10px; text-align: center; position: relative; }
-        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; }
-        nav ul li { margin: 0 15px; }
-        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-family: 'Georgia Pro', Georgia, serif; /* Added for Georgia Pro font */ }
+        /* GLOBAL SETTINGS - Matched to Home */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overscroll-behavior-x: none; 
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font-family: 'Georgia Pro', Georgia, serif;
+            background: url('45383.png') no-repeat top center fixed;
+            background-size: cover;
+            color: #fdf5e6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER & NAVIGATION - Matched to Home */
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            font-size: 1.1em;
+        }
+        
         nav a::after {
             content: '';
             position: absolute;
@@ -20,13 +63,91 @@
             background-color: #ffd700;
             transition: width 0.3s ease;
         }
-        nav a:hover::after {
-            width: 100%;
-        }
+        
+        nav a:hover::after { width: 100%; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
-        .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; left: 10px; top: 70%; transform: translateY(-50%); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            left: 10px;
+            top: 70%;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
         .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
-        main { padding: 40px 20px; max-width: 850px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; margin-bottom: 100px; }
+
+        /* MAIN CONTENT - Matched to Home Box Style */
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        h2.main-title { 
+            color: #ffd700; 
+            border-bottom: 1px solid #ffcc66; 
+            display: inline-block; 
+            margin-bottom: 35px; 
+            width: 80%;
+        }
+
+        /* EVENT CARD - Matched to Committee Section Style */
+        .event-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-left: 5px solid #BF953F; 
+            text-align: left;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0 15px 15px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .event-section:hover {
+            transform: translateX(10px);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .event-name { 
+            display: block;
+            color: #ffd700; 
+            font-weight: bold; 
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .event-date { 
+            display: block;
+            color: #fdf5e6; 
+            font-size: 1em;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .reg-btn { 
+            color: #ffd700; 
+            font-weight: bold; 
+            text-decoration: none;
+            border: 1px solid #ffd700;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .reg-btn:hover {
+            background: #ffd700;
+            color: #000;
+        }
+
+        /* FOOTER - Matched to Home */
         footer {
             padding: 30px 20px;
             text-align: center;
@@ -34,59 +155,58 @@
             border-top: 2px solid #BF953F;
             margin-top: auto;
         }
+
         footer p {
             margin: 0;
             font-weight: bold;
-            font-size: 1.1em;
-            line-height: 1.6; 
-            color: #BF953F;
+            font-size: 1em;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
-        h2 { color: #ffd700; }
-        .event-card { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255, 204, 102, 0.3); }
-        .reg-btn { color: #ffd700; font-weight: bold; text-decoration: underline; }
+
         @media (max-width: 768px) {
             nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.8); padding: 20px 0; }
             nav ul.active { display: flex; }
-            nav ul li { margin: 15px 0; }
-            nav a { color: #fdf5e6; }
             .hamburger { display: flex; }
-            body { overflow-x: hidden; }
-            footer p { font-size: 1.2em; }
+            .event-section { padding: 20px; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
+            <div></div><div></div><div></div>
         </div>
         <h1>SFGC IKS Forum</h1>
-       <nav>
-    <ul id="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="committee.html">Committee</a></li>
-        <li><a href="occasion.html">Occasion</a></li>
-        <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
-    </ul>
-</nav>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="committee.html">Committee</a></li>
+                <li><a href="occasion.html">Occasion</a></li>
+                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+            </ul>
+        </nav>
     </header>
+    
     <main>
-        <h2>Upcoming Events</h2>
-        <div class="event-card">
-            <p><strong>Sanskrit Workshop:</strong> October 15, 2026 <br> 
-            <a href="#" class="reg-btn">Register Here</a></p>
+        <h2 class="main-title">Upcoming Events</h2>
+
+        <div class="event-section">
+            <span class="event-name">Sanskrit Workshop</span>
+            <span class="event-date">October 15, 2026</span>
+            <a href="#" class="reg-btn">Register Here</a>
         </div>
-        <div class="event-card">
-            <p><strong>Ayurveda Seminar:</strong> November 5, 2026 <br> 
-            <a href="#" class="reg-btn">Register Here</a></p>
+
+        <div class="event-section">
+            <span class="event-name">Ayurveda Seminar</span>
+            <span class="event-date">November 5, 2026</span>
+            <a href="#" class="reg-btn">Register Here</a>
         </div>
     </main>
+    
     <footer>
         <p>© SFGC IKS FORUM - SRF INDIA All Copyrights Reserved 2026-27</p>
     </footer>

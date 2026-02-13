@@ -2,14 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SFGC IKS Forum - Committee</title>
     <style>
-        body { font-family: 'Georgia Pro', Georgia, serif; margin: 0; background: url('45383.png') no-repeat top center fixed; background-size: cover; background-attachment: fixed; filter: brightness(1.2); color: #fdf5e6; overflow-x: hidden; }
-        header { background-color: rgba(0, 0, 0, 0.3); padding: 15px 10px; text-align: center; position: relative; }
-        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; }
-        nav ul li { margin: 0 15px; }
-        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-family: 'Georgia Pro', Georgia, serif; }
+        /* GLOBAL SETTINGS - Matched to Home */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overscroll-behavior-x: none; 
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font-family: 'Georgia Pro', Georgia, serif;
+            background: url('45383.png') no-repeat top center fixed;
+            background-size: cover;
+            color: #fdf5e6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER & NAVIGATION - Matched to Home */
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            font-size: 1.1em;
+        }
+        
         nav a::after {
             content: '';
             position: absolute;
@@ -20,13 +63,74 @@
             background-color: #ffd700;
             transition: width 0.3s ease;
         }
-        nav a:hover::after {
+        
+        nav a:hover::after { width: 100%; }
+        nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            left: 10px;
+            top: 70%;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
+        .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
+
+        /* MAIN CONTENT - Matched to Home Box Style */
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Home info box transparency */
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .committee-section {
+            margin-bottom: 50px;
+            padding: 20px;
+            border-left: 3px solid #BF953F; /* Matched to Board of Executives image */
+            text-align: left; /* Aligned for readability */
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 15px 15px 0;
+        }
+
+        h2.main-title { 
+            color: #ffd700; 
+            border-bottom: 1px solid #ffcc66; 
+            display: inline-block; 
+            margin-bottom: 35px; 
+            text-align: center;
             width: 100%;
         }
-        nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
-        .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; left: 10px; top: 70%; transform: translateY(-50%); }
-        .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
-        main { padding: 40px 20px; max-width: 850px; margin: 40px auto; background-color: rgba(0, 0, 0, 0.4); border-radius: 20px; margin-bottom: 100px; }
+
+        h3 { color: #ffd700; margin-top: 0; margin-bottom: 20px; font-size: 1.5em; }
+
+        /* MEMBER FORMATTING - Name top, Post down */
+        .member-box { margin-bottom: 25px; }
+        
+        .member-name { 
+            display: block;
+            color: #ffd700; 
+            font-weight: bold; 
+            font-size: 1.2em;
+            margin-bottom: 2px;
+        }
+
+        .member-post { 
+            display: block;
+            color: #fdf5e6; 
+            font-size: 0.95em;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* FOOTER - Matched to Home */
         footer {
             padding: 30px 20px;
             text-align: center;
@@ -34,42 +138,30 @@
             border-top: 2px solid #BF953F;
             margin-top: auto;
         }
+
         footer p {
             margin: 0;
             font-weight: bold;
-            font-size: 1.1em;
-            line-height: 1.6; 
-            color: #BF953F;
+            font-size: 1em;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
-        h2, h3 { color: #ffd700; }
-        .member-info { border-left: 3px solid #ffcc66; padding-left: 15px; margin: 20px 0; }
-        img { border-radius: 50%; border: 2px solid #ffd700; margin-top: 10px; }
-        
-        /* Specific styling for the Name/Post vertical layout */
-        .member-info p { margin-bottom: 15px; line-height: 1.4; }
-        .member-info strong { color: #ffcc66; font-size: 1.1em; }
 
         @media (max-width: 768px) {
             nav ul { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.8); padding: 20px 0; }
             nav ul.active { display: flex; }
-            nav ul li { margin: 15px 0; }
-            nav a { color: #fdf5e6; }
             .hamburger { display: flex; }
-            body { overflow-x: hidden; }
-            footer p { font-size: 1.2em; }
+            .committee-section { padding: 15px; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
+            <div></div><div></div><div></div>
         </div>
         <h1>SFGC IKS Forum</h1>
         <nav>
@@ -81,69 +173,60 @@
             </ul>
         </nav>
     </header>
+    
     <main>
-        <h2>Board of executives</h2>
-        
-        <div class="member-info">
+        <h2 class="main-title">Board of Executives</h2>
+
+        <div class="committee-section">
             <h3>Chief Patrons</h3>
-            <p><strong>Dr. Anil D. Sahasrabudhe</strong><br>Chairman NETF/ EC-NAAC & NBA/ Former Chairman, AICTE</p>
-            <p><strong>Shri. N R Pandith Aradhya</strong><br>President, Seshadripuram Educational Trust</p>
-            <p><strong>Shri. T S Henjarappa</strong><br>Vice President, Seshadripuram Educational Trust</p>
-            <p><strong>Shri. W H Anil Kumar</strong><br>Vice President, Seshadripuram Educational Trust</p>
-            <p><strong>Nadoja Dr. Wooday P. Krishna</strong><br>Honorary General Secretary, SET</p>
-            <p><strong>Shri. S. Seshanarayana</strong><br>Honorary Joint Secretary, SET</p>
-            <p><strong>Shri M S Nataraj</strong><br>Honorary Joint Secretary, SET</p>
-            <p><strong>Shri W D Ashok</strong><br>Trustee, SET</p>
+            <div class="member-box">
+                <span class="member-name">Dr. Anil D. Sahasrabudhe</span>
+                <span class="member-post">Chairman NETF/ EC-NAAC & NBA/ Former Chairman, AICTE</span>
+            </div>
+            <div class="member-box">
+                <span class="member-name">Shri. N R Pandith Aradhya</span>
+                <span class="member-post">President, Seshadripuram Educational Trust</span>
+            </div>
+            <div class="member-box">
+                <span class="member-name">Nadoja Dr. Wooday P. Krishna</span>
+                <span class="member-post">Honorary General Secretary, SET</span>
+            </div>
         </div>
-        
-        <div class="member-info">
+
+        <div class="committee-section">
             <h3>Conference Chairman</h3>
-            <p><strong>Dr. S N Venkatesh</strong><br>Principal, Seshadripuram First Grade College</p>
+            <div class="member-box">
+                <span class="member-name">Dr. S N Venkatesh</span>
+                <span class="member-post">Principal, Seshadripuram First Grade College</span>
+            </div>
         </div>
-        
-        <div class="member-info">
+
+        <div class="committee-section">
             <h3>Advisory Board</h3>
-            <p><strong>Dr. Vinay Sahasrabuddhe</strong><br>Chairman, Indian Council of Cultural Relations</p>
-            <p><strong>Prof. B Mahadevan</strong><br>IIM Bangalore</p>
-            <p><strong>Prof. T.G. Sitharam</strong><br>Chairman of AICTE</p>
-            <p><strong>Padma Bhushan Sudha Murthy</strong><br>MP. Rajya sabha & Chairman, Infosys Foundation</p>
-            <p><strong>Dr. Venugopal</strong><br>Former Vice Chancellor, Bangalore University. Fellow IEEE</p>
-            <p><strong>Dr. Omkar</strong><br>Chief Research Scientist, IISC</p>
-            <p><strong>Er. Devarajan</strong><br>Senior Vice President, TVS Motors</p>
+            <div class="member-box">
+                <span class="member-name">Padma Bhushan Sudha Murthy</span>
+                <span class="member-post">MP, Rajya Sabha & Chairman, Infosys Foundation</span>
+            </div>
+            <div class="member-box">
+                <span class="member-name">Prof. B Mahadevan</span>
+                <span class="member-post">IIM Bangalore</span>
+            </div>
         </div>
-        
-        <div class="member-info">
-            <h3>Organizing Committee</h3>
-            <p><strong>Dr. M L Ashok</strong><br>IQAC, Co-ordinator</p>
-            <p><strong>Prof. Vidya A.S</strong><br>HOD, Bio-Chemistry</p>
-            <p><strong>Prof. Rajashri Padaki</strong><br>HOD, Electronics</p>
-            <p><strong>Dr. Vatsala G</strong><br>Director, SAGE</p>
-            <p><strong>Dr. Santanu Das</strong><br>HOD, Bio-Technology</p>
-            <p><strong>Dr. Vinay S</strong><br>Director, MBA</p>
-            <p><strong>Prof. Thimmappa N T</strong><br>Staff Secretary</p>
-            <p><strong>Dr. Raji Pillai</strong><br>Director, M.Com</p>
-            <p><strong>Prof. Rekha Raichal</strong><br>Director, MCA</p>
-            <p><strong>Dr. Saritha B</strong><br>HOD, Commerce and management</p>
-            <p><strong>Prof. Vivekananda</strong><br>Emeritus Faculty, IIT Bomaby/IIST, Tiruvanantapuram</p>
-            <p><strong>Dr. Anjana Radhakrishnan</strong><br>Co-ordinator, B.Com</p>
-            <p><strong>Mr. Sudhakaran</strong><br>Asst. Professor, Commerce and management</p>
-            <p><strong>Prof. V A Nagaraj</strong><br>Commerce and management</p>
-            <p><strong>Dr. Ramesh T C</strong><br>HOD, Mathematics</p>
-            <p><strong>Dr. Geetha D C</strong><br>HOD, Kannada</p>
-            <p><strong>Dr. Rama Rao S</strong><br>HOD, Sanskrit</p>
-            <p><strong>Dr. Sharmila Biswas</strong><br>HOD, Hindi</p>
-            <p><strong>Prof. Sandeep Tilak</strong><br>HOD, English</p>
-            <p><strong>Mr. Sachin Gowda K S</strong><br>Asst Professor, SRF Research Team Member</p>
-        </div>
-        
-        <div class="member-info">
+
+        <div class="committee-section">
             <h3>Student Co-ordinators</h3>
-            <p><strong>SHAM ROBINSON V</strong><br>Executive Student, SFGC Organiser & Technical Co-ordinator - SFGC IKS</p>
-            <p><strong>Sandeep S</strong><br>President, Student Council 2025-26</p>
-            <p><strong>Saajan.D</strong><br>Technical Head and Member of Organising team</p>
-            <p><strong>Arvind N U</strong><br>Media Team Head</p>
+            <div class="member-box">
+                <span class="member-name">SHAM ROBINSON V</span>
+                <span class="member-post">Executive Student, SFGC Organiser & Technical Co-ordinator</span>
+            </div>
+            <div class="member-box">
+                <span class="member-name">Sandeep S</span>
+                <span class="member-post">President, Student Council 2025-26</span>
+            </div>
         </div>
+
     </main>
+    
     <footer>
         <p>© SFGC IKS FORUM - SRF INDIA All Copyrights Reserved 2026-27</p>
     </footer>
