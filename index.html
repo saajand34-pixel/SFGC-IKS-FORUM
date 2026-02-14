@@ -131,6 +131,69 @@
             margin: 3px 0;
         }
 
+        /* 3. MAIN CONTENT */
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
+            text-align: center;
+            opacity: 0;
+            animation: pageFadeIn 1.5s ease-out forwards;
+        }
+
+        @keyframes pageFadeIn { to { opacity: 1; } }
+
+        /* SLIDESHOW STYLES */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto 40px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .slideshow {
+            display: flex;
+            width: 2000%; /* 20 images */
+            animation: slide 60s infinite; /* 60s total for 20 images (3s each) */
+        }
+
+        .slideshow img {
+            width: 5%; /* 100% / 20 = 5% each */
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            5% { transform: translateX(-5%); } /* Image 1 */
+            10% { transform: translateX(-10%); } /* Image 2 */
+            15% { transform: translateX(-15%); } /* Image 3 */
+            20% { transform: translateX(-20%); } /* Image 4 */
+            25% { transform: translateX(-25%); } /* Image 5 */
+            30% { transform: translateX(-30%); } /* Image 6 */
+            35% { transform: translateX(-35%); } /* Image 7 */
+            40% { transform: translateX(-40%); } /* Image 8 */
+            45% { transform: translateX(-45%); } /* Image 9 */
+            50% { transform: translateX(-50%); } /* Image 10 */
+            55% { transform: translateX(-55%); } /* Image 11 */
+            60% { transform: translateX(-60%); } /* Image 12 */
+            65% { transform: translateX(-65%); } /* Image 13 */
+            70% { transform: translateX(-70%); } /* Image 14 */
+            75% { transform: translateX(-75%); } /* Image 15 */
+            80% { transform: translateX(-80%); } /* Image 16 */
+            85% { transform: translateX(-85%); } /* Image 17 */
+            90% { transform: translateX(-90%); } /* Image 18 */
+            95% { transform: translateX(-95%); } /* Image 19 */
+            100% { transform: translateX(-100%); } /* Image 20, then loop back */
+        }
+
         /* 4. FOOTER */
         footer {
             padding: 30px 20px;
@@ -202,6 +265,11 @@
                 display: block;
                 margin-top: 5px;
             }
+
+            /* Mobile slideshow adjustments */
+            .slideshow img {
+                max-height: 250px;
+            }
         }
     </style>
 </head>
@@ -228,6 +296,34 @@
             </ul>
         </nav>
     </header>
+    
+    <main>
+        <!-- SLIDESHOW SECTION -->
+        <div class="slideshow-container">
+            <div class="slideshow">
+                <img src="images/slide1.jpg" alt="Slide 1">
+                <img src="images/slide2.jpg" alt="Slide 2">
+                <img src="images/slide3.jpg" alt="Slide 3">
+                <img src="images/slide4.jpg" alt="Slide 4">
+                <img src="images/slide5.jpg" alt="Slide 5">
+                <img src="images/slide6.jpg" alt="Slide 6">
+                <img src="images/slide7.jpg" alt="Slide 7">
+                <img src="images/slide8.jpg" alt="Slide 8">
+                <img src="images/slide9.jpg" alt="Slide 9">
+                <img src="images/slide10.jpg" alt="Slide 10">
+                <img src="images/slide11.jpg" alt="Slide 11">
+                <img src="images/slide12.jpg" alt="Slide 12">
+                <img src="images/slide13.jpg" alt="Slide 13">
+                <img src="images/slide14.jpg" alt="Slide 14">
+                <img src="images/slide15.jpg" alt="Slide 15">
+                <img src="images/slide16.jpg" alt="Slide 16">
+                <img src="images/slide17.jpg" alt="Slide 17">
+                <img src="images/slide18.jpg" alt="Slide 18">
+                <img src="images/slide19.jpg" alt="Slide 19">
+                <img src="images/slide20.jpg" alt="Slide 20">
+            </div>
+        </div>
+    </main>
     
     <footer>
         <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
