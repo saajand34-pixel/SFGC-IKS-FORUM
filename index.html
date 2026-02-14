@@ -5,28 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SFGC IKS Forum</title>
     <style>
-        /* GLOBAL SETTINGS & ARROW REMOVAL */
+        /* GLOBAL SETTINGS */
         html, body {
             margin: 0;
             padding: 0;
             overscroll-behavior-x: none; 
             overflow-x: hidden;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
         }
 
         body {
             font-family: 'Georgia Pro', Georgia, serif;
-            background: url('45383.png') no-repeat top center fixed;
+            /* Ensure 45383.png is in the SAME folder as index.html */
+            background: #1F0505 url('45383.png') no-repeat top center fixed;
             background-size: cover;
             color: #fdf5e6;
             display: flex;
             flex-direction: column;
         }
 
-        /* 1. CINEMATIC LOADING SCREEN */
+        /* LOADING SCREEN */
         #loading-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -40,237 +38,78 @@
             font-size: clamp(50px, 10vw, 80px); 
             font-weight: 900;
             letter-spacing: 8px; 
-            position: relative;
             background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 0.5px transparent;
-            opacity: 0;
-            transform: scale(0.9) translateZ(0);
             animation: cinematicReveal 2.5s ease-out forwards;
-            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
         }
 
-        #iks-text::after {
-            content: 'SFGC IKS'; 
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-            animation-delay: 1s;
-        }
+        @keyframes cinematicReveal { to { opacity: 1; transform: scale(1); } }
 
-        @keyframes cinematicReveal { to { opacity: 1; transform: scale(1) translateZ(0); } }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        /* HEADER */
+        header { background-color: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; }
+        h1 { color: #ffd700; margin-bottom: 15px; }
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px; }
+        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; }
 
-        /* 2. HEADER & NAVIGATION */
-        header {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 1000;
-        }
-
-        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            transition: all 0.3s ease;
-        }
-
-        nav a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            font-size: 1.1em;
-            font-family: 'Georgia Pro', Georgia, serif; 
-            display: inline-block;
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #ffd700;
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            position: absolute;
-            right: 10px; 
-            top: 70%;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #cccccc;
-            margin: 3px 0;
-        }
-
-        /* 3. MAIN CONTENT */
+        /* MAIN & SLIDESHOW */
         main {
             flex: 1;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 40px auto;
-            padding: 40px 20px;
+            padding: 20px;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
-            text-align: center;
-            opacity: 0;
-            animation: pageFadeIn 1.5s ease-out forwards;
         }
 
-        @keyframes pageFadeIn { to { opacity: 1; } }
-
-        /* SLIDESHOW STYLES */
         .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto 40px;
+            width: 100%;
             overflow: hidden;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border: 3px solid #BF953F;
+            position: relative;
         }
 
         .slideshow {
             display: flex;
-            width: 2000%; /* 20 images */
-            animation: slide 60s infinite; /* 60s total for 20 images (3s each) */
+            width: 2000%; /* 20 images * 100% width each */
+            animation: slide-loop 60s infinite;
         }
 
         .slideshow img {
-            width: 5%; /* 100% / 20 = 5% each */
-            height: auto;
-            max-height: 400px;
+            width: 5%; /* 1/20th of the container */
+            height: 450px;
             object-fit: cover;
+            background-color: #333; /* Fallback color */
         }
 
-        @keyframes slide {
+        /* Corrected Animation for 20 images */
+        @keyframes slide-loop {
             0% { transform: translateX(0); }
-            5% { transform: translateX(-5%); } /* Image 1 */
-            10% { transform: translateX(-10%); } /* Image 2 */
-            15% { transform: translateX(-15%); } /* Image 3 */
-            20% { transform: translateX(-20%); } /* Image 4 */
-            25% { transform: translateX(-25%); } /* Image 5 */
-            30% { transform: translateX(-30%); } /* Image 6 */
-            35% { transform: translateX(-35%); } /* Image 7 */
-            40% { transform: translateX(-40%); } /* Image 8 */
-            45% { transform: translateX(-45%); } /* Image 9 */
-            50% { transform: translateX(-50%); } /* Image 10 */
-            55% { transform: translateX(-55%); } /* Image 11 */
-            60% { transform: translateX(-60%); } /* Image 12 */
-            65% { transform: translateX(-65%); } /* Image 13 */
-            70% { transform: translateX(-70%); } /* Image 14 */
-            75% { transform: translateX(-75%); } /* Image 15 */
-            80% { transform: translateX(-80%); } /* Image 16 */
-            85% { transform: translateX(-85%); } /* Image 17 */
-            90% { transform: translateX(-90%); } /* Image 18 */
-            95% { transform: translateX(-95%); } /* Image 19 */
-            100% { transform: translateX(-100%); } /* Image 20, then loop back */
+            5% { transform: translateX(-5%); }
+            10% { transform: translateX(-10%); }
+            15% { transform: translateX(-15%); }
+            20% { transform: translateX(-20%); }
+            25% { transform: translateX(-25%); }
+            30% { transform: translateX(-30%); }
+            35% { transform: translateX(-35%); }
+            40% { transform: translateX(-40%); }
+            45% { transform: translateX(-45%); }
+            50% { transform: translateX(-50%); }
+            55% { transform: translateX(-55%); }
+            60% { transform: translateX(-60%); }
+            65% { transform: translateX(-65%); }
+            70% { transform: translateX(-70%); }
+            75% { transform: translateX(-75%); }
+            80% { transform: translateX(-80%); }
+            85% { transform: translateX(-85%); }
+            90% { transform: translateX(-90%); }
+            95% { transform: translateX(-95%); }
+            100% { transform: translateX(0); }
         }
 
-        /* 4. FOOTER */
-        footer {
-            padding: 30px 20px;
-            text-align: center;
-            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
-            border-top: 2px solid #BF953F;
-            margin-top: auto;
-        }
-
-        footer p {
-            margin: 0;
-            font-weight: bold;
-            font-size: 1em;
-            line-height: 1.6; 
-            color: #BF953F;
-            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
+        footer { padding: 20px; text-align: center; background: #1F0505; border-top: 2px solid #BF953F; }
         .hidden { opacity: 0 !important; visibility: hidden; }
-
-        /* MOBILE OVERLAP FIXES - BOX FORMAT ON RIGHT */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 75px;
-                right: 10px; 
-                width: 260px;
-                background-color: rgba(0, 0, 0, 0.95);
-                padding: 25px 0;
-                border: 1px solid #BF953F;
-                border-radius: 12px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-                z-index: 2000;
-            }
-            nav ul.active {
-                display: flex;
-            }
-            nav ul li { 
-                margin: 15px 0; 
-                width: 100%;
-                text-align: center;
-            }
-            nav a { 
-                color: #ffcc66; 
-                font-size: 1.2em;
-                display: inline-block;
-            }
-            .hamburger { display: flex; }
-            body { overflow-x: hidden; }
-            
-            #iks-text {
-                font-weight: 1000;
-                -webkit-text-stroke: 1px transparent;
-            }
-            
-            /* COMMON MOBILE FOOTER SIZE */
-            footer p {
-                font-size: 1.1em;
-                line-height: 1.4;
-            }
-
-            /* Footer Line Break Fix */
-            .footer-break {
-                display: block;
-                margin-top: 5px;
-            }
-
-            /* Mobile slideshow adjustments */
-            .slideshow img {
-                max-height: 250px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -280,17 +119,12 @@
     </div>
 
     <header>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <h1>SFGC IKS Forum Welcomes You</h1>
+        <h1>SFGC IKS Forum</h1>
         <nav>
-            <ul id="nav-menu">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="occasion.html">Occasions</a></li>
-                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+                <li><a href="proceedings-journal.html">Proceedings</a></li>
                 <li><a href="committee.html">Committee</a></li>
                 <li><a href="about us.html">About Us</a></li>
             </ul>
@@ -298,7 +132,6 @@
     </header>
     
     <main>
-        <!-- SLIDESHOW SECTION -->
         <div class="slideshow-container">
             <div class="slideshow">
                 <img src="images/slide1.jpg" alt="Slide 1">
@@ -326,23 +159,14 @@
     </main>
     
     <footer>
-        <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
+        <p>© All Copyrights Reserved 2026-27 | SFGC IKS FORUM</p>
     </footer>
     
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-        
         window.addEventListener('load', () => {
-            const loader = document.getElementById('loading-screen');
             setTimeout(() => {
-                loader.classList.add('hidden');
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 1000);
-            }, 3000);
+                document.getElementById('loading-screen').classList.add('hidden');
+            }, 2000);
         });
     </script>
 </body>
