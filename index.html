@@ -147,8 +147,8 @@
 
         @keyframes pageFadeIn { to { opacity: 1; } }
 
-        /* SLIDESHOW STYLES */
-        .slideshow-container {
+        /* CAROUSEL STYLES */
+        .carousel-container {
             position: relative;
             max-width: 100%;
             margin: 0 auto 40px;
@@ -157,42 +157,63 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
-        .slideshow {
+        .carousel {
             display: flex;
             width: 2100%; /* 21 images */
-            animation: slide 60s infinite; /* 60s total for 21 images (~2.86s each) */
+            transition: transform 0.5s ease;
         }
 
-        .slideshow img {
+        .carousel img {
             width: 4.76%; /* 100% / 21 */
             height: auto;
             max-height: 400px;
             object-fit: cover;
         }
 
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            4.76% { transform: translateX(-4.76%); } /* Image 1 */
-            9.52% { transform: translateX(-9.52%); } /* Image 2 */
-            14.29% { transform: translateX(-14.29%); } /* Image 3 */
-            19.05% { transform: translateX(-19.05%); } /* Image 4 */
-            23.81% { transform: translateX(-23.81%); } /* Image 5 */
-            28.57% { transform: translateX(-28.57%); } /* Image 6 */
-            33.33% { transform: translateX(-33.33%); } /* Image 7 */
-            38.1% { transform: translateX(-38.1%); } /* Image 8 */
-            42.86% { transform: translateX(-42.86%); } /* Image 9 */
-            47.62% { transform: translateX(-47.62%); } /* Image 10 */
-            52.38% { transform: translateX(-52.38%); } /* Image 11 */
-            57.14% { transform: translateX(-57.14%); } /* Image 12 */
-            61.9% { transform: translateX(-61.9%); } /* Image 13 */
-            66.67% { transform: translateX(-66.67%); } /* Image 14 */
-            71.43% { transform: translateX(-71.43%); } /* Image 15 */
-            76.19% { transform: translateX(-76.19%); } /* Image 16 */
-            80.95% { transform: translateX(-80.95%); } /* Image 17 */
-            85.71% { transform: translateX(-85.71%); } /* Image 18 */
-            90.48% { transform: translateX(-90.48%); } /* Image 19 */
-            95.24% { transform: translateX(-95.24%); } /* Image 20 */
-            100% { transform: translateX(-100%); } /* Image 21, then loop back */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #ffd700;
         }
 
         /* 4. FOOTER */
@@ -267,8 +288,8 @@
                 margin-top: 5px;
             }
 
-            /* Mobile slideshow adjustments */
-            .slideshow img {
+            /* Mobile carousel adjustments */
+            .carousel img {
                 max-height: 250px;
             }
         }
@@ -299,9 +320,9 @@
     </header>
     
     <main>
-        <!-- SLIDESHOW SECTION -->
-        <div class="slideshow-container">
-            <div class="slideshow">
+        <!-- CAROUSEL SECTION -->
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
                 <img src="images/slide1.png" alt="Slide 1">
                 <img src="images/slide2.png" alt="Slide 2">
                 <img src="images/slide3.png" alt="Slide 3">
@@ -324,7 +345,10 @@
                 <img src="images/slide20.png" alt="Slide 20">
                 <img src="images/slide21.png" alt="Slide 21">
             </div>
+            <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+            <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
         </div>
+        <div class="dots" id="dots"></div>
     </main>
     
     <footer>
@@ -346,6 +370,62 @@
                 }, 1000);
             }, 3000);
         });
+
+        // Carousel JavaScript
+        let currentIndex = 0;
+        const totalSlides = 21;
+        const carousel = document.getElementById('carousel');
+        const dotsContainer = document.getElementById('dots');
+
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+        updateDots();
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            updateDots();
+            resetAutoSlide();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+            updateDots();
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+            updateDots();
+            resetAutoSlide();
+        }
+
+        function updateCarousel() {
+            const translateX = -currentIndex * (100 / totalSlides);
+            carousel.style.transform = `translateX(${translateX}%)`;
+        }
+
+        // Auto-slide every 3 seconds
+        let autoSlide = setInterval(nextSlide, 3000);
+
+        function resetAutoSlide() {
+            clearInterval(autoSlide);
+            autoSlide = setInterval(nextSlide, 3000);
+        }
     </script>
 </body>
 </html>
