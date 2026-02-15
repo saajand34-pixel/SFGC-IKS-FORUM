@@ -188,12 +188,12 @@
 
         .carousel {
             display: flex;
-            width: 2100%; /* 21 images */
+            width: 2200%; /* 22 images */
             transition: transform 0.5s ease;
         }
 
         .carousel img {
-            width: 4.76%; /* 100% / 21 */
+            width: 4.76%; /* 100% / 22 */
             height: auto;
             max-height: 400px;
             object-fit: contain; 
@@ -335,6 +335,7 @@
                 <img src="slide19.png" alt="Slide 19">
                 <img src="slide20.png" alt="Slide 20">
                 <img src="slide21.png" alt="Slide 21">
+                <img src="slide22.png" alt="Slide 22">
             </div>
             <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
             <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
@@ -374,7 +375,7 @@
 
         // 3. Carousel Logic
         let currentIndex = 0;
-        const totalSlides = 21;
+        const totalSlides = 22;
         const carousel = document.getElementById('carousel');
         const dotsContainer = document.getElementById('dots');
         let autoSlideInterval;
