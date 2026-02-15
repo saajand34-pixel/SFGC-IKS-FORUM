@@ -193,7 +193,7 @@
         }
 
         .carousel img {
-            width: 4.76%; /* 100% / 22 */
+            width: 4.55%; /* Updated for 22 images (100% / 22 ≈ 4.545%) */
             height: auto;
             max-height: 400px;
             object-fit: contain; 
@@ -282,6 +282,11 @@
             .subtitle { font-size: 1em; }
             .description { font-size: 0.9em; text-align: justify; }
         }
+
+        /* Hide dots on PC (desktop) */
+        @media (min-width: 769px) {
+            .dots { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -362,15 +367,16 @@
             menu.classList.toggle('active');
         }
         
-        // 2. Cinematic Loader
+        // 2. Cinematic Loader (Responsive Timeout)
         window.addEventListener('load', () => {
             const loader = document.getElementById('loading-screen');
+            const timeout = window.innerWidth <= 768 ? 1500 : 2500; // 1.5s on mobile, 2.5s on desktop
             setTimeout(() => {
                 loader.classList.add('hidden');
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 1000);
-            }, 2500); 
+            }, timeout);
         });
 
         // 3. Carousel Logic
