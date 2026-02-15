@@ -5,26 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SFGC IKS Forum</title>
     <style>
-        /* GLOBAL SETTINGS */
+        /* GLOBAL SETTINGS & ARROW REMOVAL */
         html, body {
             margin: 0;
             padding: 0;
             overscroll-behavior-x: none; 
             overflow-x: hidden;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         body {
             font-family: 'Georgia Pro', Georgia, serif;
-            /* Ensure 45383.png is in the SAME folder as index.html */
-            background: #1F0505 url('45383.png') no-repeat top center fixed;
+            background: url('45383.png') no-repeat top center fixed;
             background-size: cover;
             color: #fdf5e6;
             display: flex;
             flex-direction: column;
         }
 
-        /* LOADING SCREEN */
+        /* 1. CINEMATIC LOADING SCREEN */
         #loading-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -38,78 +40,238 @@
             font-size: clamp(50px, 10vw, 80px); 
             font-weight: 900;
             letter-spacing: 8px; 
+            position: relative;
             background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0.5px transparent;
+            opacity: 0;
+            transform: scale(0.9) translateZ(0);
             animation: cinematicReveal 2.5s ease-out forwards;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
         }
 
-        @keyframes cinematicReveal { to { opacity: 1; transform: scale(1); } }
+        #iks-text::after {
+            content: 'SFGC IKS'; 
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            animation-delay: 1s;
+        }
 
-        /* HEADER */
-        header { background-color: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; }
-        h1 { color: #ffd700; margin-bottom: 15px; }
-        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px; }
-        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; }
+        @keyframes cinematicReveal { to { opacity: 1; transform: scale(1) translateZ(0); } }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        /* MAIN & SLIDESHOW */
+        /* 2. HEADER & NAVIGATION */
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            font-size: 1.1em;
+            font-family: 'Georgia Pro', Georgia, serif; 
+            display: inline-block;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            right: 10px; 
+            top: 70%;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #cccccc;
+            margin: 3px 0;
+        }
+
+        /* 3. MAIN CONTENT */
         main {
             flex: 1;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 40px auto;
-            padding: 20px;
+            padding: 40px 20px;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
+            text-align: center;
+            opacity: 0;
+            animation: pageFadeIn 1.5s ease-out forwards;
         }
 
+        @keyframes pageFadeIn { to { opacity: 1; } }
+
+        /* SLIDESHOW STYLES */
         .slideshow-container {
-            width: 100%;
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto 40px;
             overflow: hidden;
             border-radius: 15px;
-            border: 3px solid #BF953F;
-            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .slideshow {
             display: flex;
-            width: 2000%; /* 20 images * 100% width each */
-            animation: slide-loop 60s infinite;
+            width: 2100%; /* 21 images */
+            animation: slide 60s infinite; /* 60s total for 21 images (~2.86s each) */
         }
 
         .slideshow img {
-            width: 5%; /* 1/20th of the container */
-            height: 450px;
+            width: 4.76%; /* 100% / 21 */
+            height: auto;
+            max-height: 400px;
             object-fit: cover;
-            background-color: #333; /* Fallback color */
         }
 
-        /* Corrected Animation for 20 images */
-        @keyframes slide-loop {
+        @keyframes slide {
             0% { transform: translateX(0); }
-            5% { transform: translateX(-5%); }
-            10% { transform: translateX(-10%); }
-            15% { transform: translateX(-15%); }
-            20% { transform: translateX(-20%); }
-            25% { transform: translateX(-25%); }
-            30% { transform: translateX(-30%); }
-            35% { transform: translateX(-35%); }
-            40% { transform: translateX(-40%); }
-            45% { transform: translateX(-45%); }
-            50% { transform: translateX(-50%); }
-            55% { transform: translateX(-55%); }
-            60% { transform: translateX(-60%); }
-            65% { transform: translateX(-65%); }
-            70% { transform: translateX(-70%); }
-            75% { transform: translateX(-75%); }
-            80% { transform: translateX(-80%); }
-            85% { transform: translateX(-85%); }
-            90% { transform: translateX(-90%); }
-            95% { transform: translateX(-95%); }
-            100% { transform: translateX(0); }
+            4.76% { transform: translateX(-4.76%); } /* Image 1 */
+            9.52% { transform: translateX(-9.52%); } /* Image 2 */
+            14.29% { transform: translateX(-14.29%); } /* Image 3 */
+            19.05% { transform: translateX(-19.05%); } /* Image 4 */
+            23.81% { transform: translateX(-23.81%); } /* Image 5 */
+            28.57% { transform: translateX(-28.57%); } /* Image 6 */
+            33.33% { transform: translateX(-33.33%); } /* Image 7 */
+            38.1% { transform: translateX(-38.1%); } /* Image 8 */
+            42.86% { transform: translateX(-42.86%); } /* Image 9 */
+            47.62% { transform: translateX(-47.62%); } /* Image 10 */
+            52.38% { transform: translateX(-52.38%); } /* Image 11 */
+            57.14% { transform: translateX(-57.14%); } /* Image 12 */
+            61.9% { transform: translateX(-61.9%); } /* Image 13 */
+            66.67% { transform: translateX(-66.67%); } /* Image 14 */
+            71.43% { transform: translateX(-71.43%); } /* Image 15 */
+            76.19% { transform: translateX(-76.19%); } /* Image 16 */
+            80.95% { transform: translateX(-80.95%); } /* Image 17 */
+            85.71% { transform: translateX(-85.71%); } /* Image 18 */
+            90.48% { transform: translateX(-90.48%); } /* Image 19 */
+            95.24% { transform: translateX(-95.24%); } /* Image 20 */
+            100% { transform: translateX(-100%); } /* Image 21, then loop back */
         }
 
-        footer { padding: 20px; text-align: center; background: #1F0505; border-top: 2px solid #BF953F; }
+        /* 4. FOOTER */
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
+            border-top: 2px solid #BF953F;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1em;
+            line-height: 1.6; 
+            color: #BF953F;
+            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
         .hidden { opacity: 0 !important; visibility: hidden; }
+
+        /* MOBILE OVERLAP FIXES - BOX FORMAT ON RIGHT */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 75px;
+                right: 10px; 
+                width: 260px;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 25px 0;
+                border: 1px solid #BF953F;
+                border-radius: 12px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+                z-index: 2000;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li { 
+                margin: 15px 0; 
+                width: 100%;
+                text-align: center;
+            }
+            nav a { 
+                color: #ffcc66; 
+                font-size: 1.2em;
+                display: inline-block;
+            }
+            .hamburger { display: flex; }
+            body { overflow-x: hidden; }
+            
+            #iks-text {
+                font-weight: 1000;
+                -webkit-text-stroke: 1px transparent;
+            }
+            
+            /* COMMON MOBILE FOOTER SIZE */
+            footer p {
+                font-size: 1.1em;
+                line-height: 1.4;
+            }
+
+            /* Footer Line Break Fix */
+            .footer-break {
+                display: block;
+                margin-top: 5px;
+            }
+
+            /* Mobile slideshow adjustments */
+            .slideshow img {
+                max-height: 250px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -119,12 +281,17 @@
     </div>
 
     <header>
-        <h1>SFGC IKS Forum</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>SFGC IKS Forum Welcomes You</h1>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="occasion.html">Occasions</a></li>
-                <li><a href="proceedings-journal.html">Proceedings</a></li>
+                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
                 <li><a href="committee.html">Committee</a></li>
                 <li><a href="about us.html">About Us</a></li>
             </ul>
@@ -132,41 +299,52 @@
     </header>
     
     <main>
+        <!-- SLIDESHOW SECTION -->
         <div class="slideshow-container">
             <div class="slideshow">
-                <img src="images/slide1.jpeg" alt="Slide 1">
-                <img src="images/slide2.jpeg" alt="Slide 2">
-                <img src="images/slide3.jpeg" alt="Slide 3">
-                <img src="images/slide4.jpeg" alt="Slide 4">
-                <img src="images/slide5.jpeg" alt="Slide 5">
-                <img src="images/slide6.jpeg" alt="Slide 6">
-                <img src="images/slide7.jpeg" alt="Slide 7">
-                <img src="images/slide8.jpeg" alt="Slide 8">
-                <img src="images/slide9.jpeg" alt="Slide 9">
-                <img src="images/slide10.jpeg" alt="Slide 10">
-                <img src="images/slide11.jpeg" alt="Slide 11">
-                <img src="images/slide12.jpeg" alt="Slide 12">
-                <img src="images/slide13.jpeg" alt="Slide 13">
-                <img src="images/slide14.jpeg" alt="Slide 14">
-                <img src="images/slide15.jpeg" alt="Slide 15">
-                <img src="images/slide16.jpeg" alt="Slide 16">
-                <img src="images/slide17.jpeg" alt="Slide 17">
-                <img src="images/slide18.jpeg" alt="Slide 18">
-                <img src="images/slide19.jpeg" alt="Slide 19">
-                <img src="images/slide20.jpeg" alt="Slide 20">
+                <img src="images/slide1.png" alt="Slide 1">
+                <img src="images/slide2.png" alt="Slide 2">
+                <img src="images/slide3.png" alt="Slide 3">
+                <img src="images/slide4.png" alt="Slide 4">
+                <img src="images/slide5.png" alt="Slide 5">
+                <img src="images/slide6.png" alt="Slide 6">
+                <img src="images/slide7.png" alt="Slide 7">
+                <img src="images/slide8.png" alt="Slide 8">
+                <img src="images/slide9.png" alt="Slide 9">
+                <img src="images/slide10.png" alt="Slide 10">
+                <img src="images/slide11.png" alt="Slide 11">
+                <img src="images/slide12.png" alt="Slide 12">
+                <img src="images/slide13.png" alt="Slide 13">
+                <img src="images/slide14.png" alt="Slide 14">
+                <img src="images/slide15.png" alt="Slide 15">
+                <img src="images/slide16.png" alt="Slide 16">
+                <img src="images/slide17.png" alt="Slide 17">
+                <img src="images/slide18.png" alt="Slide 18">
+                <img src="images/slide19.png" alt="Slide 19">
+                <img src="images/slide20.png" alt="Slide 20">
+                <img src="images/slide21.png" alt="Slide 21">
             </div>
         </div>
     </main>
     
     <footer>
-        <p>© All Copyrights Reserved 2026-27 | SFGC IKS FORUM</p>
+        <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
     </footer>
     
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+        
         window.addEventListener('load', () => {
+            const loader = document.getElementById('loading-screen');
             setTimeout(() => {
-                document.getElementById('loading-screen').classList.add('hidden');
-            }, 2000);
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }, 3000);
         });
     </script>
 </body>
