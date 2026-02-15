@@ -108,12 +108,11 @@
             text-align: left;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 0 15px 15px 0;
-            transition: transform 0.3s ease;
+            transition: background 0.3s ease; /* Changed to only background transition */
         }
 
         .prospectus-section:hover {
-            transform: translateX(10px);
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.4); /* Kept background change, removed transform */
         }
 
         .prospectus-btn { 
