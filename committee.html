@@ -51,7 +51,7 @@
             font-weight: bold;
             position: relative;
             font-size: 1.1em;
-            display: inline-block; /* Fix: Underline matches word width */
+            display: inline-block; 
         }
         
         nav a::after {
@@ -110,7 +110,17 @@
             width: 100%;
         }
 
-        h3 { color: #ffd700; margin-top: 0; margin-bottom: 25px; font-size: 1.6em; border-bottom: 1px solid rgba(255, 215, 0, 0.2); padding-bottom: 10px; }
+        /* UPDATED SECTION TITLES */
+        h3 { 
+            color: #ffd700; 
+            margin-top: 0; 
+            margin-bottom: 25px; 
+            font-size: 1.3em; /* Reduced size for better visual hierarchy */
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2); 
+            padding-bottom: 10px; 
+            text-transform: uppercase; /* Force all letters to CAPS */
+            letter-spacing: 1px;
+        }
 
         /* MEMBER FORMATTING */
         .member-box { margin-bottom: 20px; }
@@ -184,13 +194,11 @@
             .hamburger { display: flex; }
             .committee-section { padding: 15px; }
 
-            /* Footer common size on phone */
             footer p {
                 font-size: 1.1em;
                 line-height: 1.4;
             }
 
-            /* Footer line break fix */
             .footer-break {
                 display: block;
                 margin-top: 5px;

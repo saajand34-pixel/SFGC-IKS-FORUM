@@ -158,12 +158,22 @@
         }
 
         .subtitle {
-            color: #ffd700;
+            color: #fff; 
             font-size: 1.2em;
-            font-weight: bold;
+            font-weight: bold; 
             text-shadow: 1px 1px 2px #000;
             margin-bottom: 25px;
             letter-spacing: 1px;
+        }
+
+        /* DESCRIPTION STYLES */
+        .description {
+            color: #fff;
+            font-size: 1em;
+            line-height: 1.6;
+            text-align: left;
+            margin-top: 30px;
+            padding: 0 10px;
         }
 
         /* CAROUSEL STYLES */
@@ -186,7 +196,7 @@
             width: 4.76%; /* 100% / 21 */
             height: auto;
             max-height: 400px;
-            object-fit: contain; /* Full image fit without cropping */
+            object-fit: contain; 
         }
 
         .carousel-btn {
@@ -203,17 +213,9 @@
             z-index: 10;
         }
 
-        .carousel-btn.prev {
-            left: 10px;
-        }
-
-        .carousel-btn.next {
-            right: 10px;
-        }
-
-        .carousel-btn:hover {
-            background: rgba(0,0,0,0.8);
-        }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        .carousel-btn:hover { background: rgba(0,0,0,0.8); }
 
         .dots {
             text-align: center;
@@ -231,9 +233,7 @@
             transition: background 0.3s;
         }
 
-        .dot.active {
-            background: #ffd700;
-        }
+        .dot.active { background: #ffd700; }
 
         /* 4. FOOTER */
         footer {
@@ -258,7 +258,6 @@
 
         .hidden { opacity: 0 !important; visibility: hidden; }
 
-        /* MOBILE OVERLAP FIXES - BOX FORMAT ON RIGHT */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -274,56 +273,14 @@
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 z-index: 2000;
             }
-            nav ul.active {
-                display: flex;
-            }
-            nav ul li { 
-                margin: 15px 0; 
-                width: 100%;
-                text-align: center;
-            }
-            nav a { 
-                color: #ffcc66; 
-                font-size: 1.2em;
-                display: inline-block;
-            }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; width: 100%; text-align: center; }
             .hamburger { display: flex; }
-            body { overflow-x: hidden; }
-            
-            #iks-text {
-                font-weight: 1000;
-                -webkit-text-stroke: 1px transparent;
-            }
-            
-            /* COMMON MOBILE FOOTER SIZE */
-            footer p {
-                font-size: 1.1em;
-                line-height: 1.4;
-            }
-
-            /* Footer Line Break Fix */
-            .footer-break {
-                display: block;
-                margin-top: 5px;
-            }
-
-            /* Mobile carousel adjustments */
-            .carousel img {
-                max-height: 250px;
-            }
-
-            /* Hide dots on mobile */
-            .dots {
-                display: none;
-            }
-
-            /* Mobile title and subtitle adjustments */
-            h2.main-title {
-                font-size: 1.5em;
-            }
-            .subtitle {
-                font-size: 1em;
-            }
+            .carousel img { max-height: 250px; }
+            .dots { display: none; }
+            h2.main-title { font-size: 1.5em; }
+            .subtitle { font-size: 1em; }
+            .description { font-size: 0.9em; text-align: justify; }
         }
     </style>
 </head>
@@ -352,11 +309,9 @@
     </header>
     
     <main>
-        <!-- TITLE AND SUBTITLE -->
         <h2 class="main-title">Recent Updates</h2>
         <p class="subtitle">IKS HORIZONS 2025 - INTERNATIONAL CONFERENCE on INDIAN KNOWLEDGE SYSTEM</p>
 
-        <!-- CAROUSEL SECTION -->
         <div class="carousel-container">
             <div class="carousel" id="carousel">
                 <img src="slide1.png" alt="Slide 1">
@@ -385,6 +340,14 @@
             <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
         </div>
         <div class="dots" id="dots"></div>
+
+        <div class="description">
+            The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
+            The conference was graced by the distinguished presence of the Chief Guest, Dr. Anil D. Sahasrabudhe Chairman of NETF/ EC-NAAC & NBA /Former Chairman, AICTE., whose inaugural address set a strong intellectual tone for the event. The Chief Guest emphasized the relevance of Indian knowledge traditions in addressing present-day global challenges and highlighted the need for interdisciplinary research rooted in indigenous wisdom. The keynote insights inspired participants to explore innovative research pathways while preserving the richness of India’s intellectual heritage.<br><br>
+            IKS Horizons 2025 witnessed enthusiastic participation from over 250 delegates, featuring 120 research paper presentations and 80 poster presentations by scholars from reputed institutions across India and abroad. The sessions were marked by dynamic academic exchanges, thought-provoking presentations, and interactive discussions that enriched the research experience of all participants. The hybrid mode of the conference enabled broader outreach and inclusive participation.<br><br>
+            A major highlight of the conference was the launch of key academic initiatives, including the release of the e-conference proceedings, the introduction of a seshadripuram Global Journal Multilinguistic(SJGML) Research Journal, and the formal establishment of the IKS Forum at SFGC. These milestones reflect SRF’s continued commitment to promoting research excellence, fostering interdisciplinary collaboration, and strengthening the academic ecosystem.<br><br>
+            Through the successful organization of IKS Horizons 2025, the Seshadripuram Research Foundation reaffirmed its vision of nurturing research that harmoniously blends tradition with innovation. The conference laid a strong foundation for future scholarly collaborations and reinforced SRF’s role as a catalyst for knowledge creation and academic leadership.
+        </div>
     </main>
     
     <footer>
@@ -392,11 +355,13 @@
     </footer>
     
     <script>
+        // 1. Navigation Menu Toggle
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
             menu.classList.toggle('active');
         }
         
+        // 2. Cinematic Loader
         window.addEventListener('load', () => {
             const loader = document.getElementById('loading-screen');
             setTimeout(() => {
@@ -404,29 +369,34 @@
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 1000);
-            }, 2500); // Adjusted to 2.5s to match animation
+            }, 2500); 
         });
 
-        // Carousel JavaScript
+        // 3. Carousel Logic
         let currentIndex = 0;
         const totalSlides = 21;
         const carousel = document.getElementById('carousel');
         const dotsContainer = document.getElementById('dots');
+        let autoSlideInterval;
 
-        // Create dots
+        // Create dots dynamically
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement('span');
             dot.classList.add('dot');
             dot.onclick = () => goToSlide(i);
             dotsContainer.appendChild(dot);
         }
-        updateDots();
 
         function updateDots() {
             const dots = document.querySelectorAll('.dot');
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentIndex);
             });
+        }
+
+        function updateCarousel() {
+            const offset = currentIndex * (100 / totalSlides);
+            carousel.style.transform = `translateX(-${offset}%)`;
         }
 
         function goToSlide(index) {
@@ -450,18 +420,22 @@
             resetAutoSlide();
         }
 
-        function updateCarousel() {
-            const translateX = -currentIndex * (100 / totalSlides);
-            carousel.style.transform = `translateX(${translateX}%)`;
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+                updateDots();
+            }, 5000);
         }
-
-        // Auto-slide every 3 seconds
-        let autoSlide = setInterval(nextSlide, 3000);
 
         function resetAutoSlide() {
-            clearInterval(autoSlide);
-            autoSlide = setInterval(nextSlide, 3000);
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
         }
+
+        // Initial Setup
+        updateDots();
+        startAutoSlide();
     </script>
 </body>
 </html>
