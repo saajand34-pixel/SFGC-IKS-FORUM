@@ -106,6 +106,8 @@
         @keyframes pageFadeIn { to { opacity: 1; } }
 
         .about-section { margin-bottom: 60px; padding: 10px; }
+        .about-section p { text-align: justify; } /* Added justified text for paragraphs */
+
         h2.main-title { 
             color: #ffd700; 
             border-bottom: 1px solid #ffcc66; 
@@ -191,6 +193,12 @@
             .footer-break {
                 display: block;
                 margin-top: 5px;
+            }
+
+            /* Mobile adjustments for about sections */
+            .about-section p {
+                font-size: 0.9em;
+                text-align: justify; /* Maintain justification on mobile */
             }
         }
     </style>
@@ -279,7 +287,7 @@ Keynote Addresses, Paper Presentations, Panel Discussions, and Interactive Sessi
 
         <div class="about-section">
             <h2>Seshadripuram Research Foundation</h2>
-            <p>Advancing research in traditional and modern sciences, fostering innovation and global knowledge dissemination.<br><br>
+            <p>Advancing research in traditional and modern sciences, fostering innovation and global knowledge dissemination.</p>
         </div>
       </div>
    </main>
