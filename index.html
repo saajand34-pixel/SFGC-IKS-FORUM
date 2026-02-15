@@ -147,6 +147,25 @@
 
         @keyframes pageFadeIn { to { opacity: 1; } }
 
+        /* TITLE AND SUBTITLE STYLES */
+        h2.main-title { 
+            color: #ffd700; 
+            border-bottom: 1px solid #ffcc66; 
+            display: inline-block; 
+            margin-bottom: 15px; 
+            text-shadow: 1px 1px 2px #000;
+            width: auto;
+        }
+
+        .subtitle {
+            color: #ffd700;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #000;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
         /* CAROUSEL STYLES */
         .carousel-container {
             position: relative;
@@ -167,7 +186,7 @@
             width: 4.76%; /* 100% / 21 */
             height: auto;
             max-height: 400px;
-            object-fit: contain; /* Changed to contain for full image fit without cropping */
+            object-fit: contain; /* Full image fit without cropping */
         }
 
         .carousel-btn {
@@ -297,6 +316,14 @@
             .dots {
                 display: none;
             }
+
+            /* Mobile title and subtitle adjustments */
+            h2.main-title {
+                font-size: 1.5em;
+            }
+            .subtitle {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -325,6 +352,10 @@
     </header>
     
     <main>
+        <!-- TITLE AND SUBTITLE -->
+        <h2 class="main-title">Recent Updates</h2>
+        <p class="subtitle">IKS HORIZONS 2025 - INTERNATIONAL CONFERENCE on INDIAN KNOWLEDGE SYSTEM</p>
+
         <!-- CAROUSEL SECTION -->
         <div class="carousel-container">
             <div class="carousel" id="carousel">
@@ -373,7 +404,7 @@
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 1000);
-            }, 3000);
+            }, 2500); // Adjusted to 2.5s to match animation
         });
 
         // Carousel JavaScript
