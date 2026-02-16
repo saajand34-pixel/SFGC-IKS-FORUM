@@ -194,15 +194,16 @@
 
         .carousel {
             display: flex;
-            width: 2200%; /* 22 images */
+            width: 100%; /* 22 images */
             transition: transform 0.5s ease;
         }
 
         .carousel img {
-            width: 4.55%; 
+            width: 100%; 
             height: auto;
             max-height: 400px;
-            object-fit: contain; 
+            object-fit: contain;
+            flex-shrink: 0; 
         }
 
         .carousel-btn {
@@ -408,8 +409,7 @@
         }
 
         function updateCarousel() {
-            const offset = currentIndex * (100 / totalSlides);
-            carousel.style.transform = `translateX(-${offset}%)`;
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
         function goToSlide(index) {
