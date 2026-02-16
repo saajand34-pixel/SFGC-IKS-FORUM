@@ -199,7 +199,7 @@
         }
 
         .carousel img {
-            flex: 0 0 100%; /* Each image takes full width of container */
+            width: 4.55%; 
             height: auto;
             max-height: 400px;
             object-fit: contain; 
@@ -285,6 +285,7 @@
             
             .carousel img { 
                 max-height: 300px; 
+                width: 4.55% !important; 
                 object-fit: cover; 
             }
             
@@ -407,7 +408,7 @@
         }
 
         function updateCarousel() {
-            const offset = currentIndex * 100; /* Shift by 100% per slide */
+            const offset = currentIndex * (100 / totalSlides);
             carousel.style.transform = `translateX(-${offset}%)`;
         }
 
