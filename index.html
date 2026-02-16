@@ -190,19 +190,20 @@
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            height: 400px; /* Fixed height for consistent fit */
         }
 
         .carousel {
             display: flex;
             width: 2200%; /* 22 images */
             transition: transform 0.5s ease;
+            height: 100%; /* Full height */
         }
 
         .carousel img {
             flex: 0 0 100%; /* Each image takes full width of container */
-            height: auto;
-            max-height: 400px;
-            object-fit: contain; 
+            height: 100%; /* Full height to fit container */
+            object-fit: cover; /* Fill container, may crop slightly */
         }
 
         .carousel-btn {
@@ -283,9 +284,8 @@
             nav ul li { margin: 15px 0; width: 100%; text-align: center; }
             .hamburger { display: flex; }
             
-            .carousel img { 
-                max-height: 300px; 
-                object-fit: cover; 
+            .carousel-container {
+                height: 300px; /* Smaller height on mobile */
             }
             
             .dots { display: none; }
