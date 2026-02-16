@@ -376,8 +376,8 @@
             menu.classList.toggle('active');
         }
         
-        // Loader duration set to exactly 5000ms (5 seconds)
-        window.addEventListener('load', () => {
+        // Loader duration set to exactly 5000ms (5 seconds), triggered on DOMContentLoaded
+        window.addEventListener('DOMContentLoaded', () => {
             const loader = document.getElementById('loading-screen');
             setTimeout(() => {
                 loader.classList.add('hidden');
