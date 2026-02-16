@@ -47,13 +47,13 @@
             -webkit-text-stroke: 0.5px transparent;
             opacity: 0;
             transform: scale(0.9) translateZ(0);
-            animation: cinematicReveal 2.5s ease-out forwards; /* Default 2.5s */
+            animation: cinematicReveal 2.5s ease-out forwards;
             filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
         }
 
         @media (max-width: 768px) {
             #iks-text {
-                animation: cinematicReveal 1s ease-out forwards; /* Faster 1s on mobile */
+                animation: cinematicReveal 2.5s ease-out forwards; 
             }
         }
 
@@ -199,7 +199,7 @@
         }
 
         .carousel img {
-            width: 4.55%; /* Updated for 22 images (100% / 22 ≈ 4.545%) */
+            width: 4.55%; 
             height: auto;
             max-height: 400px;
             object-fit: contain; 
@@ -282,7 +282,14 @@
             nav ul.active { display: flex; }
             nav ul li { margin: 15px 0; width: 100%; text-align: center; }
             .hamburger { display: flex; }
-            .carousel img { max-height: 250px; }
+            
+            /* UPDATED FOR PERFECT FIT ON MOBILE */
+            .carousel img { 
+                max-height: 300px; 
+                width: 4.55% !important; 
+                object-fit: cover; /* Ensures image fills the container */
+            }
+            
             .dots { display: none; }
             h2.main-title { font-size: 1.5em; }
             .subtitle { font-size: 1em; }
@@ -373,16 +380,15 @@
             menu.classList.toggle('active');
         }
         
-        // 2. Cinematic Loader (Responsive Timeout)
+        // 2. Cinematic Loader (Fixed 5 Seconds for PC & Mobile)
         window.addEventListener('load', () => {
             const loader = document.getElementById('loading-screen');
-            const timeout = window.innerWidth <= 768 ? 1000 : 2500; // 1s on mobile, 2.5s on desktop
             setTimeout(() => {
                 loader.classList.add('hidden');
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 1000);
-            }, timeout);
+            }, 5000);
         });
 
         // 3. Carousel Logic
@@ -392,7 +398,6 @@
         const dotsContainer = document.getElementById('dots');
         let autoSlideInterval;
 
-        // Create dots dynamically
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement('span');
             dot.classList.add('dot');
@@ -412,41 +417,40 @@
             carousel.style.transform = `translateX(-${offset}%)`;
         }
 
-               function goToSlide(index) {
-                                   currentIndex = index;
-                                   updateCarousel();
-                                   updateDots();
-                                   resetAutoSlide();
-                     }
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            updateDots();
+            resetAutoSlide();
+        }
 
-                           function nextSlide() {
-                           currentIndex = (currentIndex + 1) % totalSlides;
-                           updateCarousel();
-                           updateDots();
-                           resetAutoSlide();
-                    }
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+            updateDots();
+            resetAutoSlide();
+        }
 
-                           function prevSlide() {
-                           currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                           updateCarousel();
-                           updateDots();
-                           resetAutoSlide();
-                    }
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+            updateDots();
+            resetAutoSlide();
+        }
 
-                         function startAutoSlide() {
-                         autoSlideInterval = setInterval(() => {
-                         currentIndex = (currentIndex + 1) % totalSlides;
-                         updateCarousel();
-                         updateDots();
-                         }, 5000);
-                   } 
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+                updateDots();
+            }, 5000);
+        } 
 
-                       function resetAutoSlide() {
-                       clearInterval(autoSlideInterval);
-                       startAutoSlide();
-                   }
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
 
-         // Initial Setup
         updateDots();
         startAutoSlide();
     </script>
