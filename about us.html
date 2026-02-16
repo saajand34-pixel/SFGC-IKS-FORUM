@@ -15,6 +15,9 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
+            /* Added requested font size and line spacing */
+            font-size: 11pt;
+            line-height: 1.2;
         }
 
         body {
@@ -54,7 +57,7 @@
             position: relative;
             font-size: 1.1em;
             font-family: 'Georgia Pro', Georgia, serif; 
-            display: inline-block; /* Fix: Underline matches word width */
+            display: inline-block; 
         }
         nav a::after {
             content: '';
@@ -106,7 +109,13 @@
         @keyframes pageFadeIn { to { opacity: 1; } }
 
         .about-section { margin-bottom: 60px; padding: 10px; }
-        .about-section p { text-align: justify; } /* Added justified text for paragraphs */
+        
+        /* Applied requested font size and line spacing to paragraphs */
+        .about-section p { 
+            text-align: justify; 
+            font-size: 11pt;
+            line-height: 1.2;
+        } 
 
         h2.main-title { 
             color: #ffd700; 
@@ -126,7 +135,6 @@
             filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); 
         }
 
-        /* Logo wrapper for matching h2 width */
         .logo-wrapper { display: inline-block; text-align: center; }
         .logo-img { width: 100%; display: block; }
 
@@ -142,8 +150,8 @@
         footer p {
             margin: 0;
             font-weight: bold;
-            font-size: 1em;
-            line-height: 1.6; 
+            font-size: 11pt; /* Matched global font size */
+            line-height: 1.2; /* Matched global line spacing */
             color: #BF953F;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
@@ -183,22 +191,19 @@
             .hamburger { display: flex; }
             body { overflow-x: hidden; }
             
-            /* Footer common size on phone */
             footer p {
-                font-size: 1.1em;
-                line-height: 1.4;
+                font-size: 11pt;
+                line-height: 1.2;
             }
 
-            /* Footer Line Break Fix */
             .footer-break {
                 display: block;
                 margin-top: 5px;
             }
 
-            /* Mobile adjustments for about sections */
             .about-section p {
-                font-size: 0.9em;
-                text-align: justify; /* Maintain justification on mobile */
+                font-size: 11pt; /* Consistent font size on mobile */
+                text-align: justify; 
             }
         }
     </style>
@@ -278,7 +283,6 @@ Through the successful organization of IKS Horizons 2025, the Seshadripuram Rese
             <h2>Seshadripuram Research Foundation</h2>
             <p>Seshadripuram Research Foundation (SRF) is the research wing of Seshadripuram Educational Trust (SET), established to promote and encourage research among faculty and students of its Degree and Postgraduate institutions. SRF serves as a common platform for research activities across all institutions under the Trust and aims to strengthen academic excellence through quality research and consultancy. It functions as a recognized Ph.D. Research Centre and coordinates various research initiatives while motivating faculty members to undertake innovative research and consulting projects. The Foundation provides financial assistance to deserving research proposals based on merit and relevance, thereby supporting meaningful and socially responsible research. Through its Student Research Forum, SRF nurtures research aptitude and cultivates a culture of inquiry among students. By acting as an information provider, catalyst, facilitator, and support system for research aspirants, SRF contributes significantly to institutional development and societal progress, reinforcing the importance of research as a tool for empowerment and knowledge creation.</p>
         </div>
-      </div>
    </main>
     
     <footer>

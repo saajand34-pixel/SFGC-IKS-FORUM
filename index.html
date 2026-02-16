@@ -15,6 +15,9 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
+            /* Added global font size and line spacing */
+            font-size: 11pt;
+            line-height: 1.2;
         }
 
         body {
@@ -175,8 +178,8 @@
         /* DESCRIPTION STYLES */
         .description {
             color: #fff;
-            font-size: 1em;
-            line-height: 1.6;
+            font-size: 11pt; /* Applied requested font size */
+            line-height: 1.2; /* Applied requested line spacing */
             text-align: left;
             margin-top: 30px;
             padding: 0 10px;
@@ -253,8 +256,8 @@
         footer p {
             margin: 0;
             font-weight: bold;
-            font-size: 1em;
-            line-height: 1.6; 
+            font-size: 11pt;
+            line-height: 1.2; 
             color: #BF953F;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
@@ -283,20 +286,18 @@
             nav ul li { margin: 15px 0; width: 100%; text-align: center; }
             .hamburger { display: flex; }
             
-            /* UPDATED FOR PERFECT FIT ON MOBILE */
             .carousel img { 
                 max-height: 300px; 
                 width: 4.55% !important; 
-                object-fit: cover; /* Ensures image fills the container */
+                object-fit: cover; 
             }
             
             .dots { display: none; }
             h2.main-title { font-size: 1.5em; }
             .subtitle { font-size: 1em; }
-            .description { font-size: 0.9em; text-align: justify; }
+            .description { font-size: 11pt; text-align: justify; }
         }
 
-        /* Hide dots on PC (desktop) */
         @media (min-width: 769px) {
             .dots { display: none; }
         }
