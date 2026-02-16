@@ -15,9 +15,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
-            /* Added global font size and line spacing */
-            font-size: 11pt;
-            line-height: 1.2;
         }
 
         body {
@@ -178,8 +175,8 @@
         /* DESCRIPTION STYLES */
         .description {
             color: #fff;
-            font-size: 11pt; /* Applied requested font size */
-            line-height: 1.2; /* Applied requested line spacing */
+            font-size: 1em;
+            line-height: 1.6;
             text-align: left;
             margin-top: 30px;
             padding: 0 10px;
@@ -256,8 +253,8 @@
         footer p {
             margin: 0;
             font-weight: bold;
-            font-size: 11pt;
-            line-height: 1.2; 
+            font-size: 1em;
+            line-height: 1.6; 
             color: #BF953F;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
@@ -295,7 +292,7 @@
             .dots { display: none; }
             h2.main-title { font-size: 1.5em; }
             .subtitle { font-size: 1em; }
-            .description { font-size: 11pt; text-align: justify; }
+            .description { font-size: 0.9em; text-align: justify; }
         }
 
         @media (min-width: 769px) {
@@ -375,13 +372,12 @@
     </footer>
     
     <script>
-        // 1. Navigation Menu Toggle
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
             menu.classList.toggle('active');
         }
         
-        // 2. Cinematic Loader (Fixed 5 Seconds for PC & Mobile)
+        // Loader duration set to exactly 5000ms (5 seconds)
         window.addEventListener('load', () => {
             const loader = document.getElementById('loading-screen');
             setTimeout(() => {
@@ -389,10 +385,9 @@
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 1000);
-            }, 5000);
+            }, 5000); 
         });
 
-        // 3. Carousel Logic
         let currentIndex = 0;
         const totalSlides = 22;
         const carousel = document.getElementById('carousel');
