@@ -199,10 +199,10 @@
 
         .carousel img {
             width: 100%; 
+            flex: 0 0 100%
             height: auto;
             max-height: 400px;
             object-fit: contain;
-            flex-shrink: 0; 
         }
 
         .carousel-btn {
@@ -285,8 +285,6 @@
             
             .carousel img { 
                 max-height: 300px; 
-                width: 4.55% !important; 
-                object-fit: cover; 
             }
             
             .dots { display: none; }
@@ -388,7 +386,7 @@
         });
 
         let currentIndex = 0;
-        const totalSlides = 22;
+        const totalSlides = document.querySelectorAll('#carousel img').length;
         const carousel = document.getElementById('carousel');
         const dotsContainer = document.getElementById('dots');
         let autoSlideInterval;
