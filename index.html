@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SFGC IKS Forum</title>
     <style>
-        /* GLOBAL SETTINGS & ARROW REMOVAL */
+        /* GLOBAL SETTINGS */
         html, body {
             margin: 0;
             padding: 0;
@@ -13,9 +13,7 @@
             overflow-x: hidden;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
-            /* Added requested font size and line spacing */
             font-size: 11pt;
             line-height: 1.2;
         }
@@ -72,7 +70,6 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            transition: all 0.3s ease;
         }
 
         nav a {
@@ -81,9 +78,11 @@
             font-weight: bold;
             position: relative;
             font-size: 1.1em; /* PC size, matching committee.html */
-            font-family: 'Georgia Pro', Georgia, serif; 
-            display: inline-block; 
+            font-family: 'Georgia Pro', Georgia, serif; /* Confirmed Georgia Pro */
+            display: inline-block;
         }
+        
+        /* HOVER UNDERLINE ANIMATION */
         nav a::after {
             content: '';
             position: absolute;
@@ -94,28 +93,21 @@
             background-color: #ffd700;
             transition: width 0.3s ease;
         }
-        nav a:hover::after {
-            width: 100%;
-        }
-        
+        nav a:hover::after { width: 100%; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
+        /* HAMBURGER POSITIONED LIKE OTHER PAGES */
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            right: 10px; 
+            right: 10px; /* Adjusted for alignment */
             top: 70%;
             transform: translateY(-50%);
             z-index: 1001;
         }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #cccccc;
-            margin: 3px 0;
-        }
+        .hamburger div { width: 30px; height: 4px; background-color: #cccccc; margin: 3px 0; } /* Made larger */
 
         /* 3. MAIN CONTENT */
         main {
@@ -183,8 +175,8 @@
         footer p {
             margin: 0;
             font-weight: bold;
-            font-size: 11pt; /* Matched global font size */
-            line-height: 1.2; /* Matched global line spacing */
+            font-size: 1em; /* Uniform PC size */
+            line-height: 1.6; /* Uniform PC line height */
             color: #BF953F;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
@@ -192,15 +184,21 @@
             display: inline-block;
         }
 
-        /* MOBILE OVERLAP FIXES */
+        footer p br { display: none; } /* Hide break on desktop for full text */
+
+        .hidden { opacity: 0 !important; visibility: hidden; }
+
+        /* MOBILE MENU BOX SIZE & POSITION (MATCHED TO REFERENCE) */
         @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            
             nav ul {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 75px;
-                right: 10px; 
-                width: 260px;
+                top: 75px; /* Matches about us.html */
+                right: 10px; /* Matches about us.html */
+                width: 260px; /* Matches about us.html */
                 background-color: rgba(0, 0, 0, 0.95);
                 padding: 25px 0;
                 border: 1px solid #BF953F;
@@ -208,30 +206,17 @@
                 box-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 z-index: 2000;
             }
-            nav ul.active {
-                display: flex;
-            }
-            nav ul li { 
-                margin: 15px 0; 
-                width: 100%;
-                text-align: center;
-            }
-            nav a { 
-                color: #ffcc66; 
-                font-size: 1.2em; /* Mobile size, matching committee.html */
-                display: inline-block;
-            }
-            .hamburger { display: flex; }
-            body { overflow-x: hidden; }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; width: 100%; text-align: center; }
+            nav ul li a { font-size: 1.2em; text-align: justify; } /* Matches about us.html */
             
+            .carousel img { object-fit: cover; max-height: 300px; }
+            .description { text-align: justify; }
+            
+            footer p br { display: block; } /* Show break on mobile for phone-like break */
             footer p {
-                font-size: 11pt;
-                line-height: 1.2;
-            }
-
-            .footer-break {
-                display: block;
-                margin-top: 5px;
+                font-size: 1.1em; /* Uniform mobile size */
+                line-height: 1.4; /* Uniform mobile line height */
             }
         }
     </style>
@@ -284,7 +269,7 @@
     </main>
     
     <footer>
-        <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
+        <p>© All Copyrights Reserved 2026-27<br>SFGC IKS FORUM - SRF INDIA</p>
     </footer>
     
     <script>

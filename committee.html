@@ -50,7 +50,8 @@
             text-decoration: none;
             font-weight: bold;
             position: relative;
-            font-size: 1.1em;
+            font-size: 1.1em; /* PC size, matching index.html */
+            font-family: 'Georgia Pro', Georgia, serif; /* Matching index.html */
             display: inline-block; 
         }
         
@@ -153,8 +154,8 @@
         footer p {
             margin: 0;
             font-weight: bold;
-            font-size: 1em;
-            line-height: 1.6; 
+            font-size: 1em; /* Uniform PC size */
+            line-height: 1.6; /* Uniform PC line height */
             color: #BF953F;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
@@ -188,15 +189,16 @@
             }
             nav a { 
                 color: #ffcc66; 
-                font-size: 1.2em; 
+                font-size: 1.2em; /* Mobile size, matching index.html */
+                font-family: 'Georgia Pro', Georgia, serif; /* Added to match index.html */
                 display: inline-block;
             }
             .hamburger { display: flex; }
             .committee-section { padding: 15px; }
 
             footer p {
-                font-size: 1.1em;
-                line-height: 1.4;
+                font-size: 1.1em; /* Uniform mobile size */
+                line-height: 1.4; /* Uniform mobile line height */
             }
 
             .footer-break {
@@ -421,10 +423,5 @@
     </footer>
     
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-    </script>
 </body>
 </html>

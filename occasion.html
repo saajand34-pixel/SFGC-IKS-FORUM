@@ -50,7 +50,8 @@
             text-decoration: none;
             font-weight: bold;
             position: relative;
-            font-size: 1.1em;
+            font-size: 1.1em; /* PC size, matching index.html */
+            font-family: 'Georgia Pro', Georgia, serif; /* Matching index.html */
             display: inline-block; /* Ensures underline matches word width */
         }
         
@@ -144,8 +145,8 @@
         footer p {
             margin: 0;
             font-weight: bold;
-            font-size: 1em;
-            line-height: 1.6; 
+            font-size: 1em; /* Uniform PC size */
+            line-height: 1.6; /* Uniform PC line height */
             color: #BF953F;
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
             -webkit-background-clip: text;
@@ -177,15 +178,15 @@
                 width: 100%;
                 text-align: center;
             }
-            nav a { color: #ffcc66; font-size: 1.2em; display: inline-block; }
+            nav a { color: #ffcc66; font-size: 1.2em; font-family: 'Georgia Pro', Georgia, serif; display: inline-block; } /* Added font-family to match index.html */
             .hamburger { display: flex; }
             .prospectus-section { padding: 20px; }
             .prospectus-btn { margin-right: 10px; margin-bottom: 10px; } /* Stack buttons on mobile */
             
             /* COMMON MOBILE FOOTER SIZE */
             footer p {
-                font-size: 1.1em;
-                line-height: 1.4;
+                font-size: 1.1em; /* Uniform mobile size */
+                line-height: 1.4; /* Uniform mobile line height */
             }
 
             /* Footer line break fix */
