@@ -1,450 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>SFGC IKS Forum</title>
-    <style>
-        /* GLOBAL SETTINGS & ARROW REMOVAL */
-        html, body {
-            margin: 0;
-            padding: 0;
-            overscroll-behavior-x: none; 
-            overflow-x: hidden;
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>SFGC IKS Forum</title>
 
-        body {
-            font-family: 'Georgia Pro', Georgia, serif;
-            background: url('45383.png') no-repeat top center fixed;
-            background-size: cover;
-            color: #fdf5e6;
-            display: flex;
-            flex-direction: column;
-        }
+<style>
 
-        /* 1. CINEMATIC LOADING SCREEN */
-        #loading-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 10000;
-            transition: opacity 1s ease-in-out;
-        }
+/* GLOBAL SETTINGS */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
 
-        #iks-text {
-            font-size: clamp(50px, 10vw, 80px); 
-            font-weight: 900;
-            letter-spacing: 8px; 
-            position: relative;
-            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 0.5px transparent;
-            opacity: 0;
-            transform: scale(0.9) translateZ(0);
-            animation: cinematicReveal 5s ease-out forwards; /* Changed to 5s */
-            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
-        }
+body {
+    font-family: 'Georgia Pro', Georgia, serif;
+    background: url('45383.png') no-repeat top center fixed;
+    background-size: cover;
+    color: #fdf5e6;
+    display: flex;
+    flex-direction: column;
+}
 
-        @media (max-width: 768px) {
-            #iks-text {
-                animation: cinematicReveal 5s ease-out forwards; /* Changed to 5s for mobile */
-            }
-        }
+/* HEADER */
+header {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    text-align: center;
+}
 
-        #iks-text::after {
-            content: 'SFGC IKS'; 
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-            animation-delay: 1s;
-        }
+h1 {
+    color: #ffd700;
+}
 
-        @keyframes cinematicReveal { to { opacity: 1; transform: scale(1) translateZ(0); } }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+/* MAIN */
+main {
+    flex: 1;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    text-align: center;
+}
 
-        /* 2. HEADER & NAVIGATION */
-        header {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 1000;
-        }
+/* CAROUSEL */
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto 40px;
+    overflow: hidden;
+    border-radius: 15px;
+}
 
-        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%; /* PC FIX */
+}
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            transition: all 0.3s ease;
-        }
+.carousel img {
+    width: 100%;
+    flex: 0 0 100%; /* FIXED (semicolon added) */
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
 
-        nav a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            font-size: 1.1em;
-            font-family: 'Georgia Pro', Georgia, serif; 
-            display: inline-block;
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #ffd700;
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
+/* BUTTONS */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+}
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            position: absolute;
-            right: 10px; 
-            top: 70%;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #cccccc;
-            margin: 3px 0;
-        }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
 
-        /* 3. MAIN CONTENT */
-        main {
-            flex: 1;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 40px 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
-            text-align: center;
-            opacity: 0;
-            animation: pageFadeIn 1.5s ease-out forwards;
-        }
+/* DESCRIPTION */
+.description {
+    color: #fff;
+    font-size: 1em;
+    line-height: 1.6;
+    text-align: left;
+    margin-top: 30px;
+    padding: 0 10px;
+}
 
-        @keyframes pageFadeIn { to { opacity: 1; } }
+/* FOOTER */
+footer {
+    padding: 30px 20px;
+    text-align: center;
+    background: #1F0505;
+}
 
-        /* TITLE AND SUBTITLE STYLES */
-        h2.main-title { 
-            color: #ffd700; 
-            border-bottom: 1px solid #ffcc66; 
-            display: inline-block; 
-            margin-bottom: 15px; 
-            text-shadow: 1px 1px 2px #000;
-            width: auto;
-        }
-
-        .subtitle {
-            color: #fff; 
-            font-size: 1.2em;
-            font-weight: bold; 
-            text-shadow: 1px 1px 2px #000;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-
-        /* DESCRIPTION STYLES */
-        .description {
-            color: #fff;
-            font-size: 1em;
-            line-height: 1.6;
-            text-align: left;
-            margin-top: 30px;
-            padding: 0 10px;
-        }
-
-        /* CAROUSEL STYLES */
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto 40px;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel img {
-            width: 100%; 
-            flex: 0 0 100%
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 50%;
-            z-index: 10;
-        }
-
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
-        .carousel-btn:hover { background: rgba(0,0,0,0.8); }
-
-        .dots {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            margin: 0 5px;
-            background: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .dot.active { background: #ffd700; }
-
-        /* 4. FOOTER */
-        footer {
-            padding: 30px 20px;
-            text-align: center;
-            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
-            border-top: 2px solid #BF953F;
-            margin-top: auto;
-        }
-
-        footer p {
-            margin: 0;
-            font-weight: bold;
-            font-size: 1em;
-            line-height: 1.6; 
-            color: #BF953F;
-            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .hidden { opacity: 0 !important; visibility: hidden; }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 75px;
-                right: 10px; 
-                width: 260px;
-                background-color: rgba(0, 0, 0, 0.95);
-                padding: 25px 0;
-                border: 1px solid #BF953F;
-                border-radius: 12px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-                z-index: 2000;
-            }
-            nav ul.active { display: flex; }
-            nav ul li { margin: 15px 0; width: 100%; text-align: center; }
-            .hamburger { display: flex; }
-            
-            .carousel img { 
-                max-height: 300px; 
-            }
-            
-            .dots { display: none; }
-            h2.main-title { font-size: 1.5em; }
-            .subtitle { font-size: 1em; }
-            .description { font-size: 0.9em; text-align: justify; }
-        }
-
-        @media (min-width: 769px) {
-            .dots { display: none; }
-        }
-    </style>
+</style>
 </head>
+
 <body>
-    <div id="loading-screen">
-        <div id="iks-text">SFGC IKS</div>
+
+<header>
+    <h1>SFGC IKS Forum Welcomes You</h1>
+</header>
+
+<main>
+
+<h2>Recent Updates</h2>
+<p>IKS HORIZONS 2025 - INTERNATIONAL CONFERENCE on INDIAN KNOWLEDGE SYSTEM</p>
+
+<div class="carousel-container">
+    <div class="carousel" id="carousel">
+        <img src="slide1.png">
+        <img src="slide2.png">
+        <img src="slide3.png">
+        <img src="slide4.png">
+        <img src="slide5.png">
+        <img src="slide6.png">
+        <img src="slide7.png">
+        <img src="slide8.png">
+        <img src="slide9.png">
+        <img src="slide10.png">
+        <img src="slide11.png">
+        <img src="slide12.png">
+        <img src="slide13.png">
+        <img src="slide14.png">
+        <img src="slide15.png">
+        <img src="slide16.png">
+        <img src="slide17.png">
+        <img src="slide18.png">
+        <img src="slide19.png">
+        <img src="slide20.png">
+        <img src="slide21.png">
+        <img src="slide22.png">
     </div>
 
-    <header>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <h1>SFGC IKS Forum Welcomes You</h1>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="occasion.html">Occasions</a></li>
-                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
-                <li><a href="committee.html">Committee</a></li>
-                <li><a href="about us.html">About Us</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <h2 class="main-title">Recent Updates</h2>
-        <p class="subtitle">IKS HORIZONS 2025 - INTERNATIONAL CONFERENCE on INDIAN KNOWLEDGE SYSTEM</p>
+    <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+    <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+</div>
 
-        <div class="carousel-container">
-            <div class="carousel" id="carousel">
-                <img src="slide1.png" alt="Slide 1">
-                <img src="slide2.png" alt="Slide 2">
-                <img src="slide3.png" alt="Slide 3">
-                <img src="slide4.png" alt="Slide 4">
-                <img src="slide5.png" alt="Slide 5">
-                <img src="slide6.png" alt="Slide 6">
-                <img src="slide7.png" alt="Slide 7">
-                <img src="slide8.png" alt="Slide 8">
-                <img src="slide9.png" alt="Slide 9">
-                <img src="slide10.png" alt="Slide 10">
-                <img src="slide11.png" alt="Slide 11">
-                <img src="slide12.png" alt="Slide 12">
-                <img src="slide13.png" alt="Slide 13">
-                <img src="slide14.png" alt="Slide 14">
-                <img src="slide15.png" alt="Slide 15">
-                <img src="slide16.png" alt="Slide 16">
-                <img src="slide17.png" alt="Slide 17">
-                <img src="slide18.png" alt="Slide 18">
-                <img src="slide19.png" alt="Slide 19">
-                <img src="slide20.png" alt="Slide 20">
-                <img src="slide21.png" alt="Slide 21">
-                <img src="slide22.png" alt="Slide 22">
-            </div>
-            <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
-            <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
-        </div>
-        <div class="dots" id="dots"></div>
-
-        <div class="description">
-            The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
+<div class="description">
+The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
             The conference was graced by the distinguished presence of the Chief Guest, Dr. Anil D. Sahasrabudhe Chairman of NETF/ EC-NAAC & NBA /Former Chairman, AICTE., whose inaugural address set a strong intellectual tone for the event. The Chief Guest emphasized the relevance of Indian knowledge traditions in addressing present-day global challenges and highlighted the need for interdisciplinary research rooted in indigenous wisdom. The keynote insights inspired participants to explore innovative research pathways while preserving the richness of India’s intellectual heritage.<br><br>
             IKS Horizons 2025 witnessed enthusiastic participation from over 250 delegates, featuring 120 research paper presentations and 80 poster presentations by scholars from reputed institutions across India and abroad. The sessions were marked by dynamic academic exchanges, thought-provoking presentations, and interactive discussions that enriched the research experience of all participants. The hybrid mode of the conference enabled broader outreach and inclusive participation.<br><br>
             A major highlight of the conference was the launch of key academic initiatives, including the release of the e-conference proceedings, the introduction of a seshadripuram Global Journal Multilinguistic(SJGML) Research Journal, and the formal establishment of the IKS Forum at SFGC. These milestones reflect SRF’s continued commitment to promoting research excellence, fostering interdisciplinary collaboration, and strengthening the academic ecosystem.<br><br>
             Through the successful organization of IKS Horizons 2025, the Seshadripuram Research Foundation reaffirmed its vision of nurturing research that harmoniously blends tradition with innovation. The conference laid a strong foundation for future scholarly collaborations and reinforced SRF’s role as a catalyst for knowledge creation and academic leadership.
-        </div>
-    </main>
-    
-    <footer>
-        <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
-    </footer>
-    
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-        
-        // Loader duration set to exactly 5000ms (5 seconds), triggered on DOMContentLoaded
-        window.addEventListener('DOMContentLoaded', () => {
-            const loader = document.getElementById('loading-screen');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 1000);
-            }, 5000); 
-        });
+</div>
 
-        let currentIndex = 0;
-        const totalSlides = document.querySelectorAll('#carousel img').length;
-        const carousel = document.getElementById('carousel');
-        const dotsContainer = document.getElementById('dots');
-        let autoSlideInterval;
+</main>
 
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            dot.onclick = () => goToSlide(i);
-            dotsContainer.appendChild(dot);
-        }
+<footer>
+    © All Copyrights Reserved 2026-27 SFGC IKS FORUM - SRF INDIA
+</footer>
 
-        function updateDots() {
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
+<script>
+let currentIndex = 0;
+const slides = document.querySelectorAll('#carousel img');
+const totalSlides = slides.length;
+const carousel = document.getElementById('carousel');
 
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
+function updateCarousel() {
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
 
-        function goToSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-            updateDots();
-            resetAutoSlide();
-        }
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
+}
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateCarousel();
-            updateDots();
-            resetAutoSlide();
-        }
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+}
+</script>
 
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-            updateDots();
-            resetAutoSlide();
-        }
-
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateCarousel();
-                updateDots();
-            }, 5000);
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-
-        updateDots();
-        startAutoSlide();
-    </script>
 </body>
 </html>
