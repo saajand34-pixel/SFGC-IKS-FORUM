@@ -7,6 +7,20 @@
 
 <style>
 
+/* LOADING SCREEN */
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #ffd700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    z-index: 9999;
+}
+
 /* GLOBAL SETTINGS */
 html, body {
     margin: 0;
@@ -57,13 +71,13 @@ main {
 
 .carousel {
     display: flex;
-    transition: transform 0.5s ease;
-    width: 100%; /* PC FIX */
+    transition: transform 0.8s ease;
+    width: 100%;
 }
 
 .carousel img {
     width: 100%;
-    flex: 0 0 100%; /* FIXED (semicolon added) */
+    flex: 0 0 100%;
     height: auto;
     max-height: 400px;
     object-fit: contain;
@@ -90,10 +104,10 @@ main {
 .description {
     color: #fff;
     font-size: 1em;
-    line-height: 1.6;
-    text-align: left;
+    line-height: 1.8;
+    text-align: justify;
     margin-top: 30px;
-    padding: 0 10px;
+    padding: 0 15px;
 }
 
 /* FOOTER */
@@ -107,6 +121,11 @@ footer {
 </head>
 
 <body>
+
+<!-- LOADER -->
+<div id="loader">
+    Loading SFGC IKS Forum...
+</div>
 
 <header>
     <h1>SFGC IKS Forum Welcomes You</h1>
@@ -148,7 +167,7 @@ footer {
 </div>
 
 <div class="description">
-The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
+    The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
             The conference was graced by the distinguished presence of the Chief Guest, Dr. Anil D. Sahasrabudhe Chairman of NETF/ EC-NAAC & NBA /Former Chairman, AICTE., whose inaugural address set a strong intellectual tone for the event. The Chief Guest emphasized the relevance of Indian knowledge traditions in addressing present-day global challenges and highlighted the need for interdisciplinary research rooted in indigenous wisdom. The keynote insights inspired participants to explore innovative research pathways while preserving the richness of India’s intellectual heritage.<br><br>
             IKS Horizons 2025 witnessed enthusiastic participation from over 250 delegates, featuring 120 research paper presentations and 80 poster presentations by scholars from reputed institutions across India and abroad. The sessions were marked by dynamic academic exchanges, thought-provoking presentations, and interactive discussions that enriched the research experience of all participants. The hybrid mode of the conference enabled broader outreach and inclusive participation.<br><br>
             A major highlight of the conference was the launch of key academic initiatives, including the release of the e-conference proceedings, the introduction of a seshadripuram Global Journal Multilinguistic(SJGML) Research Journal, and the formal establishment of the IKS Forum at SFGC. These milestones reflect SRF’s continued commitment to promoting research excellence, fostering interdisciplinary collaboration, and strengthening the academic ecosystem.<br><br>
@@ -162,6 +181,15 @@ The International Conference – IKS Horizons 2025, organized by the Seshadripur
 </footer>
 
 <script>
+
+/* 5 SECOND LOADER */
+window.addEventListener("load", function(){
+    setTimeout(function(){
+        document.getElementById("loader").style.display = "none";
+    }, 5000);
+});
+
+/* CAROUSEL */
 let currentIndex = 0;
 const slides = document.querySelectorAll('#carousel img');
 const totalSlides = slides.length;
@@ -180,6 +208,10 @@ function prevSlide() {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateCarousel();
 }
+
+/* AUTO SLIDE EVERY 4 SECONDS */
+setInterval(nextSlide, 4000);
+
 </script>
 
 </body>
