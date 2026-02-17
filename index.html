@@ -27,7 +27,7 @@
             flex-direction: column;
         }
 
-        /* 1. CINEMATIC LOADING SCREEN (5 SECONDS) */
+        /* 1. CINEMATIC LOADING SCREEN (3 SECONDS) */
         #loading-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -47,7 +47,7 @@
             -webkit-text-fill-color: transparent;
             opacity: 0;
             transform: scale(0.9);
-            animation: cinematicReveal 5s ease-out forwards;
+            animation: cinematicReveal 3s ease-out forwards; /* Changed to 3s */
         }
 
         @keyframes cinematicReveal { to { opacity: 1; transform: scale(1); } }
@@ -131,6 +131,13 @@
             border-bottom: 1px solid #ffcc66;
             display: inline-block;
             margin-bottom: 15px;
+        }
+
+        /* DESCRIPTION STYLES */
+        .description {
+            font-family: 'Georgia Pro', Georgia, serif; /* Added Georgia Pro font */
+            text-align: justify;
+            color: #fff;
         }
 
         /* CAROUSEL */
@@ -245,7 +252,7 @@
             <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
         </div>
 
-        <div class="description" style="text-align: justify; color: #fff;">
+        <div class="description">
             The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
             The conference was graced by the distinguished presence of the Chief Guest, Dr. Anil D. Sahasrabudhe Chairman of NETF/ EC-NAAC & NBA /Former Chairman, AICTE., whose inaugural address set a strong intellectual tone for the event. The Chief Guest emphasized the relevance of Indian knowledge traditions in addressing present-day global challenges and highlighted the need for interdisciplinary research rooted in indigenous wisdom. The keynote insights inspired participants to explore innovative research pathways while preserving the richness of India’s intellectual heritage.<br><br>
             IKS Horizons 2025 witnessed enthusiastic participation from over 250 delegates, featuring 120 research paper presentations and 80 poster presentations by scholars from reputed institutions across India and abroad. The sessions were marked by dynamic academic exchanges, thought-provoking presentations, and interactive discussions that enriched the research experience of all participants. The hybrid mode of the conference enabled broader outreach and inclusive participation.<br><br>
@@ -269,7 +276,7 @@
             setTimeout(() => {
                 loader.classList.add('hidden');
                 setTimeout(() => loader.style.display = 'none', 1000);
-            }, 5000); // Forced 5-second loader
+            }, 3000); /* Changed to 3 seconds */
         });
 
         let currentIndex = 0;
