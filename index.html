@@ -187,9 +187,12 @@
             }
             nav ul.active { display: flex; }
             nav ul li { margin: 15px 0; width: 100%; text-align: center; }
+            nav ul li a { font-size: 0.9em; text-align: justify; } /* Smaller font and justify for phone-like break */
             
             .carousel img { object-fit: cover; max-height: 300px; }
             .description { text-align: justify; }
+            
+            footer p::after { content: "\A"; white-space: pre; } /* Add line break on mobile for phone-like break */
         }
     </style>
 </head>
@@ -240,12 +243,9 @@
         </div>
     </main>
     
-  <footer>
-    <p>
-        © All Copyrights Reserved 2026-27<br>
-        SFGC IKS FORUM - SRF INDIA
-    </p>
-  </footer>
+    <footer>
+        <p>© All Copyrights Reserved 2026-27 SFGC IKS FORUM - SRF INDIA</p>
+    </footer>
     
     <script>
         function toggleMenu() {
