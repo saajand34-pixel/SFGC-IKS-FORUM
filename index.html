@@ -7,245 +7,100 @@
     <style>
         /* GLOBAL SETTINGS */
         html, body {
-            margin: 0;
-            padding: 0;
-            overscroll-behavior-x: none; 
-            overflow-x: hidden;
+            margin: 0; padding: 0;
+            overscroll-behavior-x: none; overflow-x: hidden;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
-            font-size: 11pt;
-            line-height: 1.2;
+            font-size: 11pt; line-height: 1.2;
         }
-
         body {
             font-family: 'Georgia Pro', Georgia, serif;
             background: url('45383.png') no-repeat top center fixed;
             background-size: cover;
             color: #fdf5e6;
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
         }
 
-        /* 1. CINEMATIC LOADING SCREEN (5 SECONDS) */
+        /* 1. CINEMATIC LOADING SCREEN */
         #loading-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
             display: flex; justify-content: center; align-items: center;
-            z-index: 10000;
-            transition: opacity 1s ease-in-out;
+            z-index: 10000; transition: opacity 1s ease-in-out;
         }
-
         #iks-text {
-            font-size: clamp(50px, 10vw, 80px); 
-            font-weight: 900;
-            letter-spacing: 8px; 
-            position: relative;
+            font-size: clamp(50px, 10vw, 80px); font-weight: 900; letter-spacing: 8px; 
             background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            opacity: 0;
-            transform: scale(1);
-            animation: netflixFadeIn 5s ease-out forwards; /* Netflix-style fade-in over 5 seconds */
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: netflixFadeIn 5s ease-out forwards;
         }
-
         @keyframes netflixFadeIn { to { opacity: 1; } }
 
-        /* 2. HEADER & NAVIGATION */
-        header {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 1000;
-        }
-
+        /* 2. HEADER & NAVIGATION (UNIFORM) */
+        header { background-color: rgba(0, 0, 0, 0.6); padding: 20px; text-align: center; position: relative; z-index: 1000; }
         h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        nav a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            font-size: 1.1em; /* PC size, matching committee.html */
-            font-family: 'Georgia Pro', Georgia, serif; /* Confirmed Georgia Pro */
-            display: inline-block;
-        }
-        
-        /* HOVER UNDERLINE ANIMATION */
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #ffd700;
-            transition: width 0.3s ease;
-        }
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-size: 1.1em; font-family: 'Georgia Pro', Georgia, serif; display: inline-block; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #ffd700; transition: width 0.3s ease; }
         nav a:hover::after { width: 100%; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
-        /* HAMBURGER POSITIONED LIKE OTHER PAGES */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            position: absolute;
-            right: 10px; /* Adjusted for alignment */
-            top: 70%;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
-        .hamburger div { width: 30px; height: 4px; background-color: #cccccc; margin: 3px 0; } /* Made larger */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; right: 10px; top: 70%; transform: translateY(-50%); z-index: 1001; }
+        .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
 
-        /* 3. MAIN CONTENT */
+        /* 3. MAIN CONTENT (UNIFORM BOX) */
         main {
-            flex: 1;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 40px 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
+            flex: 1; max-width: 900px; margin: 40px auto; padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.5); border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
-            text-align: center;
-            opacity: 0;
-            animation: pageFadeIn 1.5s ease-out forwards;
+            text-align: center; opacity: 0; animation: pageFadeIn 1.5s ease-out forwards;
         }
-
         @keyframes pageFadeIn { to { opacity: 1; } }
-
-        /* TITLE STYLES */
-        .main-title {
-            font-size: 1.8em; /* Consistent with other pages' titles */
-            color: #ffd700;
-            border-bottom: 1px solid #ffcc66;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        /* DESCRIPTION STYLES */
-        .description {
-            font-family: 'Georgia Pro', Georgia, serif;
-            text-align: justify;
-            color: #fff;
-        }
+        .main-title { font-size: 1.8em; color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 15px; }
+        .description { text-align: justify; color: #fff; font-size: 11pt; line-height: 1.2; }
 
         /* CAROUSEL */
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto 40px;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-
+        .carousel-container { position: relative; max-width: 100%; margin: 0 auto 40px; overflow: hidden; border-radius: 15px; }
         .carousel { display: flex; transition: transform 0.5s ease; }
         .carousel img { width: 100%; flex: 0 0 100%; height: auto; max-height: 400px; object-fit: contain; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; padding: 10px; cursor: pointer; border-radius: 50%; z-index: 10; }
+        .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
 
-        .carousel-btn {
-            position: absolute;
-            top: 50%; transform: translateY(-50%);
-            background: rgba(0,0,0,0.5); color: #fff;
-            border: none; padding: 10px; cursor: pointer;
-            border-radius: 50%; z-index: 10;
-        }
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
-
-        /* 4. FOOTER */
-        footer {
-            padding: 30px 20px;
-            text-align: center;
-            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
-            border-top: 2px solid #BF953F;
-            margin-top: auto;
-        }
-
-        footer p {
-            margin: 0;
-            font-weight: bold;
-            font-size: 1em; /* Uniform PC size */
-            line-height: 1.6; /* Uniform PC line height */
-            color: #BF953F;
-            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        footer p br { display: none; } /* Hide break on desktop for full text */
-
+        /* 4. FOOTER (UNIFORM) */
+        footer { padding: 30px 20px; text-align: center; background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505); border-top: 2px solid #BF953F; margin-top: auto; }
+        footer p { margin: 0; font-weight: bold; font-size: 1em; line-height: 1.6; color: #BF953F; background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
         .hidden { opacity: 0 !important; visibility: hidden; }
 
-        /* MOBILE MENU BOX SIZE & POSITION (MATCHED TO REFERENCE) */
         @media (max-width: 768px) {
             .hamburger { display: flex; }
-            
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 75px; /* Matches about us.html */
-                right: 10px; /* Matches about us.html */
-                width: 260px; /* Matches about us.html */
-                background-color: rgba(0, 0, 0, 0.95);
-                padding: 25px 0;
-                border: 1px solid #BF953F;
-                border-radius: 12px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-                z-index: 2000;
-            }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 75px; right: 10px; width: 260px; background-color: rgba(0, 0, 0, 0.95); padding: 25px 0; border: 1px solid #BF953F; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); z-index: 2000; }
             nav ul.active { display: flex; }
             nav ul li { margin: 15px 0; width: 100%; text-align: center; }
-            nav ul li a { font-size: 1.2em; text-align: justify; } /* Matches about us.html */
-            
-            .carousel img { object-fit: cover; max-height: 300px; }
-            .description { text-align: justify; }
-            
-            footer p br { display: block; } /* Show break on mobile for phone-like break */
-            footer p {
-                font-size: 1.1em; /* Uniform mobile size */
-                line-height: 1.4; /* Uniform mobile line height */
-            }
+            nav a { font-size: 1.2em; }
+            footer p { font-size: 1.1em; line-height: 1.4; }
+            .footer-break { display: block; margin-top: 5px; }
+            .carousel img { max-height: 300px; object-fit: cover; }
         }
     </style>
 </head>
 <body>
-    <div id="loading-screen">
-        <div id="iks-text">SFGC IKS</div>
-    </div>
-
+    <div id="loading-screen"><div id="iks-text">SFGC IKS</div></div>
     <header>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div><div></div><div></div>
-        </div>
+        <div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
         <h1>SFGC IKS Forum Welcomes You</h1>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="occasion.html">Occasions</a></li>
-                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
-                <li><a href="committee.html">Committee</a></li>
-                <li><a href="about us.html">About Us</a></li>
-            </ul>
-        </nav>
+        <nav><ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="occasion.html">Occasions</a></li>
+            <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="about us.html">About Us</a></li>
+        </ul></nav>
     </header>
-    
     <main>
         <h2 class="main-title">Recent Updates</h2>
         <p style="color: #fff; font-weight: bold; margin-bottom: 25px;">IKS HORIZONS 2025 - INTERNATIONAL CONFERENCE</p>
-
         <div class="carousel-container">
             <div class="carousel" id="carousel">
                 <img src="slide1.png"> <img src="slide2.png"> <img src="slide3.png"> <img src="slide4.png">
@@ -258,42 +113,18 @@
             <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
             <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
         </div>
-
         <div class="description">
-            The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
-            The conference was graced by the distinguished presence of the Chief Guest, Dr. Anil D. Sahasrabudhe Chairman of NETF/ EC-NAAC & NBA /Former Chairman, AICTE., whose inaugural address set a strong intellectual tone for the event. The Chief Guest emphasized the relevance of Indian knowledge traditions in addressing present-day global challenges and highlighted the need for interdisciplinary research rooted in indigenous wisdom. The keynote insights inspired participants to explore innovative research pathways while preserving the richness of India’s intellectual heritage.<br><br>
-            IKS Horizons 2025 witnessed enthusiastic participation from over 250 delegates, featuring 120 research paper presentations and 80 poster presentations by scholars from reputed institutions across India and abroad. The sessions were marked by dynamic academic exchanges, thought-provoking presentations, and interactive discussions that enriched the research experience of all participants. The hybrid mode of the conference enabled broader outreach and inclusive participation.<br><br>
-            A major highlight of the conference was the launch of key academic initiatives, including the release of the e-conference proceedings, the introduction of a seshadripuram Global Journal Multilinguistic(SJGML) Research Journal, and the formal establishment of the IKS Forum at SFGC. These milestones reflect SRF’s continued commitment to promoting research excellence, fostering interdisciplinary collaboration, and strengthening the academic ecosystem.<br><br>
-            Through the successful organization of IKS Horizons 2025, the Seshadripuram Research Foundation reaffirmed its vision of nurturing research that harmoniously blends tradition with innovation. The conference laid a strong foundation for future scholarly collaborations and reinforced SRF’s role as a catalyst for knowledge creation and academic leadership.
+            The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship.
         </div>
     </main>
-    
-    <footer>
-        <p>© All Copyrights Reserved 2026-27<br>SFGC IKS FORUM - SRF INDIA</p>
-    </footer>
-    
+    <footer><p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p></footer>
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loading-screen');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                setTimeout(() => loader.style.display = 'none', 1000);
-            }, 5000); /* Changed to 5 seconds */
-        });
-
-        let currentIndex = 0;
-        const totalSlides = 22;
-        const carousel = document.getElementById('carousel');
-
-        function updateCarousel() { carousel.style.transform = `translateX(-${currentIndex * 100}%)`; }
+        function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loading-screen').classList.add('hidden'); setTimeout(() => document.getElementById('loading-screen').style.display = 'none', 1000); }, 5000); });
+        let currentIndex = 0; const totalSlides = 22;
+        function updateCarousel() { document.getElementById('carousel').style.transform = `translateX(-${currentIndex * 100}%)`; }
         function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); }
         function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarousel(); }
-
         setInterval(nextSlide, 4000);
     </script>
 </body>

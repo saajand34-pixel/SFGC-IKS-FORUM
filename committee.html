@@ -5,225 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SFGC IKS Forum - Committee</title>
     <style>
-        /* GLOBAL SETTINGS - Matched to Home */
-        html, body {
-            margin: 0;
-            padding: 0;
-            overscroll-behavior-x: none; 
-            overflow-x: hidden;
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
+        /* GLOBAL DNA - Standardized for all pages */
+        html, body { 
+            margin: 0; padding: 0; 
+            overscroll-behavior-x: none; overflow-x: hidden; 
+            min-height: 100vh; 
+            -webkit-font-smoothing: antialiased; 
+            text-rendering: optimizeLegibility; 
+            font-size: 11pt; line-height: 1.2; 
         }
-
-        body {
-            font-family: 'Georgia Pro', Georgia, serif;
-            background: url('45383.png') no-repeat top center fixed;
-            background-size: cover;
-            color: #fdf5e6;
-            display: flex;
-            flex-direction: column;
+        body { 
+            font-family: 'Georgia Pro', Georgia, serif; 
+            background: url('45383.png') no-repeat top center fixed; 
+            background-size: cover; 
+            color: #fdf5e6; 
+            display: flex; flex-direction: column; 
         }
 
         /* HEADER & NAVIGATION */
-        header {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 1000;
-        }
-
+        header { background-color: rgba(0, 0, 0, 0.6); padding: 20px; text-align: center; position: relative; z-index: 1000; }
         h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        nav a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            font-size: 1.1em; /* PC size, matching index.html */
-            font-family: 'Georgia Pro', Georgia, serif; /* Matching index.html */
-            display: inline-block; 
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #ffd700;
-            transition: width 0.3s ease;
-        }
-        
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-size: 1.1em; font-family: 'Georgia Pro', Georgia, serif; display: inline-block; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #ffd700; transition: width 0.3s ease; }
         nav a:hover::after { width: 100%; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            position: absolute;
-            right: 10px; 
-            top: 70%;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; right: 10px; top: 70%; transform: translateY(-50%); z-index: 1001; }
         .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
 
-        /* MAIN CONTENT - Premium Box Style */
-        main {
-            flex: 1;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 40px 20px;
-            background-color: rgba(0, 0, 0, 0.5); 
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
-            text-align: center;
+        /* MAIN CONTENT - Standardized Box */
+        main { 
+            flex: 1; max-width: 900px; margin: 40px auto; padding: 40px 20px; 
+            background-color: rgba(0, 0, 0, 0.5); border-radius: 20px; 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2); 
+            text-align: center; 
         }
 
-        .committee-section {
-            margin-bottom: 50px;
-            padding: 25px;
-            border-left: 4px solid #BF953F; 
-            text-align: left;
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 0 15px 15px 0;
+        h2.main-title { font-size: 1.8em; color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 35px; width: 100%; }
+
+        .committee-section { 
+            margin-bottom: 50px; padding: 25px; border-left: 4px solid #BF953F; 
+            text-align: left; background: rgba(0, 0, 0, 0.25); border-radius: 0 15px 15px 0; 
         }
 
-        h2.main-title { 
-            color: #ffd700; 
-            border-bottom: 1px solid #ffcc66; 
-            display: inline-block; 
-            margin-bottom: 35px; 
-            text-align: center;
-            width: 100%;
-        }
-
-        /* UPDATED SECTION TITLES */
+        /* SECTION TITLES: ALL CAPS, 1.3em */
         h3 { 
-            color: #ffd700; 
-            margin-top: 0; 
-            margin-bottom: 25px; 
-            font-size: 1.3em; /* Reduced size for better visual hierarchy */
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2); 
-            padding-bottom: 10px; 
-            text-transform: uppercase; /* Force all letters to CAPS */
-            letter-spacing: 1px;
+            color: #ffd700; margin-top: 0; margin-bottom: 25px; font-size: 1.3em; 
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2); padding-bottom: 10px; 
+            text-transform: uppercase; letter-spacing: 1px; 
         }
 
-        /* MEMBER FORMATTING */
         .member-box { margin-bottom: 20px; }
-        
-        .member-name { 
-            display: block;
-            color: #ffd700; 
-            font-weight: bold; 
-            font-size: 1.15em;
-            margin-bottom: 2px;
-        }
-
-        .member-post { 
-            display: block;
-            color: #fdf5e6; 
-            font-size: 0.95em;
-            opacity: 0.85;
-            line-height: 1.4;
-        }
+        .member-name { display: block; color: #ffd700; font-weight: bold; font-size: 1.15em; margin-bottom: 2px; }
+        .member-post { display: block; color: #fdf5e6; font-size: 0.95em; opacity: 0.85; line-height: 1.4; }
 
         /* FOOTER */
-        footer {
-            padding: 30px 20px;
-            text-align: center;
-            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
-            border-top: 2px solid #BF953F;
-            margin-top: auto;
-        }
+        footer { padding: 30px 20px; text-align: center; background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505); border-top: 2px solid #BF953F; margin-top: auto; }
+        footer p { margin: 0; font-weight: bold; font-size: 1em; line-height: 1.6; color: #BF953F; background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
 
-        footer p {
-            margin: 0;
-            font-weight: bold;
-            font-size: 1em; /* Uniform PC size */
-            line-height: 1.6; /* Uniform PC line height */
-            color: #BF953F;
-            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        /* MOBILE OVERLAP FIXES */
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 75px;
-                right: 10px; 
-                width: 260px;
-                background-color: rgba(0, 0, 0, 0.95);
-                padding: 25px 0;
-                border: 1px solid #BF953F;
-                border-radius: 12px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-                z-index: 2000;
-            }
-            nav ul.active {
-                display: flex;
-            }
-            nav ul li { 
-                margin: 15px 0; 
-                width: 100%;
-                text-align: center;
-            }
-            nav a { 
-                color: #ffcc66; 
-                font-size: 1.2em; /* Mobile size, matching index.html */
-                font-family: 'Georgia Pro', Georgia, serif; /* Added to match index.html */
-                display: inline-block;
-            }
             .hamburger { display: flex; }
-            .committee-section { padding: 15px; }
-
-            footer p {
-                font-size: 1.1em; /* Uniform mobile size */
-                line-height: 1.4; /* Uniform mobile line height */
-            }
-
-            .footer-break {
-                display: block;
-                margin-top: 5px;
-            }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 75px; right: 10px; width: 260px; background-color: rgba(0, 0, 0, 0.95); padding: 25px 0; border: 1px solid #BF953F; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); z-index: 2000; }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; width: 100%; text-align: center; }
+            nav a { font-size: 1.2em; }
+            footer p { font-size: 1.1em; line-height: 1.4; }
+            .footer-break { display: block; margin-top: 5px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div><div></div><div></div>
-        </div>
+        <div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
         <h1>SFGC IKS Forum</h1>
-        <nav>
-            <ul id="nav-menu">
-                 <li><a href="index.html">Home</a></li>
-                <li><a href="occasion.html">Occasions</a></li>
-                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
-                <li><a href="committee.html">Committee</a></li>
-                <li><a href="about us.html">About Us</a></li>
-            </ul>
-        </nav>
+        <nav><ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="occasion.html">Occasions</a></li>
+            <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="about us.html">About Us</a></li>
+        </ul></nav>
     </header>
     
     <main>
@@ -418,10 +281,8 @@
         </div>
     </main>
     
-    <footer>
-        <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
-    </footer>
+    <footer><p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p></footer>
     
-    <script>
+    <script>function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }</script>
 </body>
 </html>

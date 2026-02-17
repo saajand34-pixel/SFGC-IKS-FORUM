@@ -5,229 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SFGC IKS Forum - About Us</title>
     <style>
-        /* GLOBAL SETTINGS & ARROW REMOVAL */
-        html, body {
-            margin: 0;
-            padding: 0;
-            overscroll-behavior-x: none; 
-            overflow-x: hidden;
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-            /* Added requested font size and line spacing */
-            font-size: 11pt;
-            line-height: 1.2;
+        /* GLOBAL DNA - Standardized for all pages */
+        html, body { 
+            margin: 0; padding: 0; 
+            overscroll-behavior-x: none; overflow-x: hidden; 
+            min-height: 100vh; 
+            -webkit-font-smoothing: antialiased; 
+            text-rendering: optimizeLegibility; 
+            font-size: 11pt; line-height: 1.2; 
+        }
+        body { 
+            font-family: 'Georgia Pro', Georgia, serif; 
+            background: url('45383.png') no-repeat top center fixed; 
+            background-size: cover; 
+            color: #fdf5e6; 
+            display: flex; flex-direction: column; 
         }
 
-        body {
-            font-family: 'Georgia Pro', Georgia, serif;
-            background: url('45383.png') no-repeat top center fixed;
-            background-size: cover;
-            color: #fdf5e6;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* 2. HEADER & NAVIGATION */
-        header {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 1000;
-        }
-
+        /* HEADER & NAVIGATION */
+        header { background-color: rgba(0, 0, 0, 0.6); padding: 20px; text-align: center; position: relative; z-index: 1000; }
         h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            transition: all 0.3s ease;
-        }
-
-        nav a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            font-size: 1.1em; /* PC size, matching index.html */
-            font-family: 'Georgia Pro', Georgia, serif; /* Matching index.html */
-            display: inline-block; 
-        }
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #ffd700;
-            transition: width 0.3s ease;
-        }
-        nav a:hover::after {
-            width: 100%;
-        }
-        
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-size: 1.1em; font-family: 'Georgia Pro', Georgia, serif; display: inline-block; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #ffd700; transition: width 0.3s ease; }
+        nav a:hover::after { width: 100%; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            position: absolute;
-            right: 10px; 
-            top: 70%;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #cccccc;
-            margin: 3px 0;
+        .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; right: 10px; top: 70%; transform: translateY(-50%); z-index: 1001; }
+        .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
+
+        /* MAIN CONTENT - Standardized Box */
+        main { 
+            flex: 1; max-width: 900px; margin: 40px auto; padding: 40px 20px; 
+            background-color: rgba(0, 0, 0, 0.5); border-radius: 20px; 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2); 
+            text-align: center; 
         }
 
-        /* 3. MAIN CONTENT */
-        main {
-            flex: 1;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 40px 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
-            text-align: center;
-            opacity: 0;
-            animation: pageFadeIn 1.5s ease-out forwards;
-        }
-
-        @keyframes pageFadeIn { to { opacity: 1; } }
-
+        h2.main-title { font-size: 1.8em; color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 35px; width: auto; }
+        
         .about-section { margin-bottom: 60px; padding: 10px; }
-        
-        /* Applied requested font size and line spacing to paragraphs */
-        .about-section p { 
-            text-align: justify; 
-            font-size: 11pt;
-            line-height: 1.2;
-        } 
+        .about-section h2 { color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 25px; font-size: 1.4em; }
+        .about-section p { text-align: justify; font-size: 11pt; line-height: 1.2; color: #fff; }
 
-        h2.main-title { 
-            color: #ffd700; 
-            border-bottom: 1px solid #ffcc66; 
-            display: inline-block; 
-            margin-bottom: 35px; 
-            text-shadow: 1px 1px 2px #000;
-            width: auto;
-        }
-        
-        h2 { color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 25px; }
+        img { display: block; margin: 15px auto; image-rendering: -webkit-optimize-contrast; filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); }
 
-        img { 
-            display: block; 
-            margin: 15px auto; 
-            image-rendering: -webkit-optimize-contrast; 
-            filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); 
-        }
+        /* FOOTER */
+        footer { padding: 30px 20px; text-align: center; background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505); border-top: 2px solid #BF953F; margin-top: auto; }
+        footer p { margin: 0; font-weight: bold; font-size: 1em; line-height: 1.6; color: #BF953F; background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
 
-        .logo-wrapper { display: inline-block; text-align: center; }
-        .logo-img { width: 100%; display: block; }
-
-        /* 4. FOOTER */
-        footer {
-            padding: 30px 20px;
-            text-align: center;
-            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
-            border-top: 2px solid #BF953F;
-            margin-top: auto;
-        }
-
-        footer p {
-            margin: 0;
-            font-weight: bold;
-            font-size: 1em; /* Uniform PC size */
-            line-height: 1.6; /* Uniform PC line height */
-            color: #BF953F;
-            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        /* MOBILE OVERLAP FIXES */
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 75px;
-                right: 10px; 
-                width: 260px;
-                background-color: rgba(0, 0, 0, 0.95);
-                padding: 25px 0;
-                border: 1px solid #BF953F;
-                border-radius: 12px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-                z-index: 2000;
-            }
-            nav ul.active {
-                display: flex;
-            }
-            nav ul li { 
-                margin: 15px 0; 
-                width: 100%;
-                text-align: center;
-            }
-            nav a { 
-                color: #ffcc66; 
-                font-size: 1.2em; /* Mobile size, matching index.html */
-                font-family: 'Georgia Pro', Georgia, serif; /* Added to match index.html */
-                display: inline-block;
-            }
             .hamburger { display: flex; }
-            body { overflow-x: hidden; }
-            
-            footer p {
-                font-size: 1.1em; /* Uniform mobile size */
-                line-height: 1.4; /* Uniform mobile line height */
-            }
-
-            .footer-break {
-                display: block;
-                margin-top: 5px;
-            }
-
-            .about-section p {
-                font-size: 11pt; /* Consistent font size on mobile */
-                text-align: justify; 
-            }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 75px; right: 10px; width: 260px; background-color: rgba(0, 0, 0, 0.95); padding: 25px 0; border: 1px solid #BF953F; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); z-index: 2000; }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; width: 100%; text-align: center; }
+            nav a { font-size: 1.2em; }
+            footer p { font-size: 1.1em; line-height: 1.4; }
+            .footer-break { display: block; margin-top: 5px; }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div><div></div><div></div>
-        </div>
+        <div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
         <h1>SFGC IKS Forum</h1>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="occasion.html">Occasions</a></li>
-                <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
-                <li><a href="committee.html">Committee</a></li>
-                <li><a href="about us.html">About Us</a></li>
-            </ul>
-        </nav>
+        <nav><ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="occasion.html">Occasions</a></li>
+            <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="about us.html">About Us</a></li>
+        </ul></nav>
     </header>
     
-   <main>
+    <main>
         <h2 class="main-title">About Us</h2>
 
         <div class="about-section">
@@ -267,32 +118,25 @@ Today, IKS is transitioning from historical texts to classroom curriculum throug
         </div>
 
         <div class="about-section">
-            <div class="logo-wrapper">
-                <h2>IKS Horizons 2025 (Conference)</h2>
-                <img src="55368.png" alt="IKS Horizons Logo" width="180">
-            </div>
+            <h2>Seshadripuram Research Foundation (SRF)</h2>
+            <p>Seshadripuram Research Foundation (SRF) is the research wing of Seshadripuram Educational Trust (SET), established to promote and encourage research among faculty and students of its Degree and Postgraduate institutions. SRF serves as a common platform for research activities across all institutions under the Trust and aims to strengthen academic excellence through quality research and consultancy. It functions as a recognized Ph.D. Research Centre and coordinates various research initiatives while motivating faculty members to undertake innovative research and consulting projects. The Foundation provides financial assistance to deserving research proposals based on merit and relevance, thereby supporting meaningful and socially responsible research. Through its Student Research Forum, SRF nurtures research aptitude and cultivates a culture of inquiry among students. By acting as an information provider, catalyst, facilitator, and support system for research aspirants, SRF contributes significantly to institutional development and societal progress, reinforcing the importance of research as a tool for empowerment and knowledge creation.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>IKS Horizons 2025 (Conference)</h2>
             <p>The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.
 
 The conference was graced by the distinguished presence of the Chief Guest, Dr. Anil D. Sahasrabudhe Chairman of NETF/ EC-NAAC & NBA /Former Chairman, AICTE., whose inaugural address set a strong intellectual tone for the event. The Chief Guest emphasized the relevance of Indian knowledge traditions in addressing present-day global challenges and highlighted the need for interdisciplinary research rooted in indigenous wisdom. The keynote insights inspired participants to explore innovative research pathways while preserving the richness of India’s intellectual heritage.
 
+IKS Horizons 2025 witnessed enthusiastic participation from over 250 delegates, featuring 120 research paper presentations and 80 poster presentations by scholars from reputed institutions across India and abroad. The sessions were marked by dynamic academic exchanges, thought-provoking presentations, and interactive discussions that enriched the research experience of all participants. The hybrid mode of the conference enabled broader outreach and inclusive participation.
+
+A major highlight of the conference was the launch of key academic initiatives, including the release of the e-conference proceedings, the introduction of a seshadripuram Global Journal Multilinguistic(SJGML) Research Journal, and the formal establishment of the IKS Forum at SFGC. These milestones reflect SRF’s continued commitment to promoting research excellence, fostering interdisciplinary collaboration, and strengthening the academic ecosystem.
+
 Through the successful organization of IKS Horizons 2025, the Seshadripuram Research Foundation reaffirmed its vision of nurturing research that harmoniously blends tradition with innovation. The conference laid a strong foundation for future scholarly collaborations and reinforced SRF’s role as a catalyst for knowledge creation and academic leadership.</p>
         </div>
+    </main>
 
-        <div class="about-section">
-            <h2>Seshadripuram Research Foundation</h2>
-            <p>Seshadripuram Research Foundation (SRF) is the research wing of Seshadripuram Educational Trust (SET), established to promote and encourage research among faculty and students of its Degree and Postgraduate institutions. SRF serves as a common platform for research activities across all institutions under the Trust and aims to strengthen academic excellence through quality research and consultancy. It functions as a recognized Ph.D. Research Centre and coordinates various research initiatives while motivating faculty members to undertake innovative research and consulting projects. The Foundation provides financial assistance to deserving research proposals based on merit and relevance, thereby supporting meaningful and socially responsible research. Through its Student Research Forum, SRF nurtures research aptitude and cultivates a culture of inquiry among students. By acting as an information provider, catalyst, facilitator, and support system for research aspirants, SRF contributes significantly to institutional development and societal progress, reinforcing the importance of research as a tool for empowerment and knowledge creation.</p>
-        </div>
-   </main>
-    
-    <footer>
-        <p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p>
-    </footer>
-    
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-    </script>
+    <footer><p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p></footer>
+    <script>function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }</script>
 </body>
 </html>
