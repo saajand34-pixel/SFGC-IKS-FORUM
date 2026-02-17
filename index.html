@@ -47,7 +47,7 @@
             -webkit-text-fill-color: transparent;
             opacity: 0;
             transform: scale(0.9);
-            animation: cinematicReveal 3s ease-out forwards; /* Changed to 3s */
+            animation: cinematicReveal 3s ease-out forwards;
         }
 
         @keyframes cinematicReveal { to { opacity: 1; transform: scale(1); } }
@@ -95,13 +95,13 @@
         nav a:hover::after { width: 100%; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
-        /* HAMBURGER POSITIONED AS PER REFERENCE */
+        /* HAMBURGER POSITIONED LIKE OTHER PAGES */
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
             position: absolute;
-            right: 15px; 
+            right: 10px; /* Changed to 10px to match menu position */
             top: 50%;
             transform: translateY(-50%);
             z-index: 1001;
@@ -135,7 +135,7 @@
 
         /* DESCRIPTION STYLES */
         .description {
-            font-family: 'Georgia Pro', Georgia, serif; /* Added Georgia Pro font */
+            font-family: 'Georgia Pro', Georgia, serif;
             text-align: justify;
             color: #fff;
         }
@@ -183,6 +183,8 @@
             display: inline-block;
         }
 
+        footer p br { display: none; } /* Hide break on desktop for full text */
+
         .hidden { opacity: 0 !important; visibility: hidden; }
 
         /* MOBILE MENU BOX SIZE & POSITION (MATCHED TO REFERENCE) */
@@ -210,7 +212,7 @@
             .carousel img { object-fit: cover; max-height: 300px; }
             .description { text-align: justify; }
             
-            footer p::after { content: "\A"; white-space: pre; } /* Add line break on mobile for phone-like break */
+            footer p br { display: block; } /* Show break on mobile for phone-like break */
         }
     </style>
 </head>
@@ -262,7 +264,7 @@
     </main>
     
     <footer>
-        <p>© All Copyrights Reserved 2026-27 SFGC IKS FORUM - SRF INDIA</p>
+        <p>© All Copyrights Reserved 2026-27<br>SFGC IKS FORUM - SRF INDIA</p>
     </footer>
     
     <script>
@@ -276,7 +278,7 @@
             setTimeout(() => {
                 loader.classList.add('hidden');
                 setTimeout(() => loader.style.display = 'none', 1000);
-            }, 3000); /* Changed to 3 seconds */
+            }, 3000);
         });
 
         let currentIndex = 0;
