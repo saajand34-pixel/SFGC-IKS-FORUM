@@ -17,6 +17,9 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* User Requested Styles */
+    font-size: 11pt;
+    line-height: 1.2;
 }
 
 body {
@@ -78,7 +81,7 @@ body {
     100% { background-position: -200% 0; }
 }
 
-/* HEADER */
+/* HEADER & NAVIGATION */
 header {
     background-color: rgba(0,0,0,0.6);
     padding: 20px;
@@ -90,6 +93,47 @@ header {
 h1 {
     color: #ffd700;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    margin-bottom: 15px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+nav a {
+    color: #ffcc66;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #ffd700;
+    margin: 3px 0;
+    transition: 0.4s;
 }
 
 /* MAIN */
@@ -124,16 +168,6 @@ h2.main-title {
     margin-bottom: 25px;
 }
 
-/* DESCRIPTION */
-.description {
-    color: #fff;
-    font-size: 1em;
-    line-height: 1.6;
-    text-align: left;
-    margin-top: 30px;
-    padding: 0 10px;
-}
-
 /* CAROUSEL */
 .carousel-container {
     position: relative;
@@ -150,7 +184,7 @@ h2.main-title {
 
 .carousel img {
     width: 100%;
-    flex: 0 0 100%;   /* FIXED */
+    flex: 0 0 100%;
     height: auto;
     max-height: 400px;
     object-fit: contain;
@@ -167,20 +201,58 @@ h2.main-title {
     cursor: pointer;
     font-size: 18px;
     border-radius: 50%;
+    z-index: 10;
 }
 
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
 
+/* DESCRIPTION */
+.description {
+    color: #fff;
+    text-align: justify;
+    margin-top: 30px;
+    padding: 0 10px;
+}
+
 footer {
     padding: 30px 20px;
     text-align: center;
     background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
+    border-top: 2px solid #BF953F;
 }
 
 .hidden {
     opacity: 0 !important;
     visibility: hidden;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        border-bottom: 1px solid #BF953F;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .carousel img {
+        object-fit: cover;
+        max-height: 300px;
+    }
 }
 
 </style>
@@ -193,7 +265,21 @@ footer {
 </div>
 
 <header>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <h1>SFGC IKS Forum Welcomes You</h1>
+    <nav>
+        <ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="occasion.html">Occasions</a></li>
+            <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="about us.html">About Us</a></li>
+        </ul>
+    </nav>
 </header>
 
 <main>
@@ -203,7 +289,6 @@ footer {
 
 <div class="carousel-container">
     <div class="carousel" id="carousel">
-        <!-- YOUR 22 IMAGES HERE -->
         <img src="slide1.png">
         <img src="slide2.png">
         <img src="slide3.png">
@@ -232,22 +317,24 @@ footer {
 </div>
 
 <div class="description">
-    <The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
-            The conference was graced by the distinguished presence of the Chief Guest, Dr. Anil D. Sahasrabudhe Chairman of NETF/ EC-NAAC & NBA /Former Chairman, AICTE., whose inaugural address set a strong intellectual tone for the event. The Chief Guest emphasized the relevance of Indian knowledge traditions in addressing present-day global challenges and highlighted the need for interdisciplinary research rooted in indigenous wisdom. The keynote insights inspired participants to explore innovative research pathways while preserving the richness of India’s intellectual heritage.<br><br>
-            IKS Horizons 2025 witnessed enthusiastic participation from over 250 delegates, featuring 120 research paper presentations and 80 poster presentations by scholars from reputed institutions across India and abroad. The sessions were marked by dynamic academic exchanges, thought-provoking presentations, and interactive discussions that enriched the research experience of all participants. The hybrid mode of the conference enabled broader outreach and inclusive participation.<br><br>
-            A major highlight of the conference was the launch of key academic initiatives, including the release of the e-conference proceedings, the introduction of a seshadripuram Global Journal Multilinguistic(SJGML) Research Journal, and the formal establishment of the IKS Forum at SFGC. These milestones reflect SRF’s continued commitment to promoting research excellence, fostering interdisciplinary collaboration, and strengthening the academic ecosystem.<br><br>
-            Through the successful organization of IKS Horizons 2025, the Seshadripuram Research Foundation reaffirmed its vision of nurturing research that harmoniously blends tradition with innovation. The conference laid a strong foundation for future scholarly collaborations and reinforced SRF’s role as a catalyst for knowledge creation and academic leadership.>
+    The International Conference – IKS Horizons 2025, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship. The conference served as a vibrant platform for academicians, researchers, and practitioners to engage in meaningful discussions across disciplines including Science, Technology, Humanities, Commerce, and Management.<br><br>
+    The conference was graced by the distinguished presence of the Chief Guest, Dr. Anil D. Sahasrabudhe Chairman of NETF/ EC-NAAC & NBA /Former Chairman, AICTE., whose inaugural address set a strong intellectual tone for the event. The Chief Guest emphasized the relevance of Indian knowledge traditions in addressing present-day global challenges and highlighted the need for interdisciplinary research rooted in indigenous wisdom.<br><br>
+    IKS Horizons 2025 witnessed enthusiastic participation from over 250 delegates, featuring 120 research paper presentations and 80 poster presentations by scholars from reputed institutions across India and abroad. Through the successful organization of IKS Horizons 2025, the Seshadripuram Research Foundation reaffirmed its vision of nurturing research that harmoniously blends tradition with innovation.
 </div>
 
 </main>
 
 <footer>
-    <p>
-        © All Copyrights Reserved 2026-27<br>
-        SFGC IKS FORUM - SRF INDIA
-    </p>
+    <p>© All Copyrights Reserved 2026-27 SFGC IKS FORUM - SRF INDIA</p>
 </footer>
+
 <script>
+
+/* NAVIGATION TOGGLE */
+function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    menu.classList.toggle('active');
+}
 
 /* LOADER 5 SECONDS */
 window.addEventListener('DOMContentLoaded', () => {
