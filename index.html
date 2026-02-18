@@ -34,9 +34,15 @@
             font-size: clamp(50px, 10vw, 80px); font-weight: 900; letter-spacing: 8px; 
             background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            opacity: 0; transform: scale(0.5); /* Added scale for cinematic zoom-in */
             animation: netflixFadeIn 5s ease-out forwards;
         }
-        @keyframes netflixFadeIn { to { opacity: 1; } }
+        @keyframes netflixFadeIn { 
+            to { 
+                opacity: 1; 
+                transform: scale(1); /* Scales to full size for cinematic effect */
+            } 
+        }
 
         /* 2. HEADER & NAVIGATION (UNIFORM) */
         header { background-color: rgba(0, 0, 0, 0.6); padding: 20px; text-align: center; position: relative; z-index: 1000; }
@@ -59,7 +65,7 @@
         }
         @keyframes pageFadeIn { to { opacity: 1; } }
         .main-title { font-size: 1.8em; color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 15px; }
-        .description { text-align: justify; color: #fff; font-size: 11pt; line-height: 1.2; }
+        .description { text-align: justify; color: #fff; font-size: 11pt; line-height: 1.2; } /* Ensured justify for paragraphs */
 
         /* CAROUSEL */
         .carousel-container { position: relative; max-width: 100%; margin: 0 auto 40px; overflow: hidden; border-radius: 15px; }
