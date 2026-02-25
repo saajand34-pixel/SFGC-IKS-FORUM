@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFGC IKS FORUM - Grand Inauguration</title>
+    <title>SFGC IKS FORUM</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* Royal Plain Gold Background */
-            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #D4AF37 100%);
+            /* Royal Gold Gradient Background */
+            background: linear-gradient(135deg, #C9A227 0%, #FFD700 30%, #F0E68C 50%, #FFD700 70%, #C9A227 100%);
             font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
@@ -24,42 +24,24 @@
             z-index: 10;
         }
 
-        /* Om Symbol */
-        .om-symbol {
-            font-size: 5rem;
-            color: #FFFFFF;
-            text-shadow: 0 0 20px rgba(0,0,0,0.3);
-            margin-bottom: 15px;
-            font-family: 'Georgia Pro', Georgia, serif;
-        }
-
-        /* Title */
-        h1 {
-            color: #FFFFFF;
-            font-family: 'Georgia Pro', Georgia, serif;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
-            font-size: 2.2rem;
-            text-shadow: 0 0 10px rgba(0,0,0,0.3);
-            font-weight: normal;
-        }
-
         /* Launch Button - Maroon Background */
         .btn-inaugurate {
-            padding: 15px 50px;
-            background: #4A0A0C; /* Maroon */
-            color: #FFD700; /* Gold text */
-            border: 2px solid #FFD700;
-            font-size: 1.2rem;
+            padding: 18px 55px;
+            background: #4A0A0C;
+            color: #FFD700;
+            border: 3px solid #FFD700;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Georgia Pro', Georgia, serif;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .btn-inaugurate:hover {
             background: #6B1315;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+            transform: scale(1.05);
         }
 
         /* Entering Screen - Hidden Initially */
@@ -71,21 +53,21 @@
         .entering-text {
             color: #FFD700;
             font-family: 'Georgia Pro', Georgia, serif;
-            font-size: 1.8rem;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            font-size: 2rem;
+            letter-spacing: 4px;
+            margin-bottom: 35px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
         }
 
         /* Progress Bar Container */
         .progress-container {
-            width: 300px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
+            width: 350px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
             overflow: hidden;
             margin: 0 auto;
-            border: 1px solid #FFD700;
+            border: 2px solid #FFD700;
         }
 
         /* Golden Progress Bar */
@@ -93,26 +75,40 @@
             width: 0%;
             height: 100%;
             background: linear-gradient(90deg, #FFD700, #D4AF37, #FFD700);
-            border-radius: 10px;
-            transition: width 0.1s linear;
-            box-shadow: 0 0 10px #FFD700;
+            border-radius: 12px;
+            transition: width 0.08s linear;
+            box-shadow: 0 0 15px #FFD700;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .om-symbol { font-size: 3.5rem; }
-            h1 { font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 30px; }
-            .btn-inaugurate { padding: 12px 35px; font-size: 1rem; }
-            .entering-text { font-size: 1.4rem; }
-            .progress-container { width: 250px; }
+            .btn-inaugurate {
+                padding: 15px 45px;
+                font-size: 1.1rem;
+            }
+            .entering-text {
+                font-size: 1.5rem;
+            }
+            .progress-container {
+                width: 280px;
+                height: 8px;
+            }
         }
 
         @media (max-width: 480px) {
-            .om-symbol { font-size: 2.5rem; }
-            h1 { font-size: 1.2rem; }
-            .btn-inaugurate { padding: 10px 28px; font-size: 0.9rem; }
-            .entering-text { font-size: 1.1rem; }
-            .progress-container { width: 200px; }
+            .btn-inaugurate {
+                padding: 12px 35px;
+                font-size: 1rem;
+                border-width: 2px;
+            }
+            .entering-text {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+            .progress-container {
+                width: 220px;
+                height: 6px;
+            }
         }
     </style>
 </head>
@@ -120,8 +116,6 @@
 
     <!-- Initial Launch Screen -->
     <div class="launch-container" id="launch-screen">
-        <div class="om-symbol">ॐ</div>
-        <h1>SFGC IKS FORUM</h1>
         <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
     </div>
 
@@ -149,7 +143,7 @@
             // 3. Animate progress bar
             let width = 0;
             const duration = 2500; // 2.5 seconds
-            const interval = 25; // Update every 25ms
+            const interval = 20; // Update every 20ms
             
             const progressInterval = setInterval(() => {
                 width += (100 / (duration / interval));
@@ -160,7 +154,7 @@
                     clearInterval(progressInterval);
                     setTimeout(() => {
                         window.location.href = 'home.html';
-                    }, 300);
+                    }, 200);
                 }
             }, interval);
         }
