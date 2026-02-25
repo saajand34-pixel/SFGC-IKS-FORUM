@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFGC IKS FORUM - Grand Inauguration</title>
+    <title>SFGC IKS FORUM - Grand Launch</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --temple-maroon: #4A0A0C;
-            --gold-leaf: #D4AF37;
+            --curtain-maroon: #670E10;
+            --ribbon-gold: #D4AF37;
+            --deep-shadow: rgba(0,0,0,0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,113 +19,137 @@
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        #mahadwaram {
+        /* Curtain Wrapper */
+        #stage {
             position: fixed;
             inset: 0;
             display: flex;
             z-index: 100;
-            perspective: 1200px;
+            overflow: hidden;
         }
 
-        .door {
+        /* Curtain Panels */
+        .curtain {
             width: 50%;
             height: 100%;
-            background-image: url('door_image.png'); 
-            background-size: 200% 100%;
-            background-repeat: no-repeat;
+            background: var(--curtain-maroon);
+            background-image: repeating-linear-gradient(to right, transparent, transparent 40px, rgba(0,0,0,0.1) 45px, transparent 50px);
+            transition: transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
             position: relative;
-            transition: transform 3.5s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 101;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.6);
         }
 
-        .left-door { 
-            background-position: left center;
-            transform-origin: left;
-            border-right: 1px solid var(--gold-leaf);
-        }
+        .left-curtain { transform-origin: left; }
+        .right-curtain { transform-origin: right; }
 
-        .right-door { 
-            background-position: right center;
-            transform-origin: right;
-            border-left: 1px solid var(--gold-leaf);
-        }
-
-        .opened .left-door { transform: rotateY(-95deg); }
-        .opened .right-door { transform: rotateY(95deg); }
-
-        .ui-overlay {
+        /* Golden Ribbon */
+        .ribbon-half {
             position: absolute;
-            z-index: 200;
+            top: 50%;
+            width: 50%;
+            height: 40px;
+            background: linear-gradient(to bottom, #f1c40f, var(--ribbon-gold), #b8860b);
+            z-index: 105;
+            box-shadow: 0 4px 10px var(--deep-shadow);
+            transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .ribbon-left { left: 0; border-radius: 0 5px 5px 0; }
+        .ribbon-right { right: 0; border-radius: 5px 0 0 5px; }
+
+        /* The Gold Plaque Button */
+        .launch-btn-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 110;
             text-align: center;
             transition: opacity 0.8s ease;
-            width: 100%;
         }
 
-        .om-symbol {
-            font-size: 6rem;
-            color: var(--gold-leaf);
-            text-shadow: 0 0 30px var(--gold-leaf);
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            color: var(--gold-leaf);
+        .launch-btn {
+            background: linear-gradient(145deg, #f1c40f, #b8860b);
+            color: #4A0A0C;
+            border: 2px solid #fff;
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
             font-family: 'Playfair Display', serif;
-            letter-spacing: 4px;
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-        }
-
-        .btn-inaugurate {
-            padding: 15px 45px;
-            background: rgba(74, 10, 12, 0.9);
-            color: var(--gold-leaf);
-            border: 2px solid var(--gold-leaf);
-            font-size: 1.2rem;
-            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             text-transform: uppercase;
         }
 
-        .btn-inaugurate:hover {
-            background: var(--gold-leaf);
-            color: var(--temple-maroon);
-            box-shadow: 0 0 40px var(--gold-leaf);
+        /* Animation Triggered Classes */
+        .is-cut .ribbon-left { transform: rotate(-20deg) translateY(200px); opacity: 0; }
+        .is-cut .ribbon-right { transform: rotate(20deg) translateY(200px); opacity: 0; }
+        
+        .is-open .left-curtain { transform: scaleX(0.1) translateX(-90%); }
+        .is-open .right-curtain { transform: scaleX(0.1) translateX(90%); }
+
+        /* Reveal Light */
+        .reveal-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, #fff 0%, #FAD5A5 100%);
+            opacity: 0;
+            z-index: 50;
+            transition: opacity 3s ease;
         }
+        .reveal-active { opacity: 1; }
     </style>
 </head>
 <body>
 
-    <div id="mahadwaram">
-        <div class="door left-door"></div>
-        <div class="door right-door"></div>
-    </div>
+    <div class="reveal-bg" id="white-light"></div>
 
-    
+    <div id="stage">
+        <div class="curtain left-curtain"></div>
+        <div class="curtain right-curtain"></div>
+        
+        <div class="ribbon-half ribbon-left" id="rib-l"></div>
+        <div class="ribbon-half ribbon-right" id="rib-r"></div>
 
-    <div class="ui-overlay" id="launch-ui">
-        <div class="om-symbol">ॐ</div>
-        <h1>SFGC IKS FORUM</h1>
-        <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
+        <div class="launch-btn-container" id="ui">
+            <h1 style="color: white; margin-bottom: 30px; text-shadow: 2px 2px 10px #000;">SFGC IKS FORUM</h1>
+            <button class="launch-btn" onclick="cutRibbon()">Launch Now</button>
+        </div>
     </div>
 
     <script>
-        function startInauguration() {
-            document.getElementById('launch-ui').style.opacity = '0';
+        function cutRibbon() {
+            const ui = document.getElementById('ui');
+            const stage = document.getElementById('stage');
+            const light = document.getElementById('white-light');
+
+            // 1. Hide Button immediately
+            ui.style.opacity = '0';
+
+            // 2. Cut the Ribbon
             setTimeout(() => {
-                document.getElementById('mahadwaram').classList.add('opened');
+                stage.classList.add('is-cut');
             }, 300);
 
-            // REDIRECT TO HOME.HTML
+            // 3. Open Curtains
             setTimeout(() => {
-                window.location.href = 'home.html';
-            }, 3800);
+                stage.classList.add('is-open');
+            }, 1200);
+
+            // 4. Reveal Divine Light
+            setTimeout(() => {
+                light.classList.add('reveal-active');
+            }, 3000);
+
+            // 5. Final Transition to Website
+            setTimeout(() => {
+                // Change 'index.html' to your actual home page link
+                window.location.href = 'index.html';
+            }, 9000);
         }
     </script>
 </body>
