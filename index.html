@@ -7,326 +7,124 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold-dark: #B8860B;
-            --gold-main: #D4AF37;
-            --gold-light: #FFD700;
-            --gold-glow: #FFF8DC;
+            --temple-maroon: #4A0A0C;
+            --gold-leaf: #D4AF37;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: url('45383.png') no-repeat top center fixed;
-            background-size: cover;
-            font-family: 'Georgia Pro', Georgia, serif;
+            background-color: #000;
+            font-family: 'Poppins', sans-serif;
             overflow: hidden;
             height: 100vh;
-        }
-
-        /* Website Content (Hidden Behind Doors) */
-        .website-content {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
             display: flex;
-            flex-direction: column;
-        }
-
-        /* Header */
-        .website-header {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            text-align: center;
-        }
-
-        .website-header h1 {
-            color: #ffd700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            margin: 10px 0;
-        }
-
-        .website-nav {
-            display: flex;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            list-style: none;
-            padding: 0;
         }
 
-        .website-nav a {
-            color: #ffcc66;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            font-family: 'Georgia Pro', Georgia, serif;
-            position: relative;
-        }
-
-        .website-nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #ffd700;
-            transition: width 0.3s ease;
-        }
-
-        .website-nav a:hover::after { width: 100%; }
-        .website-nav a:hover { color: #fff; }
-
-        /* Main Content */
-        .website-main {
-            flex: 1;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 40px 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2);
-            text-align: center;
-        }
-
-        .website-main h2 {
-            color: #ffd700;
-            border-bottom: 1px solid #ffcc66;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        /* Footer */
-        .website-footer {
-            padding: 30px 20px;
-            text-align: center;
-            background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505);
-            border-top: 2px solid #BF953F;
-        }
-
-        .website-footer p {
-            margin: 0;
-            font-weight: bold;
-            font-size: 1em;
-            line-height: 1.6;
-            color: #BF953F;
-            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Golden Temple Doors Container */
         #mahadwaram {
             position: fixed;
             inset: 0;
             display: flex;
             z-index: 100;
+            perspective: 1200px;
         }
 
-        /* Golden Door Design */
         .door {
             width: 50%;
             height: 100%;
+            background-image: url('door_image.png'); 
+            background-size: 200% 100%;
+            background-repeat: no-repeat;
             position: relative;
-            transition: transform 3s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* Golden Gradient Background */
-            background: linear-gradient(135deg, 
-                #8B6914 0%, 
-                #B8860B 20%, 
-                #D4AF37 40%, 
-                #FFD700 50%, 
-                #D4AF37 60%, 
-                #B8860B 80%, 
-                #8B6914 100%);
-            
-            /* Golden Border */
-            border: 12px solid;
-            border-image: linear-gradient(180deg, #FFD700, #B8860B) 1;
-            box-shadow: 
-                inset 0 0 60px rgba(0,0,0,0.5),
-                0 0 30px rgba(212, 175, 55, 0.5),
-                inset 0 0 100px rgba(255, 215, 0, 0.3);
+            transition: transform 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 101;
         }
 
-        /* Door Inner Panel */
-        .door-inner {
-            position: absolute;
-            inset: 15px;
-            background: linear-gradient(180deg, #6B4E0A 0%, #8B6508 50%, #6B4E0A 100%);
-            border: 3px solid #D4AF37;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
+        .left-door { 
+            background-position: left center;
+            transform-origin: left;
+            border-right: 1px solid var(--gold-leaf);
         }
 
-        /* Golden Studs */
-        .door::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(#FFD700 15%, transparent 16%);
-            background-size: 60px 60px;
-            background-position: 30px 30px;
-            opacity: 0.6;
+        .right-door { 
+            background-position: right center;
+            transform-origin: right;
+            border-left: 1px solid var(--gold-leaf);
         }
 
-        .left-door { border-right: 6px solid #B8860B; }
-        .right-door { border-left: 6px solid #B8860B; }
+        .opened .left-door { transform: rotateY(-95deg); }
+        .opened .right-door { transform: rotateY(95deg); }
 
-        /* Door Knobs */
-        .door-knob {
-            position: absolute;
-            top: 50%;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle at 30% 30%, #FFD700, #B8860B);
-            border-radius: 50%;
-            box-shadow: 0 0 15px #FFD700;
-        }
-
-        .left-door .door-knob { right: 20px; }
-        .right-door .door-knob { left: 20px; }
-
-        /* Opening Animation */
-        .opened .left-door { 
-            transform: translateX(-100%);
-            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
-        }
-        
-        .opened .right-door { 
-            transform: translateX(100%);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-        }
-
-        /* UI Overlay */
         .ui-overlay {
             position: absolute;
             z-index: 200;
             text-align: center;
             transition: opacity 0.8s ease;
-            padding: 20px;
             width: 100%;
         }
 
         .om-symbol {
-            font-size: 5rem;
-            color: #FFD700;
-            text-shadow: 0 0 40px #FFD700, 0 0 80px #D4AF37;
-            margin-bottom: 15px;
-            font-family: 'serif';
+            font-size: 6rem;
+            color: var(--gold-leaf);
+            text-shadow: 0 0 30px var(--gold-leaf);
+            margin-bottom: 20px;
         }
 
         h1 {
-            color: #FFD700;
+            color: var(--gold-leaf);
             font-family: 'Playfair Display', serif;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-            font-size: 2rem;
-            text-shadow: 0 0 20px #D4AF37;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
         }
 
         .btn-inaugurate {
-            padding: 12px 40px;
-            background: transparent;
-            color: #FFD700;
-            border: 2px solid #FFD700;
-            font-size: 1.1rem;
+            padding: 15px 45px;
+            background: rgba(74, 10, 12, 0.9);
+            color: var(--gold-leaf);
+            border: 2px solid var(--gold-leaf);
+            font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
-            font-family: 'Poppins', sans-serif;
         }
 
         .btn-inaugurate:hover {
-            background: #FFD700;
-            color: #4A0A0C;
-            box-shadow: 0 0 40px #FFD700;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .om-symbol { font-size: 3.5rem; }
-            h1 { font-size: 1.4rem; }
-            .btn-inaugurate { padding: 10px 25px; font-size: 1rem; }
-            .door { border-width: 8px; }
-            .door::after { background-size: 40px 40px; background-position: 20px 20px; }
-            .website-nav a { font-size: 0.9em; gap: 10px; }
-            .website-main { margin: 20px auto; padding: 20px; }
-        }
-
-        @media (max-width: 480px) {
-            .om-symbol { font-size: 2.5rem; }
-            h1 { font-size: 1.1rem; letter-spacing: 1px; }
-            .btn-inaugurate { padding: 8px 20px; font-size: 0.9rem; }
-            .door { border-width: 6px; }
-            .door::after { background-size: 30px 30px; background-position: 15px 15px; }
-            .door-knob { width: 15px; height: 15px; }
-            .left-door .door-knob { right: 12px; }
-            .right-door .door-knob { left: 12px; }
+            background: var(--gold-leaf);
+            color: var(--temple-maroon);
+            box-shadow: 0 0 40px var(--gold-leaf);
         }
     </style>
 </head>
 <body>
 
-    <!-- Website Content (Behind Doors) -->
-    <div class="website-content">
-        <header class="website-header">
-            <h1>SFGC IKS Forum Welcomes You</h1>
-            <nav>
-                <ul class="website-nav">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="occasion.html">Occasions</a></li>
-                    <li><a href="proceedings-journal.html">Proceedings & Journal</a></li>
-                    <li><a href="committee.html">Committee</a></li>
-                    <li><a href="about us.html">About Us</a></li>
-                </ul>
-            </nav>
-        </header>
-        
-        <main class="website-main">
-            <h2>Recent Updates</h2>
-            <p style="color: #fff; font-weight: bold; margin: 20px 0;">INTERNATIONAL CONFERENCE ON INDIAN KNOWLEDGE SYSTEM</p>
-            <p style="color: #fdf5e6; text-align: justify;">
-                The International Conference on Indian Knowledge System, organized by the Seshadripuram Research Foundation (SRF) at Seshadripuram First Grade College (SFGC), Yelahanka, stood out as a prestigious academic gathering that celebrated the integration of the Indian Knowledge System (IKS) with contemporary global scholarship.
-            </p>
-        </main>
-        
-        <footer class="website-footer">
-            <p>© All Copyrights Reserved 2026-27<br>SFGC IKS FORUM - SRF INDIA</p>
-        </footer>
-    </div>
-
-    <!-- Golden Temple Doors -->
     <div id="mahadwaram">
-        <div class="door left-door">
-            <div class="door-inner"></div>
-            <div class="door-knob"></div>
-        </div>
-        <div class="door right-door">
-            <div class="door-inner"></div>
-            <div class="door-knob"></div>
-        </div>
+        <div class="door left-door"></div>
+        <div class="door right-door"></div>
     </div>
 
-    <!-- Inauguration UI -->
+    
+
     <div class="ui-overlay" id="launch-ui">
         <div class="om-symbol">ॐ</div>
         <h1>SFGC IKS FORUM</h1>
-        <button class="btn-inaugurate" onclick="startInauguration()">Inaugurate</button>
+        <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
     </div>
 
     <script>
         function startInauguration() {
-            const doors = document.getElementById('mahadwaram');
-            const ui = document.getElementById('launch-ui');
-
-            // Fade out the inauguration UI
-            ui.style.opacity = '0';
-
-            // Open the golden doors to reveal website
+            document.getElementById('launch-ui').style.opacity = '0';
             setTimeout(() => {
-                doors.classList.add('opened');
-            }, 500);
+                document.getElementById('mahadwaram').classList.add('opened');
+            }, 300);
+
+            // REDIRECT TO HOME.HTML
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 3800);
         }
     </script>
 </body>
