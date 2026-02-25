@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFGC IKS FORUM - Grand Inauguration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --temple-maroon: #4A0A0C;
+            --gold-leaf: #D4AF37;
+            --light-glow: #FAD5A5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #000;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* The Mahadwaram Container */
+        #mahadwaram {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            z-index: 100;
+        }
+
+        /* Door Design */
+        .door {
+            width: 50%;
+            height: 100%;
+            background: var(--temple-maroon);
+            border: 15px solid var(--gold-leaf);
+            position: relative;
+            transition: transform 4s cubic-bezier(0.7, 0, 0.3, 1);
+            box-shadow: inset 0 0 80px rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tirupati Brass Studs */
+        .door::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(var(--gold-leaf) 10%, transparent 11%);
+            background-size: 80px 80px;
+            background-position: 40px 40px;
+            opacity: 0.3;
+        }
+
+        .left-door { border-right: 7.5px solid var(--gold-leaf); }
+        .right-door { border-left: 7.5px solid var(--gold-leaf); }
+
+        /* Animation Classes */
+        .opened .left-door { transform: translateX(-100%); }
+        .opened .right-door { transform: translateX(100%); }
+
+        /* UI Elements */
+        .ui-overlay {
+            position: absolute;
+            z-index: 200;
+            text-align: center;
+            transition: opacity 1s ease;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .om-symbol {
+            font-size: 6rem;
+            color: var(--gold-leaf);
+            text-shadow: 0 0 30px var(--gold-leaf);
+            margin-bottom: 20px;
+            font-family: 'serif';
+        }
+
+        h1 {
+            color: var(--gold-leaf);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .btn-inaugurate {
+            padding: 15px 45px;
+            background: transparent;
+            color: var(--gold-leaf);
+            border: 2px solid var(--gold-leaf);
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-inaugurate:hover {
+            background: var(--gold-leaf);
+            color: var(--temple-maroon);
+            box-shadow: 0 0 40px var(--gold-leaf);
+        }
+
+        /* The Divine Light Burst */
+        .light-burst {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, #fff 0%, var(--light-glow) 40%, transparent 100%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 150;
+            transition: opacity 2s ease;
+        }
+
+        .active-light { opacity: 1; }
+
+        /* ==================== MOBILE RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .door {
+                border-width: 10px;
+            }
+
+            .door::before {
+                background-size: 50px 50px;
+                background-position: 25px 25px;
+            }
+
+            .om-symbol {
+                font-size: 4rem;
+                margin-bottom: 15px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+                letter-spacing: 2px;
+                margin-bottom: 25px;
+            }
+
+            .btn-inaugurate {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .om-symbol {
+                font-size: 3rem;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            .btn-inaugurate {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+
+            .door {
+                border-width: 8px;
+            }
+
+            .door::before {
+                background-size: 40px 40px;
+                background-position: 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mahadwaram">
+        <div class="door left-door"></div>
+        <div class="door right-door"></div>
+    </div>
+
+    <div class="ui-overlay" id="launch-ui">
+        <div class="om-symbol">ॐ</div>
+        <h1>SFGC IKS FORUM</h1>
+        <button class="btn-inaugurate" onclick="startInauguration()">Inaugurate</button>
+    </div>
+
+    <div class="light-burst" id="divine-light"></div>
+
+    <script>
+        function startInauguration() {
+            const doors = document.getElementById('mahadwaram');
+            const ui = document.getElementById('launch-ui');
+            const light = document.getElementById('divine-light');
+
+            // Hide UI
+            ui.style.opacity = '0';
+
+            // Open Doors
+            setTimeout(() => {
+                doors.classList.add('opened');
+            }, 500);
+
+            // Trigger Light Burst (The Darshan)
+            setTimeout(() => {
+                light.classList.add('active-light');
+            }, 2500);
+
+            // Redirect to main website after 9 seconds
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 9000);
+        }
+    </script>
+</body>
+</html>
