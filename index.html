@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFGC IKS FORUM - Grand Launch</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>SFGC IKS FORUM - Inauguration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --curtain-maroon: #670E10;
-            --ribbon-gold: #D4AF37;
-            --deep-shadow: rgba(0,0,0,0.5);
+            --gold: #D4AF37;
+            --maroon: #670E10;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,135 +20,143 @@
             height: 100vh;
         }
 
-        /* Curtain Wrapper */
-        #stage {
+        /* 1. CURTAIN PANELS */
+        .curtain-container {
             position: fixed;
             inset: 0;
             display: flex;
             z-index: 100;
-            overflow: hidden;
         }
 
-        /* Curtain Panels */
-        .curtain {
+        .curtain-panel {
             width: 50%;
             height: 100%;
-            background: var(--curtain-maroon);
-            background-image: repeating-linear-gradient(to right, transparent, transparent 40px, rgba(0,0,0,0.1) 45px, transparent 50px);
-            transition: transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-            position: relative;
-            z-index: 101;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.6);
+            /* Replace 'curtain_image.jpg' with your actual image file name */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('curtain_image.jpg');
+            background-size: 200% 100%; /* Important to make the image look continuous */
+            transition: transform 3s cubic-bezier(0.7, 0, 0.3, 1);
+            box-shadow: inset 0 0 100px #000;
         }
 
-        .left-curtain { transform-origin: left; }
-        .right-curtain { transform-origin: right; }
+        .left-p { background-position: left; transform-origin: left; }
+        .right-p { background-position: right; transform-origin: right; }
 
-        /* Golden Ribbon */
-        .ribbon-half {
+        /* 2. BUTTON DESIGN */
+        .launch-ui {
             position: absolute;
-            top: 50%;
-            width: 50%;
-            height: 40px;
-            background: linear-gradient(to bottom, #f1c40f, var(--ribbon-gold), #b8860b);
-            z-index: 105;
-            box-shadow: 0 4px 10px var(--deep-shadow);
-            transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .ribbon-left { left: 0; border-radius: 0 5px 5px 0; }
-        .ribbon-right { right: 0; border-radius: 5px 0 0 5px; }
-
-        /* The Gold Plaque Button */
-        .launch-btn-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 110;
+            z-index: 200;
             text-align: center;
-            transition: opacity 0.8s ease;
+            transition: all 0.8s ease;
         }
 
         .launch-btn {
-            background: linear-gradient(145deg, #f1c40f, #b8860b);
-            color: #4A0A0C;
+            background: linear-gradient(145deg, #d4af37, #b8860b);
+            color: #2a0506;
             border: 2px solid #fff;
-            padding: 20px 50px;
-            font-size: 1.5rem;
-            font-weight: bold;
+            padding: 20px 60px;
+            font-size: 1.8rem;
             font-family: 'Playfair Display', serif;
+            font-weight: 700;
             cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            transition: 0.3s;
         }
 
-        /* Animation Triggered Classes */
-        .is-cut .ribbon-left { transform: rotate(-20deg) translateY(200px); opacity: 0; }
-        .is-cut .ribbon-right { transform: rotate(20deg) translateY(200px); opacity: 0; }
-        
-        .is-open .left-curtain { transform: scaleX(0.1) translateX(-90%); }
-        .is-open .right-curtain { transform: scaleX(0.1) translateX(90%); }
+        .launch-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--gold);
+        }
 
-        /* Reveal Light */
-        .reveal-bg {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle, #fff 0%, #FAD5A5 100%);
+        /* 3. LOADING SCREEN */
+        #loader {
+            position: absolute;
+            top: 60%; left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
             opacity: 0;
+            transition: opacity 0.5s;
             z-index: 50;
-            transition: opacity 3s ease;
         }
-        .reveal-active { opacity: 1; }
+
+        .loading-text {
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--gold);
+            box-shadow: 0 0 15px var(--gold);
+        }
+
+        /* ANIMATION TRIGGERS */
+        .opened .left-p { transform: scaleX(0.2) translateX(-100%); }
+        .opened .right-p { transform: scaleX(0.2) translateX(100%); }
+        .opened .launch-ui { opacity: 0; pointer-events: none; }
+
+        .reveal-loader #loader { opacity: 1; }
+        .reveal-loader .progress-fill {
+            animation: fillProgress 4s forwards linear;
+        }
+
+        @keyframes fillProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="reveal-bg" id="white-light"></div>
+    <div class="curtain-container" id="curtains">
+        <div class="curtain-panel left-p"></div>
+        <div class="curtain-panel right-p"></div>
+    </div>
 
-    <div id="stage">
-        <div class="curtain left-curtain"></div>
-        <div class="curtain right-curtain"></div>
-        
-        <div class="ribbon-half ribbon-left" id="rib-l"></div>
-        <div class="ribbon-half ribbon-right" id="rib-r"></div>
+    <div class="launch-ui" id="ui">
+        <h1 style="color: white; margin-bottom: 40px; letter-spacing: 5px; text-shadow: 0 0 20px #000;">SFGC IKS FORUM</h1>
+        <button class="launch-btn" onclick="startInauguration()">LAUNCH NOW</button>
+    </div>
 
-        <div class="launch-btn-container" id="ui">
-            <h1 style="color: white; margin-bottom: 30px; text-shadow: 2px 2px 10px #000;">SFGC IKS FORUM</h1>
-            <button class="launch-btn" onclick="cutRibbon()">Launch Now</button>
+    <div id="loader">
+        <p class="loading-text">ENTERING THE FORUM...</p>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
         </div>
     </div>
 
     <script>
-        function cutRibbon() {
-            const ui = document.getElementById('ui');
-            const stage = document.getElementById('stage');
-            const light = document.getElementById('white-light');
+        function startInauguration() {
+            const body = document.body;
+            const curtains = document.getElementById('curtains');
+            
+            // 1. Hide Button & Start Curtain Animation
+            curtains.classList.add('opened');
+            body.classList.add('opened');
 
-            // 1. Hide Button immediately
-            ui.style.opacity = '0';
-
-            // 2. Cut the Ribbon
+            // 2. Show Loading Bar 1 second after curtains start moving
             setTimeout(() => {
-                stage.classList.add('is-cut');
-            }, 300);
+                body.classList.add('reveal-loader');
+            }, 1000);
 
-            // 3. Open Curtains
+            // 3. Final Redirect to home.html
             setTimeout(() => {
-                stage.classList.add('is-open');
-            }, 1200);
-
-            // 4. Reveal Divine Light
-            setTimeout(() => {
-                light.classList.add('reveal-active');
-            }, 3000);
-
-            // 5. Final Transition to Website
-            setTimeout(() => {
-                // Change 'index.html' to your actual home page link
-                window.location.href = 'index.html';
-            }, 9000);
+                window.location.href = 'home.html';
+            }, 5500); // 5.5 seconds total experience
         }
     </script>
 </body>
