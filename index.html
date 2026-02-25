@@ -5,18 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFGC IKS FORUM - Grand Inauguration</title>
     <style>
-        :root {
-            /* Using the maroon from your site theme */
-            --royal-maroon: #4A0A0C;
-            --royal-gold: #D4AF37;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* Background changed from black to maroon */
-            background-color: var(--royal-maroon);
-            font-family: 'Georgia', serif;
+            /* Royal Plain Gold Background */
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #D4AF37 100%);
+            font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
             display: flex;
@@ -24,105 +18,151 @@
             justify-content: center;
         }
 
-        #mahadwaram {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            z-index: 100;
-            perspective: 1200px;
+        /* Main Container */
+        .launch-container {
+            text-align: center;
+            z-index: 10;
         }
 
-        .door {
-            width: 50%;
-            height: 100%;
-            background-image: url('door_image.png'); 
-            background-size: 200% 100%;
-            background-repeat: no-repeat;
-            position: relative;
-            transition: transform 3.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 101;
+        /* Om Symbol */
+        .om-symbol {
+            font-size: 5rem;
+            color: #FFFFFF;
+            text-shadow: 0 0 20px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+            font-family: 'Georgia Pro', Georgia, serif;
         }
 
-        .left-door { 
-            background-position: left center;
-            transform-origin: left;
-            border-right: 1px solid var(--royal-gold);
+        /* Title */
+        h1 {
+            color: #FFFFFF;
+            font-family: 'Georgia Pro', Georgia, serif;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+            font-weight: normal;
         }
 
-        .right-door { 
-            background-position: right center;
-            transform-origin: right;
-            border-left: 1px solid var(--royal-gold);
-        }
-
-        .opened .left-door { transform: rotateY(-95deg); }
-        .opened .right-door { transform: rotateY(95deg); }
-
-        /* UI Centered perfectly for PC and Mobile */
-        .ui-overlay {
-            position: absolute;
-            z-index: 200;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.8s ease;
-        }
-
-        /* Launch Now Button - Maroon color with White Georgia Font */
+        /* Launch Button - Maroon Background */
         .btn-inaugurate {
-            padding: 18px 55px;
-            /* Button background is royal gold to be visible on maroon bg */
-            background: var(--royal-gold);
-            /* Font changed to White and Georgia as requested */
-            color: #ffffff; 
-            font-family: 'Georgia', serif;
-            border: none;
-            font-size: 1.5rem;
-            font-weight: bold;
+            padding: 15px 50px;
+            background: #4A0A0C; /* Maroon */
+            color: #FFD700; /* Gold text */
+            border: 2px solid #FFD700;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Georgia Pro', Georgia, serif;
+            letter-spacing: 2px;
         }
 
         .btn-inaugurate:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--royal-gold);
+            background: #6B1315;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
 
+        /* Entering Screen - Hidden Initially */
+        .entering-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .entering-text {
+            color: #FFD700;
+            font-family: 'Georgia Pro', Georgia, serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Progress Bar Container */
+        .progress-container {
+            width: 300px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 1px solid #FFD700;
+        }
+
+        /* Golden Progress Bar */
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #D4AF37, #FFD700);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .btn-inaugurate { font-size: 1.2rem; padding: 14px 40px; }
+            .om-symbol { font-size: 3.5rem; }
+            h1 { font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 30px; }
+            .btn-inaugurate { padding: 12px 35px; font-size: 1rem; }
+            .entering-text { font-size: 1.4rem; }
+            .progress-container { width: 250px; }
+        }
+
+        @media (max-width: 480px) {
+            .om-symbol { font-size: 2.5rem; }
+            h1 { font-size: 1.2rem; }
+            .btn-inaugurate { padding: 10px 28px; font-size: 0.9rem; }
+            .entering-text { font-size: 1.1rem; }
+            .progress-container { width: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="mahadwaram">
-        <div class="door left-door"></div>
-        <div class="door right-door"></div>
+    <!-- Initial Launch Screen -->
+    <div class="launch-container" id="launch-screen">
+        <div class="om-symbol">ॐ</div>
+        <h1>SFGC IKS FORUM</h1>
+        <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
     </div>
 
-    <div class="ui-overlay" id="launch-ui">
-        <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
+    <!-- Entering Screen (Shows After Click) -->
+    <div class="entering-screen" id="entering-screen">
+        <div class="entering-text" id="entering-text">Entering...</div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
     </div>
 
     <script>
         function startInauguration() {
-            document.getElementById('launch-ui').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('mahadwaram').classList.add('opened');
-            }, 300);
-
-            // Redirect to home.html
-            setTimeout(() => {
-                window.location.href = 'home.html';
-            }, 3800);
+            const launchScreen = document.getElementById('launch-screen');
+            const enteringScreen = document.getElementById('entering-screen');
+            const progressBar = document.getElementById('progress-bar');
+            
+            // 1. Hide launch screen, show entering screen
+            launchScreen.style.display = 'none';
+            enteringScreen.style.display = 'block';
+            
+            // 2. Change background to maroon
+            document.body.style.background = '#4A0A0C';
+            
+            // 3. Animate progress bar
+            let width = 0;
+            const duration = 2500; // 2.5 seconds
+            const interval = 25; // Update every 25ms
+            
+            const progressInterval = setInterval(() => {
+                width += (100 / (duration / interval));
+                progressBar.style.width = width + '%';
+                
+                // 4. When progress completes, redirect to home.html
+                if (width >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        window.location.href = 'home.html';
+                    }, 300);
+                }
+            }, interval);
         }
     </script>
 </body>
