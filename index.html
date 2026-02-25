@@ -3,160 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFGC IKS FORUM - Inauguration</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <title>SFGC IKS FORUM - Grand Inauguration</title>
     <style>
         :root {
-            --gold: #D4AF37;
-            --maroon: #670E10;
+            /* Using the maroon from your site theme */
+            --royal-maroon: #4A0A0C;
+            --royal-gold: #D4AF37;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #000;
-            font-family: 'Poppins', sans-serif;
+            /* Background changed from black to maroon */
+            background-color: var(--royal-maroon);
+            font-family: 'Georgia', serif;
             overflow: hidden;
             height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* 1. CURTAIN PANELS */
-        .curtain-container {
+        #mahadwaram {
             position: fixed;
             inset: 0;
             display: flex;
             z-index: 100;
+            perspective: 1200px;
         }
 
-        .curtain-panel {
+        .door {
             width: 50%;
             height: 100%;
-            /* Replace 'curtain_image.jpg' with your actual image file name */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('curtain_image.jpg');
-            background-size: 200% 100%; /* Important to make the image look continuous */
-            transition: transform 3s cubic-bezier(0.7, 0, 0.3, 1);
-            box-shadow: inset 0 0 100px #000;
-        }
-
-        .left-p { background-position: left; transform-origin: left; }
-        .right-p { background-position: right; transform-origin: right; }
-
-        /* 2. BUTTON DESIGN */
-        .launch-ui {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 200;
-            text-align: center;
-            transition: all 0.8s ease;
-        }
-
-        .launch-btn {
-            background: linear-gradient(145deg, #d4af37, #b8860b);
-            color: #2a0506;
-            border: 2px solid #fff;
-            padding: 20px 60px;
-            font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            cursor: pointer;
-            letter-spacing: 2px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            transition: 0.3s;
-        }
-
-        .launch-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--gold);
-        }
-
-        /* 3. LOADING SCREEN */
-        #loader {
-            position: absolute;
-            top: 60%; left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            opacity: 0;
-            transition: opacity 0.5s;
-            z-index: 50;
-        }
-
-        .loading-text {
-            color: var(--gold);
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(212, 175, 55, 0.2);
+            background-image: url('door_image.png'); 
+            background-size: 200% 100%;
+            background-repeat: no-repeat;
             position: relative;
-            overflow: hidden;
+            transition: transform 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 101;
         }
 
-        .progress-fill {
-            width: 0%;
-            height: 100%;
-            background: var(--gold);
-            box-shadow: 0 0 15px var(--gold);
+        .left-door { 
+            background-position: left center;
+            transform-origin: left;
+            border-right: 1px solid var(--royal-gold);
         }
 
-        /* ANIMATION TRIGGERS */
-        .opened .left-p { transform: scaleX(0.2) translateX(-100%); }
-        .opened .right-p { transform: scaleX(0.2) translateX(100%); }
-        .opened .launch-ui { opacity: 0; pointer-events: none; }
-
-        .reveal-loader #loader { opacity: 1; }
-        .reveal-loader .progress-fill {
-            animation: fillProgress 4s forwards linear;
+        .right-door { 
+            background-position: right center;
+            transform-origin: right;
+            border-left: 1px solid var(--royal-gold);
         }
 
-        @keyframes fillProgress {
-            0% { width: 0%; }
-            100% { width: 100%; }
+        .opened .left-door { transform: rotateY(-95deg); }
+        .opened .right-door { transform: rotateY(95deg); }
+
+        /* UI Centered perfectly for PC and Mobile */
+        .ui-overlay {
+            position: absolute;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.8s ease;
+        }
+
+        /* Launch Now Button - Maroon color with White Georgia Font */
+        .btn-inaugurate {
+            padding: 18px 55px;
+            /* Button background is royal gold to be visible on maroon bg */
+            background: var(--royal-gold);
+            /* Font changed to White and Georgia as requested */
+            color: #ffffff; 
+            font-family: 'Georgia', serif;
+            border: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 4px;
+        }
+
+        .btn-inaugurate:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--royal-gold);
+        }
+
+        @media (max-width: 768px) {
+            .btn-inaugurate { font-size: 1.2rem; padding: 14px 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="curtain-container" id="curtains">
-        <div class="curtain-panel left-p"></div>
-        <div class="curtain-panel right-p"></div>
+    <div id="mahadwaram">
+        <div class="door left-door"></div>
+        <div class="door right-door"></div>
     </div>
 
-    <div class="launch-ui" id="ui">
-        <h1 style="color: white; margin-bottom: 40px; letter-spacing: 5px; text-shadow: 0 0 20px #000;">SFGC IKS FORUM</h1>
-        <button class="launch-btn" onclick="startInauguration()">LAUNCH NOW</button>
-    </div>
-
-    <div id="loader">
-        <p class="loading-text">ENTERING THE FORUM...</p>
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
-        </div>
+    <div class="ui-overlay" id="launch-ui">
+        <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
     </div>
 
     <script>
         function startInauguration() {
-            const body = document.body;
-            const curtains = document.getElementById('curtains');
-            
-            // 1. Hide Button & Start Curtain Animation
-            curtains.classList.add('opened');
-            body.classList.add('opened');
-
-            // 2. Show Loading Bar 1 second after curtains start moving
+            document.getElementById('launch-ui').style.opacity = '0';
             setTimeout(() => {
-                body.classList.add('reveal-loader');
-            }, 1000);
+                document.getElementById('mahadwaram').classList.add('opened');
+            }, 300);
 
-            // 3. Final Redirect to home.html
+            // Redirect to home.html
             setTimeout(() => {
                 window.location.href = 'home.html';
-            }, 5500); // 5.5 seconds total experience
+            }, 3800);
         }
     </script>
 </body>
