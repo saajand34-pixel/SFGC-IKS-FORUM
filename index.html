@@ -8,8 +8,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* Dark Background with Subtle Blur */
-            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
+            /* Premium Rich Maroon Background with Gold Accents */
+            background: 
+                radial-gradient(ellipse at center, #9C2727 0%, #7A1C1C 40%, #5A1313 70%, #3D0A0A 100%),
+                linear-gradient(135deg, 
+                    #9C2727 0%, 
+                    #B83030 25%, 
+                    #9C2727 50%, 
+                    #B83030 75%, 
+                    #9C2727 100%);
+            background-blend-mode: overlay;
             font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
@@ -18,10 +26,23 @@
             justify-content: center;
         }
 
+        /* Subtle Gold Sparkle Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
         /* Main Container */
         .launch-container {
             text-align: center;
             z-index: 10;
+            position: relative;
         }
 
         /* Royal Golden Launch Button */
@@ -29,11 +50,11 @@
             padding: 22px 70px;
             background: linear-gradient(135deg, 
                 #FFD700 0%, 
-                #FFA500 25%, 
+                #FFB800 25%, 
                 #FFD700 50%, 
-                #FFA500 75%, 
+                #FFB800 75%, 
                 #FFD700 100%);
-            color: #2D0809;
+            color: #3D0A0A;
             border: 3px solid #FFD700;
             font-size: 1.5rem;
             cursor: pointer;
@@ -44,20 +65,20 @@
             text-transform: uppercase;
             position: relative;
             box-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.6),
-                0 0 40px rgba(255, 165, 0, 0.4),
-                0 0 60px rgba(255, 215, 0, 0.3),
-                inset 0 0 20px rgba(255, 255, 255, 0.3);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                0 0 25px rgba(255, 215, 0, 0.7),
+                0 0 50px rgba(255, 180, 0, 0.5),
+                0 0 75px rgba(255, 215, 0, 0.3),
+                inset 0 0 25px rgba(255, 255, 255, 0.4);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         }
 
         .btn-inaugurate:hover {
             transform: scale(1.08);
             box-shadow: 
-                0 0 30px rgba(255, 215, 0, 0.8),
-                0 0 60px rgba(255, 165, 0, 0.6),
-                0 0 90px rgba(255, 215, 0, 0.4),
-                inset 0 0 30px rgba(255, 255, 255, 0.5);
+                0 0 35px rgba(255, 215, 0, 0.9),
+                0 0 70px rgba(255, 180, 0, 0.7),
+                0 0 100px rgba(255, 215, 0, 0.5),
+                inset 0 0 40px rgba(255, 255, 255, 0.6);
         }
 
         .btn-inaugurate:active {
@@ -80,30 +101,30 @@
             letter-spacing: 6px;
             margin-bottom: 40px;
             text-shadow: 
-                0 0 10px rgba(255, 215, 0, 0.6),
-                0 0 20px rgba(255, 215, 0, 0.4),
-                0 0 30px rgba(255, 165, 0, 0.3);
+                0 0 15px rgba(255, 215, 0, 0.8),
+                0 0 30px rgba(255, 215, 0, 0.5),
+                0 0 45px rgba(255, 180, 0, 0.3);
             animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(1.02); }
+            50% { opacity: 0.9; transform: scale(1.02); }
         }
 
         /* Glass Glow Minimal Progress Bar Container */
         .progress-container {
             width: 450px;
             height: 10px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 15px;
             overflow: hidden;
             margin: 0 auto;
-            border: 2px solid rgba(255, 215, 0, 0.4);
+            border: 2px solid rgba(255, 215, 0, 0.5);
             box-shadow: 
-                0 0 25px rgba(255, 215, 0, 0.2),
-                inset 0 0 25px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
+                0 0 30px rgba(255, 215, 0, 0.25),
+                inset 0 0 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
         }
 
         /* Golden Neon Progress Bar */
@@ -111,17 +132,17 @@
             width: 0%;
             height: 100%;
             background: linear-gradient(90deg, 
-                rgba(255, 215, 0, 0.3) 0%, 
+                rgba(255, 215, 0, 0.4) 0%, 
                 #FFD700 20%, 
-                #FFA500 50%, 
+                #FFB800 50%, 
                 #FFD700 80%, 
-                rgba(255, 215, 0, 0.3) 100%);
+                rgba(255, 215, 0, 0.4) 100%);
             border-radius: 15px;
             transition: width 0.05s linear;
             box-shadow: 
-                0 0 20px #FFD700,
-                0 0 40px rgba(255, 215, 0, 0.6),
-                0 0 60px rgba(255, 165, 0, 0.4);
+                0 0 25px #FFD700,
+                0 0 50px rgba(255, 215, 0, 0.7),
+                0 0 75px rgba(255, 180, 0, 0.5);
         }
 
         /* Percentage Text */
@@ -131,7 +152,7 @@
             font-size: 1rem;
             margin-top: 15px;
             letter-spacing: 3px;
-            opacity: 0.8;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         /* Mobile Responsive */
