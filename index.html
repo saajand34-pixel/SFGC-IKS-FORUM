@@ -8,8 +8,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* Royal Gold Gradient Background */
-            background: linear-gradient(135deg, #C9A227 0%, #FFD700 30%, #F0E68C 50%, #FFD700 70%, #C9A227 100%);
+            /* Dark Maroon Gradient Background */
+            background: linear-gradient(135deg, #2D0809 0%, #4A0A0C 30%, #6B1315 50%, #4A0A0C 70%, #2D0809 100%);
             font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
@@ -24,30 +24,41 @@
             z-index: 10;
         }
 
-        /* Launch Button - Maroon Background */
+        /* Launch Button - Royal Maroon with Golden Glow */
         .btn-inaugurate {
-            padding: 18px 55px;
-            background: #4A0A0C;
+            padding: 20px 60px;
+            background: linear-gradient(180deg, #6B1315 0%, #4A0A0C 50%, #2D0809 100%);
             color: #FFD700;
             border: 3px solid #FFD700;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             font-family: 'Georgia Pro', Georgia, serif;
-            letter-spacing: 3px;
+            font-weight: bold;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            position: relative;
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.3),
+                0 0 40px rgba(255, 215, 0, 0.2),
+                inset 0 0 20px rgba(255, 215, 0, 0.1);
         }
 
         .btn-inaugurate:hover {
-            background: #6B1315;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(180deg, #8B1A1C 0%, #6B1315 50%, #4A0A0C 100%);
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.5),
+                0 0 60px rgba(255, 215, 0, 0.3),
+                0 0 80px rgba(255, 215, 0, 0.2);
             transform: scale(1.05);
+            color: #FFF8DC;
         }
 
         /* Entering Screen - Hidden Initially */
         .entering-screen {
             display: none;
             text-align: center;
+            z-index: 10;
         }
 
         .entering-text {
@@ -56,58 +67,72 @@
             font-size: 2rem;
             letter-spacing: 4px;
             margin-bottom: 35px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
         }
 
-        /* Progress Bar Container */
+        /* Glass Glow Minimal Progress Bar */
         .progress-container {
-            width: 350px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.15);
+            width: 400px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             overflow: hidden;
             margin: 0 auto;
-            border: 2px solid #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.15),
+                inset 0 0 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
         }
 
-        /* Golden Progress Bar */
+        /* Golden Neon Progress Bar */
         .progress-bar {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #FFD700, #D4AF37, #FFD700);
+            background: linear-gradient(90deg, 
+                rgba(255, 215, 0, 0.4) 0%, 
+                #FFD700 30%, 
+                #D4AF37 50%, 
+                #FFD700 70%, 
+                rgba(255, 215, 0, 0.4) 100%);
             border-radius: 12px;
             transition: width 0.08s linear;
-            box-shadow: 0 0 15px #FFD700;
+            box-shadow: 
+                0 0 15px #FFD700,
+                0 0 30px rgba(255, 215, 0, 0.5),
+                0 0 45px rgba(255, 215, 0, 0.3);
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .btn-inaugurate {
-                padding: 15px 45px;
-                font-size: 1.1rem;
+                padding: 16px 50px;
+                font-size: 1.2rem;
+                border-width: 2px;
             }
             .entering-text {
                 font-size: 1.5rem;
             }
             .progress-container {
-                width: 280px;
-                height: 8px;
+                width: 320px;
+                height: 6px;
             }
         }
 
         @media (max-width: 480px) {
             .btn-inaugurate {
-                padding: 12px 35px;
+                padding: 14px 40px;
                 font-size: 1rem;
                 border-width: 2px;
+                letter-spacing: 2px;
             }
             .entering-text {
                 font-size: 1.2rem;
                 letter-spacing: 2px;
             }
             .progress-container {
-                width: 220px;
-                height: 6px;
+                width: 260px;
+                height: 5px;
             }
         }
     </style>
@@ -118,46 +143,3 @@
     <div class="launch-container" id="launch-screen">
         <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
     </div>
-
-    <!-- Entering Screen (Shows After Click) -->
-    <div class="entering-screen" id="entering-screen">
-        <div class="entering-text" id="entering-text">Entering...</div>
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-    </div>
-
-    <script>
-        function startInauguration() {
-            const launchScreen = document.getElementById('launch-screen');
-            const enteringScreen = document.getElementById('entering-screen');
-            const progressBar = document.getElementById('progress-bar');
-            
-            // 1. Hide launch screen, show entering screen
-            launchScreen.style.display = 'none';
-            enteringScreen.style.display = 'block';
-            
-            // 2. Change background to maroon
-            document.body.style.background = '#4A0A0C';
-            
-            // 3. Animate progress bar
-            let width = 0;
-            const duration = 2500; // 2.5 seconds
-            const interval = 20; // Update every 20ms
-            
-            const progressInterval = setInterval(() => {
-                width += (100 / (duration / interval));
-                progressBar.style.width = width + '%';
-                
-                // 4. When progress completes, redirect to home.html
-                if (width >= 100) {
-                    clearInterval(progressInterval);
-                    setTimeout(() => {
-                        window.location.href = 'home.html';
-                    }, 200);
-                }
-            }, interval);
-        }
-    </script>
-</body>
-</html>
