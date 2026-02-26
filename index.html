@@ -8,9 +8,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* Pattern image replaced as the background as requested */
-            background: url('image_70a35f.jpg') center center;
-            background-size: cover;
+            /* PROFESSIONAL BACKGROUND FIX: Tiled pattern for maximum sharpness on all screens */
+            background-color: #1F0505; /* Deep maroon base synchronized with home.html */
+            background-image: url('image_70a35f.jpg');
+            background-size: 400px auto; /* Perfect scale for royal pattern visibility */
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-blend-mode: multiply; /* Creates a rich, deep texture instead of a dull image */
+            
             font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
@@ -19,13 +24,14 @@
             justify-content: center;
         }
 
-        /* Overlay to ensure pattern doesn't make text/button hard to read */
+        /* Subtle dark vignette to draw focus to the center */
         body::after {
             content: '';
             position: fixed;
             inset: 0;
-            background: rgba(61, 10, 10, 0.4); /* Subtle maroon tint over the pattern */
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.4) 100%);
             z-index: 1;
+            pointer-events: none;
         }
 
         .launch-container {
@@ -48,24 +54,48 @@
             letter-spacing: 5px;
             text-transform: uppercase;
             position: relative;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 180, 0, 0.5), 0 0 75px rgba(255, 215, 0, 0.3), inset 0 0 25px rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 0 25px rgba(255, 215, 0, 0.7),
+                0 0 50px rgba(255, 180, 0, 0.5),
+                inset 0 0 25px rgba(255, 255, 255, 0.4);
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         }
 
-        .btn-inaugurate:hover { transform: scale(1.08); box-shadow: 0 0 35px rgba(255, 215, 0, 0.9), 0 0 70px rgba(255, 180, 0, 0.7), 0 0 100px rgba(255, 215, 0, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.6); }
+        .btn-inaugurate:hover { 
+            transform: scale(1.08); 
+            box-shadow: 0 0 35px rgba(255, 215, 0, 0.9), 0 0 70px rgba(255, 180, 0, 0.7), inset 0 0 40px rgba(255, 255, 255, 0.6); 
+        }
 
         /* Entering Screen Logic (Preserved exactly) */
         .entering-screen { display: none; text-align: center; z-index: 20; position: relative; }
-        .entering-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 2.2rem; font-weight: bold; letter-spacing: 6px; margin-bottom: 40px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); animation: pulse 2s ease-in-out infinite; }
+        .entering-text { 
+            color: #FFD700; 
+            font-family: 'Georgia Pro', Georgia, serif; 
+            font-size: 2.2rem; 
+            font-weight: bold; 
+            letter-spacing: 6px; 
+            margin-bottom: 40px; 
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); 
+            animation: pulse 2s ease-in-out infinite; 
+        }
         
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.02); } }
 
-        .progress-container { width: 450px; height: 10px; background: rgba(255, 255, 255, 0.08); border-radius: 15px; overflow: hidden; margin: 0 auto; border: 2px solid rgba(255, 215, 0, 0.5); backdrop-filter: blur(10px); }
-        .progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, rgba(255, 215, 0, 0.4) 0%, #FFD700 20%, #FFB800 50%, #FFD700 80%, rgba(255, 215, 0, 0.4) 100%); transition: width 0.05s linear; box-shadow: 0 0 25px #FFD700; }
+        .progress-container { 
+            width: 450px; height: 10px; background: rgba(255, 255, 255, 0.08); 
+            border-radius: 15px; overflow: hidden; margin: 0 auto; 
+            border: 2px solid rgba(255, 215, 0, 0.5); backdrop-filter: blur(10px); 
+        }
+        .progress-bar { 
+            width: 0%; height: 100%; 
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.4) 0%, #FFD700 20%, #FFB800 50%, #FFD700 80%, rgba(255, 215, 0, 0.4) 100%); 
+            transition: width 0.05s linear; box-shadow: 0 0 25px #FFD700; 
+        }
         .progress-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 1rem; margin-top: 15px; letter-spacing: 3px; }
 
         @media (max-width: 768px) {
-            .btn-inaugurate { padding: 18px 55px; font-size: 1.2rem; }
+            body { background-size: 250px auto; } /* Smaller pattern for mobile screens */
+            .btn-inaugurate { padding: 18px 55px; font-size: 1.2rem; letter-spacing: 3px; }
             .entering-text { font-size: 1.6rem; }
             .progress-container { width: 300px; }
         }
