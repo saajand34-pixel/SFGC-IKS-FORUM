@@ -8,44 +8,38 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* PREMIUM BRIGHT MAROON BACKGROUND - NO IMAGE NEEDED */
-            background: linear-gradient(145deg, #6B1A1A 0%, #5A1515 30%, #4A0D0D 60%, #3D0808 100%);
-            min-height: 100vh;
+            /* BRIGHT BACKGROUND IMAGE - FITS PC & MOBILE */
+            background-color: #4A0D0D;
+            background-image: url('image_70a35f.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            
+            font-family: 'Georgia Pro', Georgia, serif;
+            overflow: hidden;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Georgia Pro', Georgia, serif;
-            overflow: hidden;
-            position: relative;
         }
 
-        /* Golden shimmer overlay */
+        /* BRIGHT OVERLAY - Removes dullness */
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             inset: 0;
             background: 
-                radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 100%, rgba(255,215,0,0.08) 0%, transparent 50%);
+                rgba(255, 255, 255, 0.1),
+                rgba(74, 13, 13, 0.25);
+            z-index: 1;
             pointer-events: none;
-        }
-
-        /* Side golden accents */
-        body::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, transparent, #D4AF37, transparent);
-            box-shadow: 0 0 20px rgba(212,175,55,0.5);
         }
 
         .launch-container {
             text-align: center;
             z-index: 10;
-            padding: 40px;
+            position: relative;
         }
 
         /* SMOOTH PREMIUM GOLDEN BUTTON */
@@ -120,27 +114,27 @@
             font-weight: bold;
             letter-spacing: 8px;
             margin-bottom: 45px;
-            text-shadow: 0 0 25px rgba(255,215,0,0.6);
+            text-shadow: 0 0 25px rgba(255,215,0,0.8), 0 0 50px rgba(255,215,0,0.4);
             animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(1.03); }
+            50% { opacity: 0.9; transform: scale(1.03); }
         }
 
         .progress-container {
             width: 500px;
             max-width: 85vw;
             height: 14px;
-            background: rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.1);
             border-radius: 30px;
             overflow: hidden;
             margin: 0 auto;
-            border: 2px solid rgba(212,175,55,0.35);
+            border: 2px solid rgba(212,175,55,0.5);
             box-shadow: 
                 inset 0 3px 10px rgba(0,0,0,0.5),
-                0 0 25px rgba(212,175,55,0.15);
+                0 0 25px rgba(212,175,55,0.2);
         }
 
         .progress-bar {
@@ -154,8 +148,8 @@
                 #C9A227 100%);
             border-radius: 30px;
             box-shadow: 
-                0 0 20px rgba(255,215,0,0.8),
-                0 0 40px rgba(255,215,0,0.4);
+                0 0 20px rgba(255,215,0,0.9),
+                0 0 40px rgba(255,215,0,0.5);
             transition: width 0.04s linear;
         }
 
@@ -164,21 +158,28 @@
             font-size: 1.2rem;
             margin-top: 20px;
             letter-spacing: 4px;
-            text-shadow: 0 0 15px rgba(255,215,0,0.5);
+            text-shadow: 0 0 15px rgba(255,215,0,0.6);
         }
 
-        /* Mobile */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
+            body {
+                background-size: cover !important;
+                background-position: center center !important;
+            }
+            
             .btn-inaugurate {
                 padding: 22px 60px;
                 font-size: 1.3rem;
                 letter-spacing: 4px;
                 border-radius: 40px;
             }
+            
             .entering-text {
                 font-size: 1.8rem;
                 letter-spacing: 5px;
             }
+            
             .progress-container {
                 width: 340px;
                 height: 12px;
@@ -192,14 +193,17 @@
                 letter-spacing: 3px;
                 border-radius: 35px;
             }
+            
             .entering-text {
                 font-size: 1.4rem;
                 letter-spacing: 3px;
             }
+            
             .progress-container {
                 width: 280px;
                 height: 10px;
             }
+            
             .progress-text {
                 font-size: 1rem;
             }
