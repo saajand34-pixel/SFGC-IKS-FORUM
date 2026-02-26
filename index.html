@@ -8,8 +8,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* Dark Maroon Gradient Background */
-            background: linear-gradient(135deg, #2D0809 0%, #4A0A0C 30%, #6B1315 50%, #4A0A0C 70%, #2D0809 100%);
+            /* Dark Background with Subtle Blur */
+            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
             font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
@@ -24,34 +24,44 @@
             z-index: 10;
         }
 
-        /* Launch Button - Royal Maroon with Golden Glow */
+        /* Royal Golden Launch Button */
         .btn-inaugurate {
-            padding: 20px 60px;
-            background: linear-gradient(180deg, #6B1315 0%, #4A0A0C 50%, #2D0809 100%);
-            color: #FFD700;
+            padding: 22px 70px;
+            background: linear-gradient(135deg, 
+                #FFD700 0%, 
+                #FFA500 25%, 
+                #FFD700 50%, 
+                #FFA500 75%, 
+                #FFD700 100%);
+            color: #2D0809;
             border: 3px solid #FFD700;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: all 0.4s ease;
             font-family: 'Georgia Pro', Georgia, serif;
             font-weight: bold;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             position: relative;
             box-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.3),
-                0 0 40px rgba(255, 215, 0, 0.2),
-                inset 0 0 20px rgba(255, 215, 0, 0.1);
+                0 0 20px rgba(255, 215, 0, 0.6),
+                0 0 40px rgba(255, 165, 0, 0.4),
+                0 0 60px rgba(255, 215, 0, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .btn-inaugurate:hover {
-            background: linear-gradient(180deg, #8B1A1C 0%, #6B1315 50%, #4A0A0C 100%);
+            transform: scale(1.08);
             box-shadow: 
-                0 0 30px rgba(255, 215, 0, 0.5),
-                0 0 60px rgba(255, 215, 0, 0.3),
-                0 0 80px rgba(255, 215, 0, 0.2);
-            transform: scale(1.05);
-            color: #FFF8DC;
+                0 0 30px rgba(255, 215, 0, 0.8),
+                0 0 60px rgba(255, 165, 0, 0.6),
+                0 0 90px rgba(255, 215, 0, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-inaugurate:active {
+            transform: scale(0.98);
         }
 
         /* Entering Screen - Hidden Initially */
@@ -61,28 +71,39 @@
             z-index: 10;
         }
 
+        /* Entering Text with Gold Glow */
         .entering-text {
             color: #FFD700;
             font-family: 'Georgia Pro', Georgia, serif;
-            font-size: 2rem;
-            letter-spacing: 4px;
-            margin-bottom: 35px;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 6px;
+            margin-bottom: 40px;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.6),
+                0 0 20px rgba(255, 215, 0, 0.4),
+                0 0 30px rgba(255, 165, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        /* Glass Glow Minimal Progress Bar */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
+        }
+
+        /* Glass Glow Minimal Progress Bar Container */
         .progress-container {
-            width: 400px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
+            width: 450px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
             overflow: hidden;
             margin: 0 auto;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 2px solid rgba(255, 215, 0, 0.4);
             box-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.15),
-                inset 0 0 20px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
+                0 0 25px rgba(255, 215, 0, 0.2),
+                inset 0 0 25px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
         }
 
         /* Golden Neon Progress Bar */
@@ -90,49 +111,67 @@
             width: 0%;
             height: 100%;
             background: linear-gradient(90deg, 
-                rgba(255, 215, 0, 0.4) 0%, 
-                #FFD700 30%, 
-                #D4AF37 50%, 
-                #FFD700 70%, 
-                rgba(255, 215, 0, 0.4) 100%);
-            border-radius: 12px;
-            transition: width 0.08s linear;
+                rgba(255, 215, 0, 0.3) 0%, 
+                #FFD700 20%, 
+                #FFA500 50%, 
+                #FFD700 80%, 
+                rgba(255, 215, 0, 0.3) 100%);
+            border-radius: 15px;
+            transition: width 0.05s linear;
             box-shadow: 
-                0 0 15px #FFD700,
-                0 0 30px rgba(255, 215, 0, 0.5),
-                0 0 45px rgba(255, 215, 0, 0.3);
+                0 0 20px #FFD700,
+                0 0 40px rgba(255, 215, 0, 0.6),
+                0 0 60px rgba(255, 165, 0, 0.4);
+        }
+
+        /* Percentage Text */
+        .progress-text {
+            color: #FFD700;
+            font-family: 'Georgia Pro', Georgia, serif;
+            font-size: 1rem;
+            margin-top: 15px;
+            letter-spacing: 3px;
+            opacity: 0.8;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .btn-inaugurate {
-                padding: 16px 50px;
+                padding: 18px 55px;
                 font-size: 1.2rem;
                 border-width: 2px;
+                letter-spacing: 3px;
             }
             .entering-text {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+                letter-spacing: 4px;
             }
             .progress-container {
-                width: 320px;
-                height: 6px;
+                width: 350px;
+                height: 8px;
+            }
+            .progress-text {
+                font-size: 0.9rem;
             }
         }
 
         @media (max-width: 480px) {
             .btn-inaugurate {
-                padding: 14px 40px;
+                padding: 15px 45px;
                 font-size: 1rem;
                 border-width: 2px;
                 letter-spacing: 2px;
             }
             .entering-text {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 letter-spacing: 2px;
             }
             .progress-container {
-                width: 260px;
-                height: 5px;
+                width: 280px;
+                height: 6px;
+            }
+            .progress-text {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -143,3 +182,52 @@
     <div class="launch-container" id="launch-screen">
         <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
     </div>
+
+    <!-- Entering Screen (Shows After Click) -->
+    <div class="entering-screen" id="entering-screen">
+        <div class="entering-text">Entering the Forum</div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="progress-text" id="progress-text">0%</div>
+    </div>
+
+    <script>
+        function startInauguration() {
+            const launchScreen = document.getElementById('launch-screen');
+            const enteringScreen = document.getElementById('entering-screen');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            
+            // 1. Hide launch screen, show entering screen
+            launchScreen.style.display = 'none';
+            enteringScreen.style.display = 'block';
+            
+            // 2. Animate progress bar
+            let width = 0;
+            const duration = 2500; // 2.5 seconds
+            const interval = 25; // Update every 25ms
+            const totalSteps = duration / interval;
+            const increment = 100 / totalSteps;
+            
+            const progressInterval = setInterval(() => {
+                width += increment;
+                
+                // Update progress bar width
+                progressBar.style.width = Math.min(width, 100) + '%';
+                
+                // Update percentage text
+                progressText.textContent = Math.min(Math.round(width), 100) + '%';
+                
+                // When progress completes, go to home.html with loading screen
+                if (width >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        window.location.href = 'home.html';
+                    }, 300);
+                }
+            }, interval);
+        }
+    </script>
+</body>
+</html>
