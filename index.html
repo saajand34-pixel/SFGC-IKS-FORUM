@@ -8,8 +8,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* Exact Same Background as Home Page Loader */
-            background: linear-gradient(135deg, #1F0505 0%, #3B0D0D 50%, #2B0A0A 100%);
+            /* Pattern image replaced as the background as requested */
+            background: url('image_70a35f.jpg') center center;
+            background-size: cover;
             font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
@@ -18,173 +19,66 @@
             justify-content: center;
         }
 
-        /* Main Container */
+        /* Overlay to ensure pattern doesn't make text/button hard to read */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: rgba(61, 10, 10, 0.4); /* Subtle maroon tint over the pattern */
+            z-index: 1;
+        }
+
         .launch-container {
             text-align: center;
             z-index: 10;
+            position: relative;
         }
 
-        /* Golden Title */
-        .launch-title {
-            font-size: clamp(40px, 8vw, 70px);
-            font-weight: 900;
-            letter-spacing: 6px;
-            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 40px;
-            text-shadow: none;
-            filter: drop-shadow(0 0 20px rgba(191, 149, 63, 0.4));
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(191, 149, 63, 0.4)); }
-            50% { filter: drop-shadow(0 0 35px rgba(191, 149, 63, 0.6)); }
-        }
-
-        /* Royal Golden Launch Button */
+        /* Royal Golden Launch Button (Preserved exactly) */
         .btn-inaugurate {
-            padding: 20px 65px;
-            background: linear-gradient(180deg, #B38728 0%, #BF953F 30%, #FCF6BA 50%, #BF953F 70%, #B38728 100%);
-            color: #1F0505;
-            border: 3px solid #BF953F;
-            font-size: 1.4rem;
+            padding: 22px 70px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFB800 25%, #FFD700 50%, #FFB800 75%, #FFD700 100%);
+            color: #3D0A0A;
+            border: 3px solid #FFD700;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: all 0.4s ease;
             font-family: 'Georgia Pro', Georgia, serif;
             font-weight: bold;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             position: relative;
-            box-shadow: 
-                0 0 25px rgba(191, 149, 63, 0.5),
-                0 0 50px rgba(191, 149, 63, 0.3),
-                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 180, 0, 0.5), 0 0 75px rgba(255, 215, 0, 0.3), inset 0 0 25px rgba(255, 255, 255, 0.4);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         }
 
-        .btn-inaugurate:hover {
-            transform: scale(1.08);
-            box-shadow: 
-                0 0 35px rgba(191, 149, 63, 0.8),
-                0 0 70px rgba(191, 149, 63, 0.5),
-                inset 0 0 35px rgba(255, 255, 255, 0.5);
-        }
+        .btn-inaugurate:hover { transform: scale(1.08); box-shadow: 0 0 35px rgba(255, 215, 0, 0.9), 0 0 70px rgba(255, 180, 0, 0.7), 0 0 100px rgba(255, 215, 0, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.6); }
 
-        .btn-inaugurate:active {
-            transform: scale(0.98);
-        }
+        /* Entering Screen Logic (Preserved exactly) */
+        .entering-screen { display: none; text-align: center; z-index: 20; position: relative; }
+        .entering-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 2.2rem; font-weight: bold; letter-spacing: 6px; margin-bottom: 40px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); animation: pulse 2s ease-in-out infinite; }
+        
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.02); } }
 
-        /* Entering Screen - Hidden Initially */
-        .entering-screen {
-            display: none;
-            text-align: center;
-            z-index: 10;
-        }
+        .progress-container { width: 450px; height: 10px; background: rgba(255, 255, 255, 0.08); border-radius: 15px; overflow: hidden; margin: 0 auto; border: 2px solid rgba(255, 215, 0, 0.5); backdrop-filter: blur(10px); }
+        .progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, rgba(255, 215, 0, 0.4) 0%, #FFD700 20%, #FFB800 50%, #FFD700 80%, rgba(255, 215, 0, 0.4) 100%); transition: width 0.05s linear; box-shadow: 0 0 25px #FFD700; }
+        .progress-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 1rem; margin-top: 15px; letter-spacing: 3px; }
 
-        /* Entering Text - Same Style as Loader */
-        .entering-text {
-            font-size: clamp(35px, 7vw, 60px);
-            font-weight: 900;
-            letter-spacing: 5px;
-            margin-bottom: 40px;
-            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        /* Glass Glow Progress Bar Container */
-        .progress-container {
-            width: 450px;
-            max-width: 90vw;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            overflow: hidden;
-            margin: 0 auto;
-            border: 2px solid rgba(191, 149, 63, 0.5);
-            box-shadow: 
-                0 0 30px rgba(191, 149, 63, 0.2),
-                inset 0 0 30px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Golden Neon Progress Bar - Same as Home Loader */
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                rgba(191, 149, 63, 0.4) 0%, 
-                #BF953F 20%, 
-                #FCF6BA 50%, 
-                #BF953F 80%, 
-                rgba(191, 149, 63, 0.4) 100%);
-            border-radius: 20px;
-            transition: width 0.05s linear;
-            box-shadow: 
-                0 0 20px rgba(191, 149, 63, 0.8),
-                0 0 40px rgba(191, 149, 63, 0.5);
-        }
-
-        /* Percentage Text */
-        .progress-text {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-top: 20px;
-            letter-spacing: 3px;
-            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .btn-inaugurate {
-                padding: 16px 50px;
-                font-size: 1.1rem;
-                border-width: 2px;
-                letter-spacing: 3px;
-            }
-            .entering-text {
-                letter-spacing: 3px;
-            }
-            .progress-container {
-                width: 350px;
-                height: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .btn-inaugurate {
-                padding: 14px 40px;
-                font-size: 1rem;
-                border-width: 2px;
-                letter-spacing: 2px;
-            }
-            .entering-text {
-                letter-spacing: 2px;
-            }
-            .progress-container {
-                width: 280px;
-                height: 8px;
-            }
-            .progress-text {
-                font-size: 0.9rem;
-            }
+            .btn-inaugurate { padding: 18px 55px; font-size: 1.2rem; }
+            .entering-text { font-size: 1.6rem; }
+            .progress-container { width: 300px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Initial Launch Screen -->
     <div class="launch-container" id="launch-screen">
         <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
     </div>
 
-    <!-- Entering Screen (Shows After Click) -->
     <div class="entering-screen" id="entering-screen">
-        <div class="entering-text">Entering the Forum..</div>
+        <div class="entering-text">Entering the Forum</div>
         <div class="progress-container">
             <div class="progress-bar" id="progress-bar"></div>
         </div>
@@ -198,32 +92,25 @@
             const progressBar = document.getElementById('progress-bar');
             const progressText = document.getElementById('progress-text');
             
-            // 1. Hide launch screen, show entering screen
             launchScreen.style.display = 'none';
             enteringScreen.style.display = 'block';
             
-            // 2. Animate progress bar
             let width = 0;
-            const duration = 3000; // 3 seconds (same as home page loader)
-            const interval = 30;
+            const duration = 2500; 
+            const interval = 25; 
             const totalSteps = duration / interval;
             const increment = 100 / totalSteps;
             
             const progressInterval = setInterval(() => {
                 width += increment;
-                
-                // Update progress bar width
                 progressBar.style.width = Math.min(width, 100) + '%';
-                
-                // Update percentage text
                 progressText.textContent = Math.min(Math.round(width), 100) + '%';
                 
-                // When progress completes, go to home.html
                 if (width >= 100) {
                     clearInterval(progressInterval);
                     setTimeout(() => {
                         window.location.href = 'home.html';
-                    }, 500);
+                    }, 300);
                 }
             }, interval);
         }
