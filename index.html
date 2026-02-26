@@ -8,14 +8,20 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* PROFESSIONAL BACKGROUND FIX: Tiled pattern for maximum sharpness on all screens */
-            background-color: #1F0505; /* Deep maroon base synchronized with home.html */
+            /* PROFESSIONAL BACKGROUND FIX */
+            /* Using the pattern image you provided */
             background-image: url('image_70a35f.jpg');
-            background-size: 400px auto; /* Perfect scale for royal pattern visibility */
+            
+            /* background-size: auto prevents the "zoomed-in" look by keeping original scale */
+            background-size: 400px auto; 
             background-repeat: repeat;
             background-attachment: fixed;
-            background-blend-mode: multiply; /* Creates a rich, deep texture instead of a dull image */
-            
+            background-position: center center;
+
+            /* Removing the "black" look by using overlay instead of multiply */
+            background-color: #4A0A0C; 
+            background-blend-mode: overlay;
+
             font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
@@ -24,12 +30,12 @@
             justify-content: center;
         }
 
-        /* Subtle dark vignette to draw focus to the center */
+        /* Subtle dark vignette to ensure the button pops */
         body::after {
             content: '';
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.4) 100%);
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.3) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -40,7 +46,7 @@
             position: relative;
         }
 
-        /* Royal Golden Launch Button (Preserved exactly) */
+        /* Royal Golden Launch Button (Preserved exactly as requested) */
         .btn-inaugurate {
             padding: 22px 70px;
             background: linear-gradient(135deg, #FFD700 0%, #FFB800 25%, #FFD700 50%, #FFB800 75%, #FFD700 100%);
@@ -66,7 +72,7 @@
             box-shadow: 0 0 35px rgba(255, 215, 0, 0.9), 0 0 70px rgba(255, 180, 0, 0.7), inset 0 0 40px rgba(255, 255, 255, 0.6); 
         }
 
-        /* Entering Screen Logic (Preserved exactly) */
+        /* Entering Screen Logic */
         .entering-screen { display: none; text-align: center; z-index: 20; position: relative; }
         .entering-text { 
             color: #FFD700; 
@@ -94,7 +100,7 @@
         .progress-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 1rem; margin-top: 15px; letter-spacing: 3px; }
 
         @media (max-width: 768px) {
-            body { background-size: 250px auto; } /* Smaller pattern for mobile screens */
+            body { background-size: 250px auto; }
             .btn-inaugurate { padding: 18px 55px; font-size: 1.2rem; letter-spacing: 3px; }
             .entering-text { font-size: 1.6rem; }
             .progress-container { width: 300px; }
