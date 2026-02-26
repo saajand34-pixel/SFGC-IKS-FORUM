@@ -8,18 +8,19 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* VIBRANT PROFESSIONAL BACKGROUND FIX */
-            /* Using a slightly brighter maroon base to make the pattern shine */
-            background-color: #5e0b0b; 
-            background-image: url('image_70a35f.jpg');
+            /* SEAMLESS BACKGROUND FIX */
+            background-color: #3D0A0A; 
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                url('image_70a35f.jpg');
             
-            /* FIXED: Prevents zoom-blur by tiling at a perfect sharp scale for PC */
-            background-size: 350px auto; 
-            background-repeat: repeat;
+            /* 'cover' makes the image fill the screen without repeating or creating block lines */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
             background-attachment: fixed;
-            background-position: center top;
 
-            /* Soft-light creates a crisp, neat look instead of dull 'multiply' */
+            /* soft-light brightens the pattern and makes it visible on PC */
             background-blend-mode: soft-light;
 
             font-family: 'Georgia Pro', Georgia, serif;
@@ -30,12 +31,12 @@
             justify-content: center;
         }
 
-        /* Subtle lighting glow to ensure the button area looks correct and bright */
+        /* Lighting glow to make the center area bright and neat */
         body::after {
             content: '';
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 80%);
+            background: radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 80%);
             z-index: 1;
             pointer-events: none;
         }
@@ -46,12 +47,13 @@
             position: relative;
         }
 
-        /* Royal Golden Launch Button (Preserved exactly as requested) */
+        /* Royal Golden Launch Button (Matches your uploaded design) */
         .btn-inaugurate {
             padding: 22px 70px;
-            background: linear-gradient(135deg, #FFD700 0%, #FFB800 25%, #FFD700 50%, #FFB800 75%, #FFD700 100%);
+            /* Multi-stop gradient for the gold shimmer look */
+            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FCF6BA 55%, #AA771C 78%);
             color: #3D0A0A;
-            border: 3px solid #FFD700;
+            border: 2px solid #BF953F;
             font-size: 1.5rem;
             cursor: pointer;
             transition: all 0.4s ease;
@@ -59,33 +61,42 @@
             font-weight: bold;
             letter-spacing: 5px;
             text-transform: uppercase;
-            position: relative;
             box-shadow: 
                 0 0 25px rgba(255, 215, 0, 0.7),
-                0 0 50px rgba(255, 180, 0, 0.5),
-                inset 0 0 25px rgba(255, 255, 255, 0.4);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                0 0 50px rgba(255, 180, 0, 0.5);
+            border-radius: 4px;
         }
 
         .btn-inaugurate:hover { 
-            transform: scale(1.08); 
-            box-shadow: 0 0 45px rgba(255, 215, 0, 0.9), 0 0 90px rgba(255, 180, 0, 0.7), inset 0 0 40px rgba(255, 255, 255, 0.6); 
+            transform: scale(1.05); 
+            box-shadow: 0 0 45px rgba(255, 215, 0, 0.9); 
         }
 
-        /* Entering Screen Logic (Preserved exactly) */
+        /* Progress Screen Layout */
         .entering-screen { display: none; text-align: center; z-index: 20; position: relative; }
-        .entering-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 2.2rem; font-weight: bold; letter-spacing: 6px; margin-bottom: 40px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); animation: pulse 2s ease-in-out infinite; }
+        .entering-text { 
+            color: #FCF6BA; font-family: 'Georgia Pro', Georgia, serif; 
+            font-size: 2.2rem; font-weight: bold; letter-spacing: 6px; 
+            margin-bottom: 40px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); 
+            animation: pulse 2s ease-in-out infinite; 
+        }
         
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.02); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
-        .progress-container { width: 450px; height: 10px; background: rgba(255, 255, 255, 0.08); border-radius: 15px; overflow: hidden; margin: 0 auto; border: 2px solid rgba(255, 215, 0, 0.5); backdrop-filter: blur(10px); }
-        .progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, rgba(255, 215, 0, 0.4) 0%, #FFD700 20%, #FFB800 50%, #FFD700 80%, rgba(255, 215, 0, 0.4) 100%); transition: width 0.05s linear; box-shadow: 0 0 25px #FFD700; }
-        .progress-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 1rem; margin-top: 15px; letter-spacing: 3px; }
+        .progress-container { 
+            width: 450px; height: 10px; background: rgba(255, 255, 255, 0.1); 
+            border-radius: 15px; overflow: hidden; margin: 0 auto; 
+            border: 1px solid rgba(255, 215, 0, 0.5); 
+        }
+        .progress-bar { 
+            width: 0%; height: 100%; 
+            background: linear-gradient(90deg, #BF953F, #FCF6BA, #BF953F); 
+            box-shadow: 0 0 20px #FFD700;
+        }
+        .progress-text { color: #FCF6BA; font-size: 1rem; margin-top: 15px; letter-spacing: 3px; }
 
         @media (max-width: 768px) {
-            body { background-size: 250px auto; } /* Mobile tile size */
             .btn-inaugurate { padding: 18px 55px; font-size: 1.2rem; }
-            .entering-text { font-size: 1.6rem; }
             .progress-container { width: 300px; }
         }
     </style>
@@ -106,32 +117,20 @@
 
     <script>
         function startInauguration() {
-            const launchScreen = document.getElementById('launch-screen');
-            const enteringScreen = document.getElementById('entering-screen');
-            const progressBar = document.getElementById('progress-bar');
-            const progressText = document.getElementById('progress-text');
-            
-            launchScreen.style.display = 'none';
-            enteringScreen.style.display = 'block';
+            document.getElementById('launch-screen').style.display = 'none';
+            document.getElementById('entering-screen').style.display = 'block';
             
             let width = 0;
-            const duration = 2500; 
-            const interval = 25; 
-            const totalSteps = duration / interval;
-            const increment = 100 / totalSteps;
-            
             const progressInterval = setInterval(() => {
-                width += increment;
-                progressBar.style.width = Math.min(width, 100) + '%';
-                progressText.textContent = Math.min(Math.round(width), 100) + '%';
+                width += 1;
+                document.getElementById('progress-bar').style.width = width + '%';
+                document.getElementById('progress-text').textContent = width + '%';
                 
                 if (width >= 100) {
                     clearInterval(progressInterval);
-                    setTimeout(() => {
-                        window.location.href = 'home.html';
-                    }, 300);
+                    setTimeout(() => { window.location.href = 'home.html'; }, 300);
                 }
-            }, interval);
+            }, 25);
         }
     </script>
 </body>
