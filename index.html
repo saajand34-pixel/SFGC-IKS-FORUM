@@ -8,17 +8,20 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* BRIGHTER PROFESSIONAL BACKGROUND FIX */
-            background-color: #3D0A0A; /* Deep maroon base */
-            background-image: url('image_70a35f.jpg');
+            /* SEAMLESS BACKGROUND FIX */
+            background-color: #3D0A0A; 
+            /* Added a gradient to the background-image to make the center brighter */
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+                url('image_70a35f.jpg');
             
-            /* Sharp tiled pattern at fixed scale for both PC and Mobile */
-            background-size: 400px auto; 
-            background-repeat: repeat;
-            background-attachment: fixed;
+            /* 'cover' ensures the image stretches to fit and doesn't repeat like two images */
+            background-size: cover;
+            background-repeat: no-repeat;
             background-position: center center;
+            background-attachment: fixed;
 
-            /* Soft-light makes the image brighter and more vibrant than multiply or overlay */
+            /* Brightens the image while keeping the maroon depth */
             background-blend-mode: soft-light;
 
             font-family: 'Georgia Pro', Georgia, serif;
@@ -29,12 +32,12 @@
             justify-content: center;
         }
 
-        /* Standardized overlay ensures no section (like under the button) looks different */
+        /* This ensures the area under the button looks consistent with the rest of the page */
         body::after {
             content: '';
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.15); /* Very light tint for depth without dulling the image */
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
             z-index: 1;
             pointer-events: none;
         }
@@ -71,7 +74,7 @@
             box-shadow: 0 0 35px rgba(255, 215, 0, 0.9), 0 0 70px rgba(255, 180, 0, 0.7), inset 0 0 40px rgba(255, 255, 255, 0.6); 
         }
 
-        /* Entering Screen Styles */
+        /* Entering Screen Logic (Preserved exactly) */
         .entering-screen { display: none; text-align: center; z-index: 20; position: relative; }
         .entering-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 2.2rem; font-weight: bold; letter-spacing: 6px; margin-bottom: 40px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); animation: pulse 2s ease-in-out infinite; }
         
@@ -82,7 +85,6 @@
         .progress-text { color: #FFD700; font-family: 'Georgia Pro', Georgia, serif; font-size: 1rem; margin-top: 15px; letter-spacing: 3px; }
 
         @media (max-width: 768px) {
-            body { background-size: 250px auto; }
             .btn-inaugurate { padding: 18px 55px; font-size: 1.2rem; }
             .entering-text { font-size: 1.6rem; }
             .progress-container { width: 300px; }
