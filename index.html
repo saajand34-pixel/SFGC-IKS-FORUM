@@ -8,22 +8,15 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* SEAMLESS BACKGROUND FIX */
-            background-color: #3D0A0A; 
-            background-image: 
-                linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                url('image_70a35f.jpg');
-            
-            /* 'cover' makes the image fill the screen without repeating or creating block lines */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
+            /* SEAMLESS PROFESSIONAL BACKGROUND */
+            background-color: #1F0505; 
+            background-image: url('image_70a35f.jpg');
+            background-size: 450px auto; /* Perfect scale for pattern clarity */
+            background-repeat: repeat;
             background-attachment: fixed;
-
-            /* soft-light brightens the pattern and makes it visible on PC */
-            background-blend-mode: soft-light;
-
-            font-family: 'Georgia Pro', Georgia, serif;
+            background-blend-mode: overlay; /* Makes the gold pattern pop against maroon */
+            
+            font-family: 'Georgia', serif;
             overflow: hidden;
             height: 100vh;
             display: flex;
@@ -31,7 +24,7 @@
             justify-content: center;
         }
 
-        /* Lighting glow to make the center area bright and neat */
+        /* Subtle lighting glow in the center for a professional look */
         body::after {
             content: '';
             position: fixed;
@@ -47,46 +40,57 @@
             position: relative;
         }
 
-        /* Royal Golden Launch Button (Matches your uploaded design) */
+        /* ROYAL GOLDEN BUTTON - Recreating the "Metallic Cut" Reflection */
         .btn-inaugurate {
             padding: 22px 70px;
-            /* Multi-stop gradient for the gold shimmer look */
-            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FCF6BA 55%, #AA771C 78%);
-            color: #3D0A0A;
-            border: 2px solid #BF953F;
+            /* Multi-stop gradient creates the sharp horizontal 'cut' line in the middle */
+            background: linear-gradient(to bottom, 
+                #8a6e2f 0%, 
+                #BF953F 45%, 
+                #FCF6BA 48%, /* The bright 'cut' line start */
+                #FCF6BA 52%, /* The bright 'cut' line end */
+                #B38728 55%, 
+                #8a6e2f 100%
+            );
+            color: #3D0A0A; /* Deep maroon text */
+            border: 1px solid #BF953F;
             font-size: 1.5rem;
             cursor: pointer;
-            transition: all 0.4s ease;
-            font-family: 'Georgia Pro', Georgia, serif;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Georgia', serif;
             font-weight: bold;
             letter-spacing: 5px;
             text-transform: uppercase;
             box-shadow: 
-                0 0 25px rgba(255, 215, 0, 0.7),
-                0 0 50px rgba(255, 180, 0, 0.5);
+                0 10px 30px rgba(0,0,0,0.6),
+                0 0 20px rgba(255, 215, 0, 0.4);
             border-radius: 4px;
+            position: relative;
         }
 
-        .btn-inaugurate:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 0 45px rgba(255, 215, 0, 0.9); 
+        .btn-inaugurate:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 30px rgba(255, 215, 0, 0.6);
         }
 
-        /* Progress Screen Layout */
+        /* Entering Screen Styles */
         .entering-screen { display: none; text-align: center; z-index: 20; position: relative; }
         .entering-text { 
-            color: #FCF6BA; font-family: 'Georgia Pro', Georgia, serif; 
-            font-size: 2.2rem; font-weight: bold; letter-spacing: 6px; 
-            margin-bottom: 40px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); 
+            color: #FCF6BA; 
+            font-size: 2.2rem; 
+            font-weight: bold; 
+            letter-spacing: 6px; 
+            margin-bottom: 40px; 
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); 
             animation: pulse 2s ease-in-out infinite; 
         }
         
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
         .progress-container { 
-            width: 450px; height: 10px; background: rgba(255, 255, 255, 0.1); 
-            border-radius: 15px; overflow: hidden; margin: 0 auto; 
-            border: 1px solid rgba(255, 215, 0, 0.5); 
+            width: 450px; height: 8px; background: rgba(255, 255, 255, 0.1); 
+            border-radius: 10px; overflow: hidden; margin: 0 auto; 
+            border: 1px solid rgba(191, 149, 63, 0.5); 
         }
         .progress-bar { 
             width: 0%; height: 100%; 
@@ -96,7 +100,9 @@
         .progress-text { color: #FCF6BA; font-size: 1rem; margin-top: 15px; letter-spacing: 3px; }
 
         @media (max-width: 768px) {
-            .btn-inaugurate { padding: 18px 55px; font-size: 1.2rem; }
+            body { background-size: 250px auto; }
+            .btn-inaugurate { padding: 18px 50px; font-size: 1.2rem; letter-spacing: 3px; }
+            .entering-text { font-size: 1.6rem; }
             .progress-container { width: 300px; }
         }
     </style>
@@ -128,7 +134,9 @@
                 
                 if (width >= 100) {
                     clearInterval(progressInterval);
-                    setTimeout(() => { window.location.href = 'home.html'; }, 300);
+                    setTimeout(() => {
+                        window.location.href = 'home.html';
+                    }, 400);
                 }
             }, 25);
         }
