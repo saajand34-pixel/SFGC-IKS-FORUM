@@ -7,8 +7,8 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-            body {
-        /* BACKGROUND IMAGE - NO OVERLAY */
+        body {
+        /* BACKGROUND IMAGE FOR LAUNCH SCREEN */
         background-color: #4A0D0D;
         background-image: url('image_70a35f.jpg');
         background-size: cover;
@@ -88,11 +88,20 @@
         transform: scale(0.97);
     }
 
-    /* Progress Screen */
+    /* ENTERING SCREEN - DARK MAROON BG */
     .entering-screen {
         display: none;
         text-align: center;
         z-index: 20;
+        /* Dark maroon background - no image */
+        background: linear-gradient(135deg, #2D0809 0%, #4A0D0D 50%, #3D0A0A 100%);
+        position: fixed;
+        inset: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .entering-text {
@@ -195,11 +204,13 @@
 </head>
 <body>
 
-    <div class="launch-container" id="launch-screen">
+    <!-- LAUNCH SCREEN - WITH IMAGE BG -->
+<div class="launch-container" id="launch-screen">
     <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
 </div>
 
-<div class="entering-screen" id="entering-screen">
+<!-- ENTERING SCREEN - DARK MAROON BG -->
+<div class="entering-screen" id="entering-screen" style="display: none;">
     <div class="entering-text">Entering the Forum</div>
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
@@ -209,9 +220,18 @@
 
 <script>
     function startInauguration() {
+        // Hide launch screen
         document.getElementById('launch-screen').style.display = 'none';
-        document.getElementById('entering-screen').style.display = 'block';
         
+        // Remove image background from body
+        document.body.style.backgroundImage = 'none';
+        document.body.style.backgroundColor = '#2D0809';
+        
+        // Show entering screen with dark maroon
+        const enteringScreen = document.getElementById('entering-screen');
+        enteringScreen.style.display = 'flex';
+        
+        // Start progress bar
         let width = 0;
         const progressInterval = setInterval(() => {
             width += 1;
