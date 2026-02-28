@@ -7,8 +7,14 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* OLD BACKGROUND SETTINGS RESTORED FOR LAUNCH PAGE */
         body {
-            background-color: #2D0809;
+            background-color: #4A0D0D;
+            background-image: url('launch_bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
             font-family: 'Georgia Pro', Georgia, serif;
             overflow: hidden;
             height: 100vh;
@@ -20,9 +26,10 @@
         .launch-container {
             text-align: center;
             z-index: 10;
+            position: relative;
         }
 
-        /* GOLDEN BUTTON */
+        /* GOLDEN BUTTON (Original Style) */
         .btn-inaugurate {
             padding: 26px 80px;
             background: linear-gradient(180deg, #E8C547 0%, #FFD700 15%, #FFF176 30%, #FFD700 50%, #D4AF37 85%, #C9A227 100%);
@@ -36,16 +43,28 @@
             letter-spacing: 6px;
             text-transform: uppercase;
             border-radius: 50px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 40px rgba(255,215,0,0.3);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 40px rgba(255,215,0,0.3), inset 0 2px 0 rgba(255,255,255,0.5);
             position: relative;
             overflow: hidden;
         }
 
-        /* ENTERING SCREEN - DECORATIVE DESIGN */
+        .btn-inaugurate::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-inaugurate:hover::after { left: 100%; }
+        .btn-inaugurate:hover { transform: scale(1.05); }
+
+        /* NEW ORNATE ENTERING SCREEN (Applied only when triggered) */
         .entering-screen {
             display: none;
             text-align: center;
             z-index: 20;
+            /* Elegant Burgundy Ornate Background */
             background: radial-gradient(circle, #4A0D0D 0%, #2D0809 100%);
             position: fixed;
             inset: 0;
@@ -53,30 +72,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* The Ornate Frame Effect */
             border: 25px solid #2D0809;
-            box-shadow: inset 0 0 150px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
         }
 
-        /* RECREATING THE ORNATE SWIRL DIVIDER LINE */
-        .ornate-line {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(170, 119, 28, 0.4), transparent);
-            position: relative;
-            margin: 40px 0;
-        }
-
-        .ornate-line::before {
-            content: "❧ ~~~~~~~~~ ❦ ~~~~~~~~~ ☙";
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Decorative Swirl Divider */
+        .ornate-divider {
             color: #AA771C;
             font-size: 2rem;
-            opacity: 0.15;
-            white-space: nowrap;
+            opacity: 0.2;
+            margin: 20px 0;
+            letter-spacing: 10px;
         }
 
         /* METALLIC GOLD GRADIENT TEXT */
@@ -89,31 +95,30 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(0 0 10px rgba(191, 149, 63, 0.4));
+            filter: drop-shadow(0 0 15px rgba(191, 149, 63, 0.4));
             text-transform: uppercase;
         }
 
         .progress-wrapper {
             width: 600px;
             max-width: 85vw;
-            margin-top: -10px;
         }
 
         .progress-container {
             width: 100%;
             height: 10px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(170, 119, 28, 0.3);
+            border: 1px solid rgba(170, 119, 28, 0.2);
         }
 
         .progress-bar {
             width: 0%;
             height: 100%;
-            /* Matching the golden bar in your friend's 100% screenshot */
+            /* Solid Golden Rod Style from Friend's Pic */
             background: linear-gradient(90deg, #BF953F, #FCF6BA, #AA771C);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
             transition: width 0.1s linear;
         }
 
@@ -121,7 +126,6 @@
             display: flex;
             justify-content: space-between;
             margin-top: 15px;
-            padding: 0 5px;
         }
 
         .progress-text, .progress-percent {
@@ -133,7 +137,7 @@
         }
 
         .status-text {
-            color: rgba(170, 119, 28, 0.6);
+            color: rgba(170, 119, 28, 0.5);
             font-size: 0.8rem;
             margin-top: 30px;
             letter-spacing: 5px;
@@ -150,7 +154,7 @@
 <div class="entering-screen" id="entering-screen">
     <div class="entering-text">Entering The Forum</div>
     
-    <div class="ornate-line"></div>
+    <div class="ornate-divider">❧ ~~~~~~~~~~ ☙</div>
 
     <div class="progress-wrapper">
         <div class="progress-container">
@@ -166,7 +170,9 @@
 
 <script>
     function startInauguration() {
+        // Hides the launch page and image
         document.getElementById('launch-screen').style.display = 'none';
+        // Shows the ornate forum entry screen
         document.getElementById('entering-screen').style.display = 'flex';
         
         let width = 0;
@@ -187,7 +193,9 @@
             
             if (width >= 100) {
                 clearInterval(progressInterval);
-                setTimeout(() => { window.location.href = 'home.html'; }, 1000);
+                setTimeout(() => { 
+                    window.location.href = 'home.html'; 
+                }, 1000);
             }
         }, 50);
     }
