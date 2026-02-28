@@ -7,242 +7,239 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            /* BRIGHT BACKGROUND IMAGE - FITS PC & MOBILE */
-            background-color: #4A0D0D;
-            background-image: url('image_70a35f.jpg');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            
-            font-family: 'Georgia Pro', Georgia, serif;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* BRIGHT OVERLAY - Removes dullness */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: 
-                rgba(255, 255, 255, 0.1),
-                rgba(74, 13, 13, 0.25);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .launch-container {
-            text-align: center;
-            z-index: 10;
-            position: relative;
-        }
-
-        /* SMOOTH PREMIUM GOLDEN BUTTON */
-        .btn-inaugurate {
-            padding: 26px 80px;
-            background: linear-gradient(180deg, 
-                #E8C547 0%, 
-                #FFD700 15%, 
-                #FFF176 30%, 
-                #FFD700 50%, 
-                #D4AF37 85%, 
-                #C9A227 100%);
-            color: #2D0809;
-            border: none;
-            font-size: 1.6rem;
-            cursor: pointer;
-            transition: all 0.35s ease;
-            font-family: 'Georgia Pro', Georgia, serif;
-            font-weight: bold;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            border-radius: 50px;
-            box-shadow: 
-                0 8px 30px rgba(0,0,0,0.4),
-                0 0 40px rgba(255,215,0,0.3),
-                inset 0 2px 0 rgba(255,255,255,0.5),
-                inset 0 -3px 0 rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Shimmer effect on button */
-        .btn-inaugurate::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-inaugurate:hover::after {
-            left: 100%;
-        }
-
-        .btn-inaugurate:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 
-                0 12px 40px rgba(0,0,0,0.5),
-                0 0 60px rgba(255,215,0,0.5),
-                inset 0 2px 0 rgba(255,255,255,0.6),
-                inset 0 -3px 0 rgba(0,0,0,0.1);
-        }
-
-        .btn-inaugurate:active {
-            transform: scale(0.97);
-        }
-
-        /* Progress Screen */
-        .entering-screen {
-            display: none;
-            text-align: center;
-            z-index: 20;
-        }
-
-        .entering-text {
-            color: #FFD700;
-            font-family: 'Georgia Pro', Georgia, serif;
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 8px;
-            margin-bottom: 45px;
-            text-shadow: 0 0 25px rgba(255,215,0,0.8), 0 0 50px rgba(255,215,0,0.4);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.03); }
-        }
-
-        .progress-container {
-            width: 500px;
-            max-width: 85vw;
-            height: 14px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 30px;
-            overflow: hidden;
-            margin: 0 auto;
-            border: 2px solid rgba(212,175,55,0.5);
-            box-shadow: 
-                inset 0 3px 10px rgba(0,0,0,0.5),
-                0 0 25px rgba(212,175,55,0.2);
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                #C9A227 0%, 
-                #FFD700 25%, 
-                #FFF59D 50%, 
-                #FFD700 75%, 
-                #C9A227 100%);
-            border-radius: 30px;
-            box-shadow: 
-                0 0 20px rgba(255,215,0,0.9),
-                0 0 40px rgba(255,215,0,0.5);
-            transition: width 0.04s linear;
-        }
-
-        .progress-text {
-            color: #FFD700;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            letter-spacing: 4px;
-            text-shadow: 0 0 15px rgba(255,215,0,0.6);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
             body {
-                background-size: cover !important;
-                background-position: center center !important;
-            }
-            
-            .btn-inaugurate {
-                padding: 22px 60px;
-                font-size: 1.3rem;
-                letter-spacing: 4px;
-                border-radius: 40px;
-            }
-            
-            .entering-text {
-                font-size: 1.8rem;
-                letter-spacing: 5px;
-            }
-            
-            .progress-container {
-                width: 340px;
-                height: 12px;
-            }
-        }
+        /* BRIGHT BACKGROUND IMAGE - COVERS FULL SCREEN */
+        background-color: #4A0D0D;
+        background-image: url('image_70a35f.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        
+        font-family: 'Georgia Pro', Georgia, serif;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        @media (max-width: 480px) {
-            .btn-inaugurate {
-                padding: 18px 45px;
-                font-size: 1.1rem;
-                letter-spacing: 3px;
-                border-radius: 35px;
-            }
-            
-            .entering-text {
-                font-size: 1.4rem;
-                letter-spacing: 3px;
-            }
-            
-            .progress-container {
-                width: 280px;
-                height: 10px;
-            }
-            
-            .progress-text {
-                font-size: 1rem;
-            }
+    /* LIGHT OVERLAY - MAKES IMAGE BRIGHT */
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.15);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .launch-container {
+        text-align: center;
+        z-index: 10;
+        position: relative;
+    }
+
+    /* SMOOTH PREMIUM GOLDEN BUTTON */
+    .btn-inaugurate {
+        padding: 26px 80px;
+        background: linear-gradient(180deg, 
+            #E8C547 0%, 
+            #FFD700 15%, 
+            #FFF176 30%, 
+            #FFD700 50%, 
+            #D4AF37 85%, 
+            #C9A227 100%);
+        color: #2D0809;
+        border: none;
+        font-size: 1.6rem;
+        cursor: pointer;
+        transition: all 0.35s ease;
+        font-family: 'Georgia Pro', Georgia, serif;
+        font-weight: bold;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        border-radius: 50px;
+        box-shadow: 
+            0 8px 30px rgba(0,0,0,0.4),
+            0 0 40px rgba(255,215,0,0.3),
+            inset 0 2px 0 rgba(255,255,255,0.5),
+            inset 0 -3px 0 rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Shimmer effect on button */
+    .btn-inaugurate::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .btn-inaugurate:hover::after {
+        left: 100%;
+    }
+
+    .btn-inaugurate:hover {
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 
+            0 12px 40px rgba(0,0,0,0.5),
+            0 0 60px rgba(255,215,0,0.5),
+            inset 0 2px 0 rgba(255,255,255,0.6),
+            inset 0 -3px 0 rgba(0,0,0,0.1);
+    }
+
+    .btn-inaugurate:active {
+        transform: scale(0.97);
+    }
+
+    /* Progress Screen */
+    .entering-screen {
+        display: none;
+        text-align: center;
+        z-index: 20;
+    }
+
+    .entering-text {
+        color: #FFD700;
+        font-family: 'Georgia Pro', Georgia, serif;
+        font-size: 2.5rem;
+        font-weight: bold;
+        letter-spacing: 8px;
+        margin-bottom: 45px;
+        text-shadow: 0 0 25px rgba(255,215,0,0.8), 0 0 50px rgba(255,215,0,0.4);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.9; transform: scale(1.03); }
+    }
+
+    .progress-container {
+        width: 500px;
+        max-width: 85vw;
+        height: 14px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 30px;
+        overflow: hidden;
+        margin: 0 auto;
+        border: 2px solid rgba(212,175,55,0.5);
+        box-shadow: 
+            inset 0 3px 10px rgba(0,0,0,0.5),
+            0 0 25px rgba(212,175,55,0.2);
+    }
+
+    .progress-bar {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            #C9A227 0%, 
+            #FFD700 25%, 
+            #FFF59D 50%, 
+            #FFD700 75%, 
+            #C9A227 100%);
+        border-radius: 30px;
+        box-shadow: 
+            0 0 20px rgba(255,215,0,0.9),
+            0 0 40px rgba(255,215,0,0.5);
+        transition: width 0.04s linear;
+    }
+
+    .progress-text {
+        color: #FFD700;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        letter-spacing: 4px;
+        text-shadow: 0 0 15px rgba(255,215,0,0.6);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        body::before {
+            background: rgba(255, 255, 255, 0.1);
         }
-    </style>
+        
+        .btn-inaugurate {
+            padding: 22px 60px;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            border-radius: 40px;
+        }
+        
+        .entering-text {
+            font-size: 1.8rem;
+            letter-spacing: 5px;
+        }
+        
+        .progress-container {
+            width: 340px;
+            height: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .btn-inaugurate {
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            border-radius: 35px;
+        }
+        
+        .entering-text {
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+        }
+        
+        .progress-container {
+            width: 280px;
+            height: 10px;
+        }
+        
+        .progress-text {
+            font-size: 1rem;
+        }
+    }
+</style>
 </head>
 <body>
 
     <div class="launch-container" id="launch-screen">
-        <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
-    </div>
+    <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
+</div>
 
-    <div class="entering-screen" id="entering-screen">
-        <div class="entering-text">Entering the Forum</div>
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <div class="progress-text" id="progress-text">0%</div>
+<div class="entering-screen" id="entering-screen">
+    <div class="entering-text">Entering the Forum</div>
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
     </div>
+    <div class="progress-text" id="progress-text">0%</div>
+</div>
 
-    <script>
-        function startInauguration() {
-            document.getElementById('launch-screen').style.display = 'none';
-            document.getElementById('entering-screen').style.display = 'block';
+<script>
+    function startInauguration() {
+        document.getElementById('launch-screen').style.display = 'none';
+        document.getElementById('entering-screen').style.display = 'block';
+        
+        let width = 0;
+        const progressInterval = setInterval(() => {
+            width += 1;
+            document.getElementById('progress-bar').style.width = width + '%';
+            document.getElementById('progress-text').textContent = width + '%';
             
-            let width = 0;
-            const progressInterval = setInterval(() => {
-                width += 1;
-                document.getElementById('progress-bar').style.width = width + '%';
-                document.getElementById('progress-text').textContent = width + '%';
-                
-                if (width >= 100) {
-                    clearInterval(progressInterval);
-                    setTimeout(() => { 
-                        window.location.href = 'home.html'; 
-                    }, 300);
-                }
-            }, 25);
-        }
-    </script>
+            if (width >= 100) {
+                clearInterval(progressInterval);
+                setTimeout(() => { 
+                    window.location.href = 'home.html'; 
+                }, 300);
+            }
+        }, 25);
+    }
+</script>
 </body>
 </html>
