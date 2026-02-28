@@ -8,9 +8,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* BACKGROUND IMAGE FOR LAUNCH SCREEN */
+            /* LAUNCH SCREEN IMAGE */
             background-color: #4A0D0D;
-            background-image: url('image_70a35f.jpg');
+            background-image: url('launch_bg.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
@@ -88,12 +88,22 @@
             transform: scale(0.97);
         }
 
-        /* ENTERING SCREEN - DARK MAROON BG */
+        /* ENTERING SCREEN - DIFFERENT IMAGE WITH MAROON SHADE */
         .entering-screen {
             display: none;
             text-align: center;
             z-index: 20;
-            background: linear-gradient(135deg, #1A0505 0%, #2D0809 30%, #4A0D0D 60%, #3D0A0A 100%);
+            /* DIFFERENT IMAGE WITH MAROON SHADE */
+            background: 
+                linear-gradient(135deg, 
+                    rgba(74, 13, 13, 0.85) 0%, 
+                    rgba(45, 8, 9, 0.75) 50%, 
+                    rgba(61, 10, 10, 0.8) 100%),
+                url('entering_bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
             position: fixed;
             inset: 0;
             height: 100vh;
@@ -255,13 +265,13 @@
 </head>
 <body>
 
-    <!-- LAUNCH SCREEN - WITH IMAGE BG -->
+    <!-- LAUNCH SCREEN - IMAGE 1 -->
     <div class="launch-container" id="launch-screen">
         <button class="btn-inaugurate" onclick="startInauguration()">Launch Now</button>
     </div>
 
-    <!-- ENTERING SCREEN - DARK MAROON BG -->
-    <div class="entering-screen" id="entering-screen" style="display: none;">
+    <!-- ENTERING SCREEN - IMAGE 2 WITH MAROON SHADE -->
+    <div class="entering-screen" id="entering-screen">
         <div class="entering-text">ENTERING THE FORUM</div>
         
         <div class="progress-wrapper">
@@ -282,11 +292,7 @@
             // Hide launch screen
             document.getElementById('launch-screen').style.display = 'none';
             
-            // Remove image background from body
-            document.body.style.backgroundImage = 'none';
-            document.body.style.backgroundColor = '#1A0505';
-            
-            // Show entering screen with dark maroon
+            // Show entering screen with DIFFERENT image + maroon shade
             const enteringScreen = document.getElementById('entering-screen');
             enteringScreen.style.display = 'flex';
             
@@ -300,9 +306,10 @@
                 'Please wait...',
                 'Loading resources',
                 'Almost ready',
-                'Redirecting...'
+                'Launching website'
             ];
             
+            // Slower progress bar
             const progressInterval = setInterval(() => {
                 width += 1;
                 progressBar.style.width = width + '%';
@@ -321,9 +328,9 @@
                     clearInterval(progressInterval);
                     setTimeout(() => { 
                         window.location.href = 'home.html'; 
-                    }, 500);
+                    }, 800);
                 }
-            }, 25);
+            }, 40);
         }
     </script>
 </body>
