@@ -7,143 +7,229 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* OLD BACKGROUND SETTINGS RESTORED FOR LAUNCH PAGE */
-        body {
-            background-color: #4A0D0D;
-            background-image: url('launch_bg.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            font-family: 'Georgia Pro', Georgia, serif;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+           /* LAUNCH PAGE BACKGROUND */
+    body {
+        background-color: #4A0D0D;
+        background-image: url('launch_bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        font-family: 'Georgia Pro', Georgia, serif;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .launch-container {
-            text-align: center;
-            z-index: 10;
-            position: relative;
-        }
+    .launch-container {
+        text-align: center;
+        z-index: 10;
+        position: relative;
+    }
 
-        /* GOLDEN BUTTON (Original Style) */
+    /* GOLDEN BUTTON */
+    .btn-inaugurate {
+        padding: 26px 80px;
+        background: linear-gradient(180deg, #E8C547 0%, #FFD700 15%, #FFF176 30%, #FFD700 50%, #D4AF37 85%, #C9A227 100%);
+        color: #2D0809;
+        border: none;
+        font-size: 1.6rem;
+        cursor: pointer;
+        transition: all 0.35s ease;
+        font-family: 'Georgia Pro', Georgia, serif;
+        font-weight: bold;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        border-radius: 50px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 40px rgba(255,215,0,0.3), inset 0 2px 0 rgba(255,255,255,0.5);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-inaugurate::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.5s ease;
+    }
+    .btn-inaugurate:hover::after { left: 100%; }
+    .btn-inaugurate:hover { transform: scale(1.05); }
+
+    /* ENTERING SCREEN */
+    .entering-screen {
+        display: none;
+        text-align: center;
+        z-index: 20;
+        background: radial-gradient(circle, #4A0D0D 0%, #2D0809 100%);
+        position: fixed;
+        inset: 0;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 25px solid #2D0809;
+        box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+    }
+
+    /* Decorative Divider */
+    .ornate-divider {
+        color: #AA771C;
+        font-size: 2rem;
+        opacity: 0.2;
+        margin: 20px 0;
+        letter-spacing: 10px;
+    }
+
+    /* METALLIC GOLD TEXT */
+    .entering-text {
+        font-family: 'Georgia Pro', Georgia, serif;
+        font-size: 2.8rem;
+        font-weight: 900;
+        letter-spacing: 12px;
+        background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 0 15px rgba(191, 149, 63, 0.4));
+        text-transform: uppercase;
+    }
+
+    .progress-wrapper {
+        width: 600px;
+        max-width: 85vw;
+    }
+
+    .progress-container {
+        width: 100%;
+        height: 10px;
+        background: rgba(0,0,0,0.4);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(170, 119, 28, 0.2);
+    }
+
+    .progress-bar {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #BF953F, #FCF6BA, #AA771C);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        transition: width 0.1s linear;
+    }
+
+    .progress-info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+    .progress-text, .progress-percent {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #AA771C;
+        font-weight: bold;
+    }
+
+    .status-text {
+        color: rgba(170, 119, 28, 0.5);
+        font-size: 0.8rem;
+        margin-top: 30px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+    }
+
+    /* ===================== MOBILE RESPONSIVE ===================== */
+    
+    @media (max-width: 768px) {
+        /* Smaller button for tablet */
         .btn-inaugurate {
-            padding: 26px 80px;
-            background: linear-gradient(180deg, #E8C547 0%, #FFD700 15%, #FFF176 30%, #FFD700 50%, #D4AF37 85%, #C9A227 100%);
-            color: #2D0809;
-            border: none;
-            font-size: 1.6rem;
-            cursor: pointer;
-            transition: all 0.35s ease;
-            font-family: 'Georgia Pro', Georgia, serif;
-            font-weight: bold;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            border-radius: 50px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 40px rgba(255,215,0,0.3), inset 0 2px 0 rgba(255,255,255,0.5);
-            position: relative;
-            overflow: hidden;
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            border-radius: 40px;
         }
-
-        .btn-inaugurate::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s ease;
-        }
-        .btn-inaugurate:hover::after { left: 100%; }
-        .btn-inaugurate:hover { transform: scale(1.05); }
-
-        /* NEW ORNATE ENTERING SCREEN (Applied only when triggered) */
-        .entering-screen {
-            display: none;
-            text-align: center;
-            z-index: 20;
-            /* Elegant Burgundy Ornate Background */
-            background: radial-gradient(circle, #4A0D0D 0%, #2D0809 100%);
-            position: fixed;
-            inset: 0;
-            height: 100vh;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 25px solid #2D0809;
-            box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
-        }
-
-        /* Decorative Swirl Divider */
-        .ornate-divider {
-            color: #AA771C;
-            font-size: 2rem;
-            opacity: 0.2;
-            margin: 20px 0;
-            letter-spacing: 10px;
-        }
-
-        /* METALLIC GOLD GRADIENT TEXT */
+        
+        /* Smaller text for tablet */
         .entering-text {
-            font-family: 'Georgia Pro', Georgia, serif;
-            font-size: 2.8rem;
-            font-weight: 900;
-            letter-spacing: 12px;
-            background: linear-gradient(to bottom, #BF953F 22%, #FCF6BA 45%, #B38728 50%, #FBF5B7 55%, #AA771C 78%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 15px rgba(191, 149, 63, 0.4));
-            text-transform: uppercase;
+            font-size: 1.8rem;
+            letter-spacing: 6px;
         }
-
-        .progress-wrapper {
-            width: 600px;
-            max-width: 85vw;
-        }
-
-        .progress-container {
-            width: 100%;
-            height: 10px;
-            background: rgba(0,0,0,0.4);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(170, 119, 28, 0.2);
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            /* Solid Golden Rod Style from Friend's Pic */
-            background: linear-gradient(90deg, #BF953F, #FCF6BA, #AA771C);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-            transition: width 0.1s linear;
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-
-        .progress-text, .progress-percent {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #AA771C;
-            font-weight: bold;
-        }
-
-        .status-text {
-            color: rgba(170, 119, 28, 0.5);
-            font-size: 0.8rem;
-            margin-top: 30px;
+        
+        .ornate-divider {
+            font-size: 1.5rem;
+            margin: 15px 0;
             letter-spacing: 5px;
-            text-transform: uppercase;
         }
-    </style>
+        
+        .progress-wrapper {
+            width: 80%;
+        }
+        
+        .progress-container {
+            height: 8px;
+        }
+        
+        .progress-text, .progress-percent {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+        
+        .status-text {
+            font-size: 0.65rem;
+            margin-top: 20px;
+            letter-spacing: 3px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Even smaller for phones */
+        .btn-inaugurate {
+            padding: 16px 40px;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            border-radius: 35px;
+        }
+        
+        /* Smaller text for phone */
+        .entering-text {
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+        }
+        
+        .ornate-divider {
+            font-size: 1.2rem;
+            margin: 12px 0;
+            letter-spacing: 3px;
+        }
+        
+        .progress-wrapper {
+            width: 85%;
+        }
+        
+        .progress-container {
+            height: 6px;
+        }
+        
+        .progress-info {
+            margin-top: 10px;
+        }
+        
+        .progress-text, .progress-percent {
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+        }
+        
+        .status-text {
+            font-size: 0.55rem;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+    }
+</style>
 </head>
 <body>
 
@@ -156,16 +242,16 @@
     
     <div class="ornate-divider">❧ ~~~~~~~~~~ ☙</div>
 
-    <div class="progress-wrapper">
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <div class="progress-info">
-            <span class="progress-text">Loading</span>
-            <span class="progress-percent" id="progress-percent">0%</span>
-        </div>
+<div class="progress-wrapper">
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
     </div>
-    <div class="status-text" id="status-text">Please wait...</div>
+    <div class="progress-info">
+        <span class="progress-text">Loading</span>
+        <span class="progress-percent" id="progress-percent">0%</span>
+    </div>
+</div>
+<div class="status-text" id="status-text">Please wait...</div>
 </div>
 
 <script>
