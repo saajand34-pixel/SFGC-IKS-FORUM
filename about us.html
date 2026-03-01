@@ -22,48 +22,101 @@
             display: flex; flex-direction: column; 
         }
 
-        /* HEADER & NAVIGATION */
-        header { background-color: rgba(0, 0, 0, 0.6); padding: 20px; text-align: center; position: relative; z-index: 1000; }
-        h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
-        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
-        nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-size: 1.1em; font-family: 'Georgia Pro', Georgia, serif; display: inline-block; }
-        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #ffd700; transition: width 0.3s ease; }
-        nav a:hover::after { width: 100%; }
-        nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
+            /* HEADER & NAVIGATION */
+    header { background-color: rgba(0, 0, 0, 0.6); padding: 20px; text-align: center; position: relative; z-index: 1000; }
+    h1 { color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); margin: 10px 0; }
+    nav ul { list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+    nav a { color: #ffcc66; text-decoration: none; font-weight: bold; position: relative; font-size: 1.1em; font-family: 'Georgia Pro', Georgia, serif; display: inline-block; }
+    nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #ffd700; transition: width 0.3s ease; }
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color: #fff; text-shadow: 0 0 10px #ffd700; }
 
-        .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; right: 10px; top: 70%; transform: translateY(-50%); z-index: 1001; }
-        .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; position: absolute; right: 10px; top: 70%; transform: translateY(-50%); z-index: 1001; }
+    .hamburger div { width: 25px; height: 3px; background-color: #cccccc; margin: 3px 0; }
 
-        /* MAIN CONTENT - Standardized Box */
-        main { 
-            flex: 1; max-width: 900px; margin: 40px auto; padding: 40px 20px; 
-            background-color: rgba(0, 0, 0, 0.5); border-radius: 20px; 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2); 
-            text-align: center; 
-        }
+    /* MAIN CONTENT - Standardized Box */
+    main { 
+        flex: 1; max-width: 900px; margin: 40px auto; padding: 40px 20px; 
+        background-color: rgba(0, 0, 0, 0.5); border-radius: 20px; 
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2); 
+        text-align: center; 
+    }
 
-        h2.main-title { font-size: 1.8em; color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 35px; width: auto; }
+    h2.main-title { font-size: 1.8em; color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 35px; width: auto; }
+    
+    .about-section { margin-bottom: 60px; padding: 10px; }
+    .about-section h2 { color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 25px; font-size: 1.4em; }
+    .about-section p { text-align: justify; font-size: 11pt; line-height: 1.2; color: #fff; }
+
+    img { 
+        display: block; 
+        margin: 15px auto; 
+        image-rendering: -webkit-optimize-contrast; 
+        filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); 
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* FOOTER */
+    footer { padding: 30px 20px; text-align: center; background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505); border-top: 2px solid #BF953F; margin-top: auto; }
+    footer p { margin: 0; font-weight: bold; font-size: 1em; line-height: 1.6; color: #BF953F; background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
+
+    /* MOBILE STYLES */
+    @media (max-width: 768px) {
+        .hamburger { display: flex; }
         
-        .about-section { margin-bottom: 60px; padding: 10px; }
-        .about-section h2 { color: #ffd700; border-bottom: 1px solid #ffcc66; display: inline-block; margin-bottom: 25px; font-size: 1.4em; }
-        .about-section p { text-align: justify; font-size: 11pt; line-height: 1.2; color: #fff; }
-
-        img { display: block; margin: 15px auto; image-rendering: -webkit-optimize-contrast; filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); }
-
-        /* FOOTER */
-        footer { padding: 30px 20px; text-align: center; background: linear-gradient(to right, #1F0505, #3B0D0D, #1F0505); border-top: 2px solid #BF953F; margin-top: auto; }
-        footer p { margin: 0; font-weight: bold; font-size: 1em; line-height: 1.6; color: #BF953F; background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
-
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            nav ul { display: none; flex-direction: column; position: absolute; top: 75px; right: 10px; width: 260px; background-color: rgba(0, 0, 0, 0.95); padding: 25px 0; border: 1px solid #BF953F; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); z-index: 2000; }
-            nav ul.active { display: flex; }
-            nav ul li { margin: 15px 0; width: 100%; text-align: center; }
-            nav a { font-size: 1.2em; }
-            footer p { font-size: 1.1em; line-height: 1.4; }
-            .footer-break { display: block; margin-top: 5px; }
+        nav ul { 
+            display: none; 
+            flex-direction: column; 
+            position: absolute; 
+            top: 75px; 
+            right: 10px; 
+            width: 260px; 
+            background-color: rgba(0, 0, 0, 0.95); 
+            padding: 25px 0; 
+            border: 1px solid #BF953F; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8); 
+            z-index: 2000; 
         }
-    </style>
+        
+        nav ul.active { display: flex; }
+        nav ul li { margin: 15px 0; width: 100%; text-align: center; }
+        nav a { font-size: 1.2em; }
+        
+        main {
+            padding: 20px 15px;
+            margin: 20px auto;
+            width: 95%;
+        }
+        
+        .about-section {
+            padding: 5px;
+            margin-bottom: 40px;
+        }
+        
+        .about-section h2 {
+            font-size: 1.2em;
+        }
+        
+        .about-section p {
+            font-size: 10pt;
+            text-align: left;
+        }
+        
+        h2.main-title {
+            font-size: 1.5em;
+        }
+        
+        img {
+            max-width: 80% !important;
+            height: auto;
+        }
+        
+        footer p { font-size: 1em; line-height: 1.4; }
+        .footer-break { display: block; margin-top: 5px; }
+    }
+</style>
 </head>
 <body>
     <header>
@@ -79,19 +132,19 @@
     </header>
     
     <main>
-        <h2 class="main-title">About Us</h2>
+    <h2 class="main-title">About Us</h2>
 
-        <div class="about-section">
-            <h2>Seshadripuram Educational Trust (SET)</h2>
-            <img src="44967.png" alt="SET Logo" width="130">
+    <div class="about-section">
+        <h2>Seshadripuram Educational Trust (SET)</h2>
+        <img src="44967.png" alt="SET Logo" width="130">
             <p>The Seshadripuram Educational Trust (SET) stands as a landmark of academic heritage in Karnataka, tracing its origins back to a modest primary school founded in 1930 by two visionary women, Smt. Anandamma and Smt. Seethamma. Over nearly a century, it has grown from a tiny two-room setup into a sprawling network of 34 institutions that serve approximately 24,500 students from kindergarten through to doctoral research. Headquartered in Bengaluru, the Trust operates on the democratic principle of being "by the people, for the people," prioritizing affordable, high-quality education for all socio-economic backgrounds.
 
 Beyond its impressive scale, SET is distinguished by its commitment to holistic development and global standards. Its institutions—ranging from prestigious commerce colleges to law schools and postgraduate centers—are supported by a dedicated faculty of over 1,500 staff members. The Trust has earned significant accolades, including the National Award for the Best NSS Unit, and maintains international collaborations with universities across the UK, USA, and Europe to ensure its students are globally competitive. By blending modern infrastructure with a deep-rooted sense of social responsibility, SET continues to be a driving force in shaping the intellectual and moral fabric of the nation.</p>
         </div>
 
         <div class="about-section">
-            <h2>Seshadripuram First Grade College (SFGC)</h2>
-            <img src="sfgc-image.png" alt="SFGC College" width="400">
+        <h2>Seshadripuram First Grade College (SFGC)</h2>
+        <img src="sfgc-image.png" alt="SFGC College" width="400">
             <p>Seshadripuram First Grade College (SFGC), located in Yelahanka, Bengaluru, is a premier institution under the Seshadripuram Educational Trust that has been a cornerstone of higher education since its inception in 1992. Accredited with a prestigious NAAC A+ grade, the college is widely recognized for its academic rigor and holistic development approach, consistently ranking among the top private colleges in India by publications like India Today. It offers a diverse range of undergraduate and postgraduate programs, including popular courses like B.Com, BCA, BBA (with specialized streams like Aviation), B.Sc, and M.Com, all affiliated with Bengaluru City University.
 The campus is equipped with modern infrastructure, featuring state-of-the-art laboratories, a vast digital library, and a massive 1,000-seat auditorium that serves as a hub for cultural and academic events.
 
@@ -144,6 +197,6 @@ Through the successful organization of IKS Horizons 2025, the Seshadripuram Rese
     </main>
 
     <footer><p>© All Copyrights Reserved 2026-27 <span class="footer-break">SFGC IKS FORUM - SRF INDIA</span></p></footer>
-    <script>function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }</script>
+<script>function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }</script>
 </body>
 </html>
