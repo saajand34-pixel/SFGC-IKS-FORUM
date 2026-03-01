@@ -255,12 +255,28 @@
 </div>
 
 <script>
+    // Get URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const isLoading = urlParams.get('loading');
+    const redirectPage = urlParams.get('redirect') || 'home.html';
+
+    // If ?loading=true, skip to entering screen directly
+    if (isLoading === 'true') {
+        window.onload = function() {
+            // Hide launch button, show entering screen
+            document.getElementById('launch-screen').style.display = 'none';
+            document.getElementById('entering-screen').style.display = 'flex';
+            startProgressBar(redirectPage);
+        };
+    }
+
     function startInauguration() {
-        // Hides the launch page and image
         document.getElementById('launch-screen').style.display = 'none';
-        // Shows the ornate forum entry screen
         document.getElementById('entering-screen').style.display = 'flex';
-        
+        startProgressBar('home.html');
+    }
+
+    function startProgressBar(redirectTo) {
         let width = 0;
         const progressBar = document.getElementById('progress-bar');
         const progressPercent = document.getElementById('progress-percent');
@@ -280,7 +296,7 @@
             if (width >= 100) {
                 clearInterval(progressInterval);
                 setTimeout(() => { 
-                    window.location.href = 'home.html'; 
+                    window.location.href = redirectTo; 
                 }, 1000);
             }
         }, 50);
