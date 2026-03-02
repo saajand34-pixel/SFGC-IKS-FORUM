@@ -135,12 +135,12 @@ Through the successful organization of IKS Horizons 2025, the Seshadripuram Rese
     <script>
         function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
         
-        // SLOWER LOADING - 5 seconds (was 3 seconds)
+               // PROFESSIONAL LOADING - 2.5 seconds (was 5 seconds)
         window.addEventListener('load', () => { 
             setTimeout(() => { 
                 document.getElementById('loading-screen').classList.add('hidden'); 
                 setTimeout(() => document.getElementById('loading-screen').style.display = 'none', 1000); 
-            }, 5000); 
+            }, 2500); 
         });
         
         let currentIndex = 0; const totalSlides = 22;
